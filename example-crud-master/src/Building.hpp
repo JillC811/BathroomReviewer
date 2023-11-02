@@ -1,3 +1,6 @@
+#ifndef Building_hpp
+#define Building_hpp
+
 #include <utility>
 #include <vector> 
 #include <string>
@@ -40,3 +43,5 @@ class Building{
             return bathrooms;
         }
 };
+
+#endif /*Building_hpp*/
