@@ -30,29 +30,61 @@ class Bathroom{
             this->urinalCount = urinalCount;
             this->rating = rating;
         }
-        int getID() const { return id; }
-        void setID(int id) { this->id = id; }
+        int getID() const { 
+            return id; 
+        }
+        void setID(int id) { 
+            this->id = id; 
+        }
 
-        Building * getBuilding() const { return building; }
-        void setBuilding(Building * building) { this->building = building; }
+        Building * getBuilding() const { 
+            return building; 
+        }
+        void setBuilding(Building * building) { 
+            this->building = building; 
+        }
 
-        int getFloor() const { return floor; }
-        void setFloor(int floor) { this->floor = floor; }
+        int getFloor() const { 
+            return floor;
+        }
+        void setFloor(int floor) {
+            this->floor = floor; 
+        }
 
-        std::pair<float, float> getLocation() const { return location; }
-        void setLocation(std::pair<float,float> loaction) { this->location = loaction; }
+        std::pair<float, float> getLocation() const { 
+            return location;
+        }
+        void setLocation(std::pair<float,float> loaction) {
+            this->location = loaction;
+        }
 
-        char getGender() const { return gender; }
-        void setGender(char gender) { this->gender = gender; }
+        char getGender() const {
+            return gender; 
+        }
+        void setGender(char gender) {
+            this->gender = gender;
+        }
 
-        int getStallCount() const { return stallCount; }
-        void setStallCount() { this->stallCount = stallCount; }
+        int getStallCount() const {
+            return stallCount;
+        }
+        void setStallCount() {
+            this->stallCount = stallCount;
+        }
 
-        int getUrinalCount() const { return urinalCount; }
-        void setUrinalCount(int urinalCount) { this->urinalCount = urinalCount; }
+        int getUrinalCount() const {
+            return urinalCount;
+        }
+        void setUrinalCount(int urinalCount) {
+            this->urinalCount = urinalCount;
+        }
 
-        Rating * getRating() const { return rating; }
-        void setRating(Rating * rating) { this->rating = rating; }
+        Rating * getRating() const {
+            return rating;
+        }
+        void setRating(Rating * rating) {
+            this->rating = rating;
+        }
 };
 
 
