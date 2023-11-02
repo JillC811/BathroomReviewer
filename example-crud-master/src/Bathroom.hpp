@@ -68,7 +68,7 @@ class Bathroom{
         int getStallCount() const {
             return stallCount;
         }
-        void setStallCount() {
+        void setStallCount(int stallCount) {
             this->stallCount = stallCount;
         }
 

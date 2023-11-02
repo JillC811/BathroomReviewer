@@ -13,7 +13,7 @@ class Building{
         std::pair<float, float> location;
         std::vector<Bathroom> bathrooms;
 
-        Building(std::string name, std::pair<float, float> loaction, std::vector<Bathroom> bathrooms){
+        Building(std::string name, std::pair<float, float> location, std::vector<Bathroom> bathrooms){
             this->name = name;
             this->location = location;
             this-> bathrooms = bathrooms;
