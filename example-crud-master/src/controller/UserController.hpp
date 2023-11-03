@@ -2,7 +2,7 @@
 #ifndef UserController_hpp
 #define UserController_hpp
 
-#include "service/UserService.hpp"
+#include "../service/UserService.hpp"
 
 #include "oatpp/web/server/api/ApiController.hpp"
 #include "oatpp/parser/json/mapping/ObjectMapper.hpp"
@@ -92,7 +92,18 @@ public:
   {
     return createDtoResponse(Status::CODE_200, m_userService.getAllUsers(offset, limit));
   }
-  
+
+  ENDPOINT_INFO(signIn) {
+    info->summary = "Sign in with user name and password";
+    info->addResponse<Object<StatusDto>>(Status::CODE_200, "application/json");
+    info->addResponse<Object<StatusDto>>(Status::CODE_500, "application/json");
+  }
+
+  ENDPOINT("POST", "users/signin", signIn,
+           BODY_DTO(Object<signInDto>, params))
+  {
+    return createDtoResponse(Status::CODE_200, m_userService.signIn(params));
+  }
   
   ENDPOINT_INFO(deleteUser) {
     info->summary = "Delete User by userId";

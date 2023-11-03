@@ -1,0 +1,20 @@
+#include "User.hpp"
+
+User::User() {
+    username = "";
+    email = "";
+    firstName = "";
+    lastName = "";
+}
+
+User::User(oatpp::Object<UserDto> dto) {
+    username = dto->userName;
+    email = dto->email;
+}
+
+oatpp::Object<UserDto> User::convertToDto() {
+    auto dto = UserDto::createShared();
+    dto->userName = username.c_str();
+    dto->email = email.c_str();
+    return dto;
+}

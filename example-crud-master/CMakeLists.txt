@@ -10,6 +10,9 @@ add_library(crud-lib
         src/dto/PageDto.hpp
         src/dto/StatusDto.hpp
         src/dto/UserDto.hpp
+        src/dto/SignInDto.hpp
+        src/Objects/User.hpp
+        src/Objects/User.cpp
         src/service/UserService.cpp
         src/service/UserService.hpp
         src/AppComponent.hpp
@@ -24,7 +27,7 @@ target_include_directories(crud-lib PUBLIC src)
 
 
 ## link libs
-
+ 
 find_package(oatpp          1.3.0 REQUIRED)
 find_package(oatpp-swagger  1.3.0 REQUIRED)
 find_package(oatpp-sqlite   1.3.0 REQUIRED)
