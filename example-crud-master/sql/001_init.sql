@@ -21,7 +21,7 @@ CREATE TABLE Bathroom (
      rating INTEGER
 );
 
-INSERT INTO Bathroom VALUES (0, "UCC", 1, "0.000,0.000", 'F', 4, 0, 4)
+INSERT INTO Bathroom VALUES (0, "UCC", 1, "0.000,0.000", 'F', 4, 0, 4);
 
 CREATE TABLE Building (
     name VARCHAR PRIMARY KEY,
