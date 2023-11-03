@@ -20,6 +20,13 @@ oatpp::Object<UserDto> UserService::updateUser(const oatpp::Object<UserDto>& dto
 
 }
 
+oatpp::Object<UserDto> UserService::signIn(const oatpp::Object<signInDto>& dto) {
+  auto testUser = getUserById(1);
+  User testConvert = User(testUser);
+  
+  return testConvert.convertToDto();
+}
+
 oatpp::Object<UserDto> UserService::getUserById(const oatpp::Int32& id, const oatpp::provider::ResourceHandle<oatpp::orm::Connection>& connection) {
 
   auto dbResult = m_database->getUserById(id, connection);
