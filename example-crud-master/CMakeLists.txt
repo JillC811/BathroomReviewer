@@ -6,15 +6,23 @@ set(CMAKE_CXX_STANDARD 11)
 add_library(crud-lib
         src/controller/StaticController.hpp
         src/controller/UserController.hpp
-        src/db/UserDb.hpp
+        src/controller/BathroomController.hpp
+        src/controller/BuildingController.hpp
+        src/db/AppDb.hpp
         src/dto/PageDto.hpp
         src/dto/StatusDto.hpp
         src/dto/UserDto.hpp
         src/dto/SignInDto.hpp
         src/Objects/User.hpp
         src/Objects/User.cpp
+        src/dto/BathroomDto.hpp
+        src/dto/BuildingDto.hpp
         src/service/UserService.cpp
         src/service/UserService.hpp
+        src/service/BathroomService.cpp
+        src/service/BathroomService.hpp
+        src/service/BuildingService.cpp
+        src/service/BuildingService.hpp
         src/AppComponent.hpp
         src/DatabaseComponent.hpp
         src/SwaggerComponent.hpp

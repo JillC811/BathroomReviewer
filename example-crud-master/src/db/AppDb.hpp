@@ -1,19 +1,21 @@
 
-#ifndef CRUD_USERDB_HPP
-#define CRUD_USERDB_HPP
+#ifndef CRUD_APPDB_HPP
+#define CRUD_APPDB_HPP
 
 #include "dto/UserDto.hpp"
+#include "dto/BathroomDto.hpp"
+#include "dto/BuildingDto.hpp"
 #include "oatpp-sqlite/orm.hpp"
 
 #include OATPP_CODEGEN_BEGIN(DbClient) //<- Begin Codegen
 
 /**
- * UserDb client definitions.
+ * AppDb client definitions.
  */
-class UserDb : public oatpp::orm::DbClient {
+class AppDb : public oatpp::orm::DbClient {
 public:
 
-  UserDb(const std::shared_ptr<oatpp::orm::Executor>& executor)
+  AppDb(const std::shared_ptr<oatpp::orm::Executor>& executor)
     : oatpp::orm::DbClient(executor)
   {
 
@@ -23,7 +25,7 @@ public:
     migration.migrate(); // <-- run migrations. This guy will throw on error.
 
     auto version = executor->getSchemaVersion();
-    OATPP_LOGD("UserDb", "Migration - OK. Version=%lld.", version);
+    OATPP_LOGD("AppDb", "Migration - OK. Version=%lld.", version);
 
   }
 
@@ -57,8 +59,16 @@ public:
         "DELETE FROM AppUser WHERE id=:id;",
         PARAM(oatpp::Int32, id))
 
+  QUERY(getBathroomByID, 
+      "SELECT * FROM bathroom WHERE id=:id;", 
+      PARAM(oatpp::Int32, id))
+
+  QUERY(getBuilding, 
+      "SELECT * FROM Building WHERE name=:name;", 
+      PARAM(oatpp::String, name))  
+
 };
 
 #include OATPP_CODEGEN_END(DbClient) //<- End Codegen
 
-#endif //CRUD_USERDB_HPP
+#endif //CRUD_APPDB_HPP

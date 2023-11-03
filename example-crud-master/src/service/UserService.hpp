@@ -3,6 +3,7 @@
 #define CRUD_USERSERVICE_HPP
 
 #include "../db/UserDb.hpp"
+#include "db/AppDb.hpp"
 #include "dto/PageDto.hpp"
 #include "dto/StatusDto.hpp"
 #include "dto/SignInDto.hpp"
@@ -15,7 +16,7 @@ class UserService {
 private:
   typedef oatpp::web::protocol::http::Status Status;
 private:
-  OATPP_COMPONENT(std::shared_ptr<UserDb>, m_database); // Inject database component
+  OATPP_COMPONENT(std::shared_ptr<AppDb>, m_database); // Inject database component
 public:
 
   oatpp::Object<UserDto> createUser(const oatpp::Object<UserDto>& dto);

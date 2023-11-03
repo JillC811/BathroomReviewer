@@ -2,7 +2,7 @@
 #ifndef TEST_DATABASECOMPONENT_HPP
 #define TEST_DATABASECOMPONENT_HPP
 
-#include "db/UserDb.hpp"
+#include "db/AppDb.hpp"
 
 class TestDatabaseComponent {
 public:
@@ -25,7 +25,7 @@ public:
   /**
    * Create database client
    */
-  OATPP_CREATE_COMPONENT(std::shared_ptr<UserDb>, userDb)([] {
+  OATPP_CREATE_COMPONENT(std::shared_ptr<AppDb>, appDb)([] {
 
     /* Get database ConnectionProvider component */
     OATPP_COMPONENT(std::shared_ptr<oatpp::provider::Provider<oatpp::sqlite::Connection>>, connectionProvider);
@@ -34,7 +34,7 @@ public:
     auto executor = std::make_shared<oatpp::sqlite::Executor>(connectionProvider);
 
     /* Create MyClient database client */
-    return std::make_shared<UserDb>(executor);
+    return std::make_shared<AppDb>(executor);
 
   }());
 
