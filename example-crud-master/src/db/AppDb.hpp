@@ -18,7 +18,7 @@ public:
   AppDb(const std::shared_ptr<oatpp::orm::Executor>& executor)
     : oatpp::orm::DbClient(executor)
   {
-
+    //initialize db with schema
     oatpp::orm::SchemaMigration migration(executor);
     migration.addFile(1 /* start from version 1 */, DATABASE_MIGRATIONS "/001_init.sql");
     // TODO - Add more migrations here.
