@@ -4,6 +4,7 @@
 
 #include "dto/UserDto.hpp"
 #include "dto/BathroomDto.hpp"
+#include "dto/BuildingDto.hpp"
 #include "oatpp-sqlite/orm.hpp"
 
 #include OATPP_CODEGEN_BEGIN(DbClient) //<- Begin Codegen
@@ -60,7 +61,11 @@ public:
 
   QUERY(getBathroomByID, 
       "SELECT * FROM bathroom WHERE id=:id;", 
-      PARAM(oatpp::Int32, id)) 
+      PARAM(oatpp::Int32, id))
+
+  QUERY(getBuilding, 
+      "SELECT * FROM Building WHERE name=:name;", 
+      PARAM(oatpp::String, name))  
 
 };
 
