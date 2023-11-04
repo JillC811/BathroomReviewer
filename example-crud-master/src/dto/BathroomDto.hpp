@@ -3,6 +3,7 @@
 
 #include "oatpp/core/macro/codegen.hpp"
 #include "oatpp/core/Types.hpp"
+#include "RatingDto.hpp"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 
@@ -17,7 +18,7 @@ class BathroomDto : public oatpp::DTO {
   DTO_FIELD(String, gender);
   DTO_FIELD(Int32, stallCount);
   DTO_FIELD(Int32, urinalCount);
-  DTO_FIELD(Int32, rating);
+  DTO_FIELD(List<Object<RatingDto>>, rating);
 
 };
 
