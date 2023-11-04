@@ -18,6 +18,7 @@ public:
 
   oatpp::Object<BathroomDto> getBathroomById(const oatpp::Int32& id, const oatpp::provider::ResourceHandle<oatpp::orm::Connection>& connection = nullptr);
 
+  // oatpp::Vector<oatpp::Object<BathroomDto>> getAllBathrooms(const oatpp::provider::ResourceHandle<oatpp::orm::Connection>& connection = nullptr);
 };
 
 #endif //CRUD_USERSERVICE_HPP

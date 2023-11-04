@@ -67,6 +67,10 @@ public:
       "SELECT * FROM Building WHERE name=:name;", 
       PARAM(oatpp::String, name))  
 
+  QUERY(getAllBathrooms, "SELECT * FROM bathroom;")
+ 
+  QUERY(getAllBuildings, "SELECT * FROM Building;")
+
 };
 
 #include OATPP_CODEGEN_END(DbClient) //<- End Codegen
