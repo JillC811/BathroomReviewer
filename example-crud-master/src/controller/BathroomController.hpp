@@ -11,26 +11,66 @@
 #include OATPP_CODEGEN_BEGIN(ApiController) //<- Begin Codegen
 
 /**
- * User REST controller.
+ * Bathroom REST controller.
  */
-class BathroomController : public oatpp::web::server::api::ApiController {
+class BathroomController : public oatpp::web::server::api::ApiController
+{
 public:
   BathroomController(OATPP_COMPONENT(std::shared_ptr<ObjectMapper>, objectMapper))
-    : oatpp::web::server::api::ApiController(objectMapper)
-  {}
+      : oatpp::web::server::api::ApiController(objectMapper)
+  {
+  }
+
 private:
   BathroomService m_bathroomService; // Create user service.
 public:
-
   static std::shared_ptr<BathroomController> createShared(
-    OATPP_COMPONENT(std::shared_ptr<ObjectMapper>, objectMapper) // Inject objectMapper component here as default parameter
-  ){
+      OATPP_COMPONENT(std::shared_ptr<ObjectMapper>, objectMapper) // Inject objectMapper component here as default parameter
+  )
+  {
     return std::make_shared<BathroomController>(objectMapper);
   }
-  
-  
-  
-  ENDPOINT_INFO(getBathroomById) {
+
+  ////////////////////////////
+  ///// Create
+  /////////////////
+
+  ENDPOINT_INFO(createBathroom)
+  {
+    info->summary = "Create new bathroom";
+
+    info->addConsumes<Object<BathroomDto>>("application/json");
+
+    info->addResponse<Object<BathroomDto>>(Status::CODE_200, "application/json");
+    info->addResponse<Object<BathroomDto>>(Status::CODE_404, "application/json");
+    info->addResponse<Object<BathroomDto>>(Status::CODE_500, "application/json");
+  }
+  ENDPOINT("POST", "bathrooms", createBathroom,
+           BODY_DTO(Object<BathroomDto>, bathroomDto))
+  {
+    return createDtoResponse(Status::CODE_200, m_bathroomService.createBathroom(bathroomDto));
+  }
+
+  ////////////////////////////
+  ///// Read
+  /////////////////
+
+  ENDPOINT_INFO(getAllBathrooms)
+  {
+    info->summary = "Get all bathrooms";
+
+    info->addResponse<oatpp::Object<BathroomsPageDto>>(Status::CODE_200, "application/json");
+    info->addResponse<Object<StatusDto>>(Status::CODE_500, "application/json");
+  }
+  ENDPOINT("GET", "bathrooms/offset/{offset}/limit/{limit}", getAllBathrooms,
+           PATH(UInt32, offset),
+           PATH(UInt32, limit))
+  {
+    return createDtoResponse(Status::CODE_200, m_bathroomService.getAllBathrooms(offset, limit));
+  }
+
+  ENDPOINT_INFO(getBathroomById)
+  {
     info->summary = "Get one Bathroom by Id";
 
     info->addResponse<Object<BathroomDto>>(Status::CODE_200, "application/json");
@@ -44,10 +84,51 @@ public:
   {
     return createDtoResponse(Status::CODE_200, m_bathroomService.getBathroomById(bathroomId));
   }
-  
 
+  ////////////////////////////
+  ///// Update
+  /////////////////
+
+  ENDPOINT_INFO(updateBathroom)
+  {
+    info->summary = "Update Bathroom by Bathroomid";
+
+    info->addConsumes<Object<UserDto>>("application/json");
+
+    info->addResponse<Object<BathroomDto>>(Status::CODE_200, "application/json");
+    info->addResponse<Object<StatusDto>>(Status::CODE_404, "application/json");
+    info->addResponse<Object<StatusDto>>(Status::CODE_500, "application/json");
+
+    info->pathParams["bathroomId"].description = "Bathroom Identifier";
+  }
+  ENDPOINT("PUT", "bathrooms/{bathroomId}", updateBathroom,
+           PATH(Int32, bathroomId),
+           BODY_DTO(Object<BathroomDto>, bathroomDto))
+  {
+    bathroomDto->id = bathroomId;
+    return createDtoResponse(Status::CODE_200, m_bathroomService.updateBathroom(bathroomDto));
+  }
+
+  ////////////////////////////
+  ///// Delete
+  /////////////////
+
+  ENDPOINT_INFO(deleteBathroom)
+  {
+    info->summary = "Delete Bathroom by id";
+
+    info->addResponse<Object<StatusDto>>(Status::CODE_200, "application/json");
+    info->addResponse<Object<StatusDto>>(Status::CODE_500, "application/json");
+
+    info->pathParams["bathroomId"].description = "Bathroom Identifier";
+  }
+  ENDPOINT("DELETE", "bathrooms/{bathroomId}", deleteBathroom,
+           PATH(Int32, bathroomId))
+  {
+    return createDtoResponse(Status::CODE_200, m_bathroomService.deleteBathroom(bathroomId));
+  }
 };
 
 #include OATPP_CODEGEN_END(ApiController) //<- End Codegen
 
-#endif /* UserController_hpp */
+#endif

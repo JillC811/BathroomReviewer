@@ -3,6 +3,7 @@
 #define CRUD_PAGEDTO_HPP
 
 #include "UserDto.hpp"
+#include "BathroomDto.hpp"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 
@@ -21,6 +22,18 @@ class PageDto : public oatpp::DTO {
 class UsersPageDto : public PageDto<oatpp::Object<UserDto>> {
 
   DTO_INIT(UsersPageDto, PageDto<oatpp::Object<UserDto>>)
+
+};
+
+class BathroomsPageDto : public PageDto<oatpp::Object<BathroomDto>> {
+
+  DTO_INIT(BathroomsPageDto, PageDto<oatpp::Object<BathroomDto>>)
+
+};
+
+class BuildingsPageDto : public PageDto<oatpp::Object<BuildingDto>> {
+
+  DTO_INIT(BuildingsPageDto, PageDto<oatpp::Object<BuildingDto>>)
 
 };
 
