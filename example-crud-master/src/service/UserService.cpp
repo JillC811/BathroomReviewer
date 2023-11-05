@@ -1,5 +1,7 @@
 
 #include "UserService.hpp"
+#include "User.hpp"
+
 
 oatpp::Object<UserDto> UserService::createUser(const oatpp::Object<UserDto>& dto) {
 

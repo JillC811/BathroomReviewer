@@ -1,6 +1,7 @@
 #include "User.hpp"
 
 User::User() {
+    id = 0;
     username = "";
     email = "";
     firstName = "";

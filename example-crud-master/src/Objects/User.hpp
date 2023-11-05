@@ -7,6 +7,7 @@
 class User {
     public:
         User();
+        oatpp::Int32 id;
         std::string username;
         std::string email;
         std::string firstName;
