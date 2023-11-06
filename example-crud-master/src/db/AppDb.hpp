@@ -25,7 +25,7 @@ public:
             migration.migrate(); // <-- run migrations. This guy will throw on error.
 
             auto version = executor->getSchemaVersion();
-            OATPP_LOGD("AppDb", "Migration - OK. Version=%lld.", version);
+            OATPP_LOGD("AppDb", "Migration - OK. Version=%ld.", version);
       }
 
       ////////////////////////////
@@ -81,6 +81,10 @@ public:
       QUERY(getBathroomById,
             "SELECT * FROM bathroom WHERE id=:id;",
             PARAM(oatpp::Int32, id))
+
+      QUERY(getBathroomByBuilding,
+            "SELECT * FROM bathroom WHERE building=:building;",
+            PARAM(oatpp::String, building))
       
       QUERY(updateBathroom,
             "UPDATE bathroom "
