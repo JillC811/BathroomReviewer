@@ -1,7 +1,7 @@
 
 #include "oatpp-test/UnitTest.hpp"
 #include "oatpp/core/base/Environment.hpp"
-#include "controller/UserControllerTest.hpp"
+#include "UserControllerTest.hpp"
 
 #include <iostream>
 
