@@ -85,6 +85,22 @@ public:
     return createDtoResponse(Status::CODE_200, m_bathroomService.getBathroomById(bathroomId));
   }
 
+  ENDPOINT_INFO(getBathroomByBuilding)
+  {
+    info->summary = "Get all bathrooms by building name";
+
+    info->addResponse<Object<BathroomDto>>(Status::CODE_200, "application/json");
+    info->addResponse<Object<StatusDto>>(Status::CODE_404, "application/json");
+    info->addResponse<Object<StatusDto>>(Status::CODE_500, "application/json");
+
+    info->pathParams["building"].description = "Building Name Identifier";
+  }
+  ENDPOINT("GET", "bathrooms/building/{building}", getBathroomByBuilding,
+           PATH(String, building))
+  {
+    return createDtoResponse(Status::CODE_200, m_bathroomService.getBathroomByBuilding(building));
+  }
+
   ////////////////////////////
   ///// Update
   /////////////////

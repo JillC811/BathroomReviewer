@@ -48,6 +48,24 @@ oatpp::Object<BathroomDto> BathroomService::getBathroomById(const oatpp::Int32& 
 
 }
 
+oatpp::Object<PageDto<oatpp::Object<BathroomDto>>> BathroomService::getBathroomByBuilding(const oatpp::String& buildingName) {
+
+
+  auto dbResult = m_database->getBathroomByBuilding(buildingName);
+  OATPP_ASSERT_HTTP(dbResult->isSuccess(), Status::CODE_500, dbResult->getErrorMessage());
+
+  auto items = dbResult->fetch<oatpp::Vector<oatpp::Object<BathroomDto>>>();
+
+  auto page = PageDto<oatpp::Object<BathroomDto>>::createShared();
+  page->offset = 1;
+  page->limit = 20;
+  page->count = items->size();
+  page->items = items;
+
+  return page;
+
+}
+
 oatpp::Object<BathroomDto> BathroomService::updateBathroom(const oatpp::Object<BathroomDto>& dto) {
 
   auto dbResult = m_database->updateBathroom(dto);
