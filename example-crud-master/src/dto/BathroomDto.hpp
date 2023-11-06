@@ -17,7 +17,7 @@ class BathroomDto : public oatpp::DTO {
   DTO_FIELD(String, gender);
   DTO_FIELD(Int32, stallCount);
   DTO_FIELD(Int32, urinalCount);
-  DTO_FIELD(Int32, rating);
+  DTO_FIELD(String, ratings);   //need to convert from string to vector of ints, look into oatpp enabled interpretations
 
 };
 

@@ -14,6 +14,7 @@ add_library(crud-lib
         src/dto/UserDto.hpp
         src/dto/BathroomDto.hpp
         src/dto/BuildingDto.hpp
+        src/dto/RatingDto.hpp
         src/service/UserService.cpp
         src/service/UserService.hpp
         src/service/BathroomService.cpp

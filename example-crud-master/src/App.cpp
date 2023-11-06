@@ -1,5 +1,7 @@
 
 #include "AppComponent.hpp"
+#include "Bathroom.hpp"
+#include "Building.hpp"
 
 #include "controller/UserController.hpp"
 #include "controller/BathroomController.hpp"
