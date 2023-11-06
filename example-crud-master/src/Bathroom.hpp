@@ -2,6 +2,7 @@
 #define Bathroom_hpp
 
 #include <utility>
+#include <vector>
 
 class Building;
 class Rating;
@@ -17,9 +18,9 @@ class Bathroom{
         char gender;
         int stallCount;
         int urinalCount;
-        Rating * rating;
+        std::vector<int> ratings;
 
-        Bathroom(int id, Building* building, int floor, std::pair<float, float> location, char gender, int stallCount, int urinalCount, Rating* rating)
+        Bathroom(int id, Building* building, int floor, std::pair<float, float> location, char gender, int stallCount, int urinalCount, std::vector<int> ratings)
         {
             this->id = id;
             this->building = building;
@@ -28,7 +29,7 @@ class Bathroom{
             this->gender = gender;
             this->stallCount = stallCount;
             this->urinalCount = urinalCount;
-            this->rating = rating;
+            this->ratings = ratings;
         }
         int getID() const { 
             return id; 
@@ -79,11 +80,11 @@ class Bathroom{
             this->urinalCount = urinalCount;
         }
 
-        Rating * getRating() const {
-            return rating;
+        std::vector<int> getRatings() const {
+            return ratings;
         }
-        void setRating(Rating * rating) {
-            this->rating = rating;
+        void setRating(std::vector<int> ratings) {
+            this->ratings = ratings;
         }
 };
 

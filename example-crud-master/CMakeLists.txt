@@ -14,6 +14,7 @@ add_library(crud-lib
         src/dto/UserDto.hpp
         src/dto/BathroomDto.hpp
         src/dto/BuildingDto.hpp
+        src/dto/RatingDto.hpp
         src/service/UserService.cpp
         src/service/UserService.hpp
         src/service/BathroomService.cpp
@@ -83,8 +84,8 @@ add_executable(crud-test
         test/app/TestClient.hpp
         test/app/TestDatabaseComponent.hpp
         test/app/TestComponent.hpp
-        test/controller/UserControllerTest.hpp
-        test/controller/UserControllerTest.cpp)
+        test/UserControllerTest.hpp
+        test/UserControllerTest.cpp)
 target_link_libraries(crud-test crud-lib)
 
 enable_testing()
