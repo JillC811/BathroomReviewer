@@ -29,6 +29,12 @@ public:
 
   }
 
+  QUERY(signIn,
+      "SELECT * FROM AppUser WHERE username=:username AND password=:password;",
+      PARAM(oatpp::String, username),
+      PARAM(oatpp::String, password)
+  )
+
   QUERY(createUser,
         "INSERT INTO AppUser"
         "(username, email, password, role) VALUES "

@@ -12,6 +12,7 @@ class User {
         std::string email;
         std::string firstName;
         std::string lastName;
+        std::string role;
 
         User(oatpp::Object<UserDto> dto);
 

@@ -22,26 +22,25 @@ oatpp::Object<UserDto> UserService::updateUser(const oatpp::Object<UserDto>& dto
 }
 
 oatpp::Object<UserDto> UserService::signIn(const oatpp::Object<signInDto>& dto) {
-  auto testUser = getUserById(1);
-  user testConvert = User(testUser);
-  
-  auto res = signInDto::createShared();
-
-  return testConvert.convertToDto();
-}
-
-User::Object<User> UserService::getUserObjectById(const oatpp::Int32& id, const oatpp::provider::ResourceHandle<oatpp::orm::Connection>& connection) {
-
-  auto dbResult = m_database->getUserById(id, connection);
+  auto dbResult = m_database->signIn(dto->userName, dto->password);
   OATPP_ASSERT_HTTP(dbResult->isSuccess(), Status::CODE_500, dbResult->getErrorMessage());
-  OATPP_ASSERT_HTTP(dbResult->hasMoreToFetch(), Status::CODE_404, "User not found");
-
   auto result = dbResult->fetch<oatpp::Vector<oatpp::Object<UserDto>>>();
   OATPP_ASSERT_HTTP(result->size() == 1, Status::CODE_500, "Unknown error");
-  user = User::User(result[0])
-  return user;
-
+  return result[0];
 }
+
+// User::Object<User> UserService::getUserObjectById(const oatpp::Int32& id, const oatpp::provider::ResourceHandle<oatpp::orm::Connection>& connection) {
+
+//   auto dbResult = m_database->getUserById(id, connection);
+//   OATPP_ASSERT_HTTP(dbResult->isSuccess(), Status::CODE_500, dbResult->getErrorMessage());
+//   OATPP_ASSERT_HTTP(dbResult->hasMoreToFetch(), Status::CODE_404, "User not found");
+
+//   auto result = dbResult->fetch<oatpp::Vector<oatpp::Object<UserDto>>>();
+//   OATPP_ASSERT_HTTP(result->size() == 1, Status::CODE_500, "Unknown error");
+//   user = User::User(result[0])
+//   return user;
+
+// }
 
 oatpp::Object<UserDto> UserService::getUserById(const oatpp::Int32& id, const oatpp::provider::ResourceHandle<oatpp::orm::Connection>& connection) {
 
