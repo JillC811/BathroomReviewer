@@ -1,5 +1,5 @@
-#ifndef DatabaseTestClient_hpp
-#define DatabaseTestClient_hpp
+#ifndef TestUserClient_hpp
+#define TestUserClient_hpp
 
 #include "oatpp/web/client/ApiClient.hpp"
 #include "oatpp/core/macro/codegen.hpp"
@@ -13,9 +13,9 @@
  * Test API client.
  * Use this client to call application APIs.
  */
-class TestClient : public oatpp::web::client::ApiClient {
+class TestUserClient : public oatpp::web::client::ApiClient {
 
-  API_CLIENT_INIT(TestClient)
+  API_CLIENT_INIT(TestUserClient)
 
   /*****************************************************************
    * UserController
@@ -34,4 +34,4 @@ class TestClient : public oatpp::web::client::ApiClient {
 /* End Api Client code generation */
 #include OATPP_CODEGEN_END(ApiClient)
 
-#endif // DatabaseTestClient_hpp
+#endif //TestUserClient_hpp

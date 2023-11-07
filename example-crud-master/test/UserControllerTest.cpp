@@ -5,7 +5,7 @@
 
 #include "controller/UserController.hpp"
 
-#include "app/TestClient.hpp"
+#include "app/TestUserClient.hpp"
 #include "app/TestComponent.hpp"
 
 #include <cstdio>
@@ -38,16 +38,16 @@ void UserControllerTest::onRun() {
     auto requestExecutor = oatpp::web::client::HttpRequestExecutor::createShared(clientConnectionProvider);
 
     /* Create Test API client */
-    auto client = TestClient::createShared(requestExecutor, objectMapper);
+    auto client = TestUserClient::createShared(requestExecutor, objectMapper);
 
-    auto dto = UserDto::createShared();
+    auto userDto = UserDto::createShared();
 
-    dto->userName = "jondoe";
-    dto->email = "jon.doe@abc.com";
-    dto->password = "1234";
+    userDto->userName = "jondoe";
+    userDto->email = "jon.doe@abc.com";
+    userDto->password = "1234";
 
     /* Call server API */
-    auto addedUserResponse = client->addUser(dto);
+    auto addedUserResponse = client->addUser(userDto);
 
     /* Assert that server responds with 200 */
     OATPP_ASSERT(addedUserResponse->getStatusCode() == 200);
