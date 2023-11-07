@@ -82,7 +82,7 @@ public:
             "SELECT * FROM bathroom WHERE id=:id;",
             PARAM(oatpp::Int32, id))
 
-      QUERY(getBathroomByBuilding,
+      QUERY(getBathroomsByBuilding,
             "SELECT * FROM bathroom WHERE building=:building;",
             PARAM(oatpp::String, building))
       

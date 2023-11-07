@@ -85,7 +85,7 @@ public:
     return createDtoResponse(Status::CODE_200, m_bathroomService.getBathroomById(bathroomId));
   }
 
-  ENDPOINT_INFO(getBathroomByBuilding)
+  ENDPOINT_INFO(getBathroomsByBuilding)
   {
     info->summary = "Get all bathrooms by building name";
 
@@ -95,10 +95,10 @@ public:
 
     info->pathParams["building"].description = "Building Name Identifier";
   }
-  ENDPOINT("GET", "bathrooms/building/{building}", getBathroomByBuilding,
+  ENDPOINT("GET", "bathrooms/building/{building}", getBathroomsByBuilding,
            PATH(String, building))
   {
-    return createDtoResponse(Status::CODE_200, m_bathroomService.getBathroomByBuilding(building));
+    return createDtoResponse(Status::CODE_200, m_bathroomService.getBathroomsByBuilding(building));
   }
 
   ////////////////////////////

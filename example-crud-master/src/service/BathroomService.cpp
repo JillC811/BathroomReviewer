@@ -48,10 +48,10 @@ oatpp::Object<BathroomDto> BathroomService::getBathroomById(const oatpp::Int32& 
 
 }
 
-oatpp::Object<PageDto<oatpp::Object<BathroomDto>>> BathroomService::getBathroomByBuilding(const oatpp::String& buildingName) {
+oatpp::Object<PageDto<oatpp::Object<BathroomDto>>> BathroomService::getBathroomsByBuilding(const oatpp::String& buildingName) {
 
 
-  auto dbResult = m_database->getBathroomByBuilding(buildingName);
+  auto dbResult = m_database->getBathroomsByBuilding(buildingName);
   OATPP_ASSERT_HTTP(dbResult->isSuccess(), Status::CODE_500, dbResult->getErrorMessage());
 
   auto items = dbResult->fetch<oatpp::Vector<oatpp::Object<BathroomDto>>>();
