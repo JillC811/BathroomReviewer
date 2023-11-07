@@ -13,14 +13,6 @@ oatpp::Object<UserDto> UserService::createUser(const oatpp::Object<UserDto>& dto
 
 }
 
-oatpp::Object<UserDto> UserService::updateUser(const oatpp::Object<UserDto>& dto) {
-
-  auto dbResult = m_database->updateUser(dto);
-  OATPP_ASSERT_HTTP(dbResult->isSuccess(), Status::CODE_500, dbResult->getErrorMessage());
-  return getUserById(dto->id);
-
-}
-
 oatpp::Object<UserDto> UserService::signIn(const oatpp::Object<signInDto>& dto) {
   auto dbResult = m_database->signIn(dto->userName, dto->password);
   OATPP_ASSERT_HTTP(dbResult->isSuccess(), Status::CODE_500, dbResult->getErrorMessage());
@@ -29,18 +21,16 @@ oatpp::Object<UserDto> UserService::signIn(const oatpp::Object<signInDto>& dto) 
   return result[0];
 }
 
-// User::Object<User> UserService::getUserObjectById(const oatpp::Int32& id, const oatpp::provider::ResourceHandle<oatpp::orm::Connection>& connection) {
+User UserService::getUserObjectById(const oatpp::Int32& id) {
 
-//   auto dbResult = m_database->getUserById(id, connection);
-//   OATPP_ASSERT_HTTP(dbResult->isSuccess(), Status::CODE_500, dbResult->getErrorMessage());
-//   OATPP_ASSERT_HTTP(dbResult->hasMoreToFetch(), Status::CODE_404, "User not found");
+  auto dbResult = m_database->getUserById(id);
+  OATPP_ASSERT_HTTP(dbResult->isSuccess(), Status::CODE_500, dbResult->getErrorMessage());
+  OATPP_ASSERT_HTTP(dbResult->hasMoreToFetch(), Status::CODE_404, "User not found");
 
-//   auto result = dbResult->fetch<oatpp::Vector<oatpp::Object<UserDto>>>();
-//   OATPP_ASSERT_HTTP(result->size() == 1, Status::CODE_500, "Unknown error");
-//   user = User::User(result[0])
-//   return user;
-
-// }
+  auto result = dbResult->fetch<oatpp::Vector<oatpp::Object<UserDto>>>();
+  OATPP_ASSERT_HTTP(result->size() == 1, Status::CODE_500, "Unknown error");
+  return User(result[0]);
+}
 
 oatpp::Object<UserDto> UserService::getUserById(const oatpp::Int32& id, const oatpp::provider::ResourceHandle<oatpp::orm::Connection>& connection) {
 
@@ -52,29 +42,6 @@ oatpp::Object<UserDto> UserService::getUserById(const oatpp::Int32& id, const oa
   OATPP_ASSERT_HTTP(result->size() == 1, Status::CODE_500, "Unknown error");
   
   return result[0];
-
-}
-
-oatpp::Object<PageDto<oatpp::Object<UserDto>>> UserService::getAllUsers(const oatpp::UInt32& offset, const oatpp::UInt32& limit) {
-
-  oatpp::UInt32 countToFetch = limit;
-
-  if(limit > 10) {
-    countToFetch = 10;
-  }
-
-  auto dbResult = m_database->getAllUsers(offset, countToFetch);
-  OATPP_ASSERT_HTTP(dbResult->isSuccess(), Status::CODE_500, dbResult->getErrorMessage());
-
-  auto items = dbResult->fetch<oatpp::Vector<oatpp::Object<UserDto>>>();
-
-  auto page = PageDto<oatpp::Object<UserDto>>::createShared();
-  page->offset = offset;
-  page->limit = countToFetch;
-  page->count = items->size();
-  page->items = items;
-
-  return page;
 
 }
 

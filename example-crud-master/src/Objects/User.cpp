@@ -1,3 +1,7 @@
+/**
+ * User.cpp -- User object
+ * 
+*/
 #include "User.hpp"
 
 User::User() {
