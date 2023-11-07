@@ -88,7 +88,7 @@ add_executable(crud-test
         test/app/TestComponent.hpp
         test/UserControllerTest.hpp
         test/UserControllerTest.cpp)
-target_link_libraries(crud-test crud-lib)
+target_link_libraries(crud-test crud-lib )
 
 enable_testing()
 add_test(project-tests crud-test)

@@ -4,6 +4,7 @@
 #include "oatpp/core/macro/codegen.hpp"
 #include "oatpp/core/Types.hpp"
 
+
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 ENUM(Role, v_int32,
@@ -14,7 +15,6 @@ ENUM(Role, v_int32,
 class UserDto : public oatpp::DTO {
   
   DTO_INIT(UserDto, DTO)
-
   DTO_FIELD(Int32, id);
   DTO_FIELD(String, userName, "username");
   DTO_FIELD(String, email, "email");

@@ -2,7 +2,6 @@
 #ifndef CRUD_USERSERVICE_HPP
 #define CRUD_USERSERVICE_HPP
 
-#include "../db/UserDb.hpp"
 #include "db/AppDb.hpp"
 #include "dto/PageDto.hpp"
 #include "dto/StatusDto.hpp"
