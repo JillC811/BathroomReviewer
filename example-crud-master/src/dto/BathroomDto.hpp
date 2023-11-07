@@ -23,4 +23,4 @@ class BathroomDto : public oatpp::DTO {
 
 #include OATPP_CODEGEN_END(DTO)
 
-#endif /* UserDto_hpp */
+#endif /* BathroomDto_hpp */
