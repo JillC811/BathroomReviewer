@@ -6,6 +6,14 @@
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 
+/**
+ * Bathroom Data Object
+ * 
+ * Object for transferring bathroom data
+ * 
+ * 
+ * 
+*/
 class BathroomDto : public oatpp::DTO {
   
   DTO_INIT(BathroomDto, DTO)
