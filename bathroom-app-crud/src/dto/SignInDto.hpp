@@ -5,7 +5,12 @@
 #include "UserDto.hpp"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
-
+/**
+ * DTO for sign in procedure
+ * 
+ * username: username entered by user
+ * password: password entered by user
+**/
 class signInDto : public oatpp::DTO {
   
   DTO_INIT(signInDto, DTO);

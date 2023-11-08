@@ -8,7 +8,9 @@
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 class StatusDto : public oatpp::DTO {
-
+  /**
+   * 
+  */
   DTO_INIT(StatusDto, DTO)
 
   DTO_FIELD_INFO(status) {

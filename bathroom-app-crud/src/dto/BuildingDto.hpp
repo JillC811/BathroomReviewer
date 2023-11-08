@@ -8,10 +8,14 @@
 
 /**
  * Building DTO class: contains information on buildings
+ * 
+ * name: name of building
+ * location: longitude and latitude coordinates of building
 */
 class BuildingDto : public oatpp::DTO {
   
   DTO_INIT(BuildingDto, DTO)
+
 
   DTO_FIELD(String, name);
   DTO_FIELD(String, location);

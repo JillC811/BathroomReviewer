@@ -13,6 +13,19 @@ class BathroomDto : public oatpp::DTO {
   
   DTO_INIT(BathroomDto, DTO)
 
+  /**DTO fields
+  *
+  * id: randomly assigned integer for bathroom
+  * building: name of building bathroom is in
+  * floor: floor number bathroom is on
+  * location: latitude and longitude coordinates of bathroom
+  * gender: Char, M for male, F for female, B for both
+  * stallCount: # of stalls in bathroom
+  * urinalCount: # of urinals in bathroom
+  * ratings: rating out of 5, averaged between users ratings
+  * 
+  * 
+  **/
   DTO_FIELD(Int32, id);
   DTO_FIELD(String, building);
   DTO_FIELD(Int32, floor);
