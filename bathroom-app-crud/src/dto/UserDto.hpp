@@ -12,6 +12,9 @@
 //      VALUE(ADMIN, 1, "ROLE_ADMIN")
 // )
 
+/**
+ * User Dto
+**/
 class UserDto : public oatpp::DTO {
   
   DTO_INIT(UserDto, DTO)
