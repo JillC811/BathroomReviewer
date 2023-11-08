@@ -6,6 +6,9 @@
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 
+/**
+ * Bathroom DTO class, contains information about specific bathrooms
+*/
 class BathroomDto : public oatpp::DTO {
   
   DTO_INIT(BathroomDto, DTO)

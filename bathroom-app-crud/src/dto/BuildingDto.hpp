@@ -6,6 +6,9 @@
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 
+/**
+ * Building DTO class: contains information on buildings
+*/
 class BuildingDto : public oatpp::DTO {
   
   DTO_INIT(BuildingDto, DTO)
