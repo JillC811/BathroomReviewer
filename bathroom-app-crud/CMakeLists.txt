@@ -12,6 +12,9 @@ add_library(crud-lib
         src/dto/PageDto.hpp
         src/dto/StatusDto.hpp
         src/dto/UserDto.hpp
+        src/dto/SignInDto.hpp
+        src/Objects/User.hpp
+        src/Objects/User.cpp
         src/dto/BathroomDto.hpp
         src/dto/BuildingDto.hpp
         src/dto/RatingDto.hpp
@@ -33,7 +36,7 @@ target_include_directories(crud-lib PUBLIC src)
 
 
 ## link libs
-
+ 
 find_package(oatpp          1.3.0 REQUIRED)
 find_package(oatpp-swagger  1.3.0 REQUIRED)
 find_package(oatpp-sqlite   1.3.0 REQUIRED)
@@ -86,7 +89,7 @@ add_executable(crud-test
         test/app/TestComponent.hpp
         test/UserControllerTest.hpp
         test/UserControllerTest.cpp)
-target_link_libraries(crud-test crud-lib)
+target_link_libraries(crud-test crud-lib )
 
 enable_testing()
 add_test(project-tests crud-test)
