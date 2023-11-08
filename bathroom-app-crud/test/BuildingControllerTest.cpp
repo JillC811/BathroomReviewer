@@ -11,6 +11,8 @@
 #include <cstdio>
 #include <iostream>
 
+
+
 void BuildingControllerTest::onRun() {
 
   /* Remove test database file before running the test */
