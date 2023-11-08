@@ -4,6 +4,16 @@
 */
 #include "User.hpp"
 
+/**
+ * Default user constructor
+ * 
+ * id: id assigned to user
+ * username: username chosen by user
+ * email: user's email
+ * role: whether user is an admin or not
+ * 
+**/
+
 User::User() {
     id = 0;
     username = "";

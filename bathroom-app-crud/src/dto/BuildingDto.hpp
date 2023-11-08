@@ -6,6 +6,12 @@
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 
+/**
+ * Building DTO class: contains information on buildings
+ * 
+ * name: name of building
+ * location: longitude and latitude coordinates of building
+*/
 class BuildingDto : public oatpp::DTO {
   
   DTO_INIT(BuildingDto, DTO)
