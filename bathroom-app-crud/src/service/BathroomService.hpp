@@ -9,6 +9,11 @@
 #include "oatpp/web/protocol/http/Http.hpp"
 #include "oatpp/core/macro/component.hpp"
 
+
+/**
+ * Bathroom Service class, contains bathroom CRUD database operations
+*/
+
 class BathroomService {
 private:
   typedef oatpp::web::protocol::http::Status Status;

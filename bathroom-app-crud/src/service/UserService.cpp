@@ -1,6 +1,21 @@
 
 #include "UserService.hpp"
 
+
+/**
+ * User Service
+ * 
+ * Contains user CRUD logic.
+*/
+
+
+/**
+ * createUser method
+ * 
+ * Runs SQLite query to create user in database
+ * 
+ * dto: User DTO to be added to database
+*/
 oatpp::Object<UserDto> UserService::createUser(const oatpp::Object<UserDto>& dto) {
 
   auto dbResult = m_database->createUser(dto);
@@ -12,6 +27,14 @@ oatpp::Object<UserDto> UserService::createUser(const oatpp::Object<UserDto>& dto
 
 }
 
+/**
+ * getAllUsers method
+ * 
+ * Runs SQLite query to fetch all users of the app
+ * 
+ * offset: query offset
+ * limit: results limit
+*/
 oatpp::Object<PageDto<oatpp::Object<UserDto>>> UserService::getAllUsers(const oatpp::UInt32& offset, const oatpp::UInt32& limit) {
 
   oatpp::UInt32 countToFetch = limit;
@@ -35,6 +58,13 @@ oatpp::Object<PageDto<oatpp::Object<UserDto>>> UserService::getAllUsers(const oa
 
 }
 
+/**
+ * getUserById method
+ * 
+ * Runs SQLite query to fetch a specific user by id.
+ * 
+ * id: ID of requested user
+*/
 oatpp::Object<UserDto> UserService::getUserById(const oatpp::Int32& id, const oatpp::provider::ResourceHandle<oatpp::orm::Connection>& connection) {
 
   auto dbResult = m_database->getUserById(id, connection);
@@ -48,6 +78,13 @@ oatpp::Object<UserDto> UserService::getUserById(const oatpp::Int32& id, const oa
 
 }
 
+/**
+ * updateUser method
+ * 
+ * Runs SQLite query to update a given user
+ * 
+ * dto: User DTO to be updated in database
+*/
 oatpp::Object<UserDto> UserService::updateUser(const oatpp::Object<UserDto>& dto) {
 
   auto dbResult = m_database->updateUser(dto);
@@ -56,6 +93,13 @@ oatpp::Object<UserDto> UserService::updateUser(const oatpp::Object<UserDto>& dto
 
 }
 
+/**
+ * deleteUserById method
+ * 
+ * Runs SQLite query to delete a given user
+ * 
+ * userId: ID of user to be deleted from database
+*/
 oatpp::Object<StatusDto> UserService::deleteUserById(const oatpp::Int32& userId) {
   auto dbResult = m_database->deleteUserById(userId);
   OATPP_ASSERT_HTTP(dbResult->isSuccess(), Status::CODE_500, dbResult->getErrorMessage());
