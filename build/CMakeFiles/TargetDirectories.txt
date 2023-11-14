@@ -1,0 +1,6 @@
+/Users/justintsang/CS3307 group project/group11/build/CMakeFiles/crud-lib.dir
+/Users/justintsang/CS3307 group project/group11/build/CMakeFiles/crud-exe.dir
+/Users/justintsang/CS3307 group project/group11/build/CMakeFiles/crud-test.dir
+/Users/justintsang/CS3307 group project/group11/build/CMakeFiles/test.dir
+/Users/justintsang/CS3307 group project/group11/build/CMakeFiles/edit_cache.dir
+/Users/justintsang/CS3307 group project/group11/build/CMakeFiles/rebuild_cache.dir

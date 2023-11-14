@@ -1,0 +1,78 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.1"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "crud",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "crud-exe::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-crud-exe-Debug-d6ea415fa77eb1573243.json",
+					"name" : "crud-exe",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "crud-lib::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-crud-lib-Debug-5f80a9be56b225fd7335.json",
+					"name" : "crud-lib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "crud-test::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-crud-test-Debug-39a96cc1043f0da28d07.json",
+					"name" : "crud-test",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/justintsang/CS3307 group project/group11/build",
+		"source" : "/Users/justintsang/CS3307 group project/group11/example-crud-master"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}
