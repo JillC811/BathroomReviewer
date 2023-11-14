@@ -29,6 +29,17 @@ $ make
 $ ./crud-exe        # - run application.
 ```
 
+### Run Tests
+
+```
+$ make 
+$ ./crud-test        # - run tests.
+```
+
+Note: We ran the acceptance tests specified for each user story manually (searching bathrooms by building and creating a user account).
+      We have begun working on some automated tests for all endpoints in /test.
+
+
 ---
 
 ## Endpoints 
