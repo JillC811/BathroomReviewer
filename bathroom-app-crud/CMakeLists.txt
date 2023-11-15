@@ -85,10 +85,16 @@ target_link_libraries(crud-exe crud-lib)
 add_executable(crud-test
         test/tests.cpp
         test/app/TestClient.hpp
+        test/app/TestBathroomClient.hpp
+        test/app/TestBuildingClient.hpp
         test/app/TestDatabaseComponent.hpp
         test/app/TestComponent.hpp
         test/UserControllerTest.hpp
-        test/UserControllerTest.cpp)
+        test/UserControllerTest.cpp
+        test/BathroomControllerTest.hpp
+        test/BathroomControllerTest.cpp
+        test/BuildingControllerTest.cpp
+        test/BuildingControllerTest.hpp)
 target_link_libraries(crud-test crud-lib )
 
 enable_testing()

@@ -9,6 +9,11 @@
 #include "oatpp/web/protocol/http/Http.hpp"
 #include "oatpp/core/macro/component.hpp"
 
+
+/**
+ * User Service class, contains user CRUD database operations
+*/
+
 class UserService {
 private:
   typedef oatpp::web::protocol::http::Status Status;

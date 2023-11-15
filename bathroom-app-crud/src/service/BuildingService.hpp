@@ -9,6 +9,11 @@
 #include "oatpp/web/protocol/http/Http.hpp"
 #include "oatpp/core/macro/component.hpp"
 
+
+/**
+ * Building Service class, contains building CRUD database operations
+*/
+
 class BuildingService {
 private:
   typedef oatpp::web::protocol::http::Status Status;

@@ -2,6 +2,8 @@
 #include "oatpp-test/UnitTest.hpp"
 #include "oatpp/core/base/Environment.hpp"
 #include "UserControllerTest.hpp"
+#include "BathroomControllerTest.hpp"
+#include "BuildingControllerTest.hpp"
 
 #include <iostream>
 
@@ -10,7 +12,8 @@ namespace {
 void runTests() {
 
   OATPP_RUN_TEST(UserControllerTest);
-
+  OATPP_RUN_TEST(BathroomControllerTest);
+  OATPP_RUN_TEST(BuildingControllerTest);
 }
 
 }
