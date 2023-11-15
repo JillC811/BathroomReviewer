@@ -26,7 +26,6 @@ class BathroomDto : public oatpp::DTO {
   * 
   * 
   **/
-
   DTO_FIELD(Int32, id);
   DTO_FIELD(String, building);
   DTO_FIELD(Int32, floor);

@@ -10,8 +10,6 @@ class User {
         oatpp::Int32 id;
         std::string username;
         std::string email;
-        std::string firstName;
-        std::string lastName;
         std::string role;
 
         User(oatpp::Object<UserDto> dto);

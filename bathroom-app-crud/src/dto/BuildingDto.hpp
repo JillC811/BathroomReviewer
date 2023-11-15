@@ -16,6 +16,7 @@ class BuildingDto : public oatpp::DTO {
   
   DTO_INIT(BuildingDto, DTO)
 
+
   DTO_FIELD(String, name);
   DTO_FIELD(String, location);
 

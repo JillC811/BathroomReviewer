@@ -18,20 +18,26 @@ User::User() {
     id = 0;
     username = "";
     email = "";
-    firstName = "";
-    lastName = "";
     role = "";
 }
-
+/**
+ * User constructor
+ * 
+ * creates user object using UserDTO
+**/
 User::User(oatpp::Object<UserDto> dto) {
     id = dto->id;
     username = dto->userName;
     email = dto->email;
-    firstName = dto->firstName;
-    lastName = dto->lastName;
     role = dto->role;
 }
 
+/**
+ * convertToDTO method
+ * 
+ * converts a user object into a dto object
+ * 
+**/
 oatpp::Object<UserDto> User::convertToDto() {
     auto dto = UserDto::createShared();
 
