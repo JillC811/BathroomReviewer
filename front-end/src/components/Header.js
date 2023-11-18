@@ -1,6 +1,5 @@
 
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
 import { Button } from '@mui/material'
@@ -8,7 +7,6 @@ import { Button } from '@mui/material'
 import './Header.css'
 
 function Header() {
-  const navigate = useNavigate()
 
   return (
     <div class='display-block'>
