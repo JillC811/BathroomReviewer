@@ -107,7 +107,7 @@ function Map() {
             <h2>Information</h2>
             <p>{`Floor: ${selectedBathroom.floor}`}</p>
             <p>{`Location: ${selectedBathroom.location}`}</p>
-            <p>{`Gender: ${bathroom.gender === 'm' ? 'Male' : bathroom.gender === 'f' ? "Female" : 'All Gender'}`}</p>
+            <p>{`Gender: ${selectedBathroom.gender === 'm' ? 'Male' : selectedBathroom.gender === 'f' ? "Female" : 'All Gender'}`}</p>
             {selectedBathroom.gender === "Male" && `Urinals: ${selectedBathroom.urinalCount}`}
             <p>{`Stalls: ${selectedBathroom.stallCount}`}</p>
             <br />

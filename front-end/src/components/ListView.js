@@ -14,7 +14,7 @@ import WomanIcon from '@mui/icons-material/Woman';
 import WcIcon from '@mui/icons-material/Wc';
 import SearchIcon from "@mui/icons-material/Search";
 
-import bathrooms from "./data/bathrooms.json"
+import bathrooms from "../pages/Home/data/bathrooms.json"
 import './ListView.css'
 
 
