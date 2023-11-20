@@ -1,11 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 // Map
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 import bathrooms from "../pages/Home/data/bathrooms.json"
 import bathroomIcon from "../assets/restroom-sign-svgrepo-com-white.svg"
 // View Bathroom Drawer
 import Drawer from '@mui/material/Drawer';
-import { IconButton } from '@mui/material';
+import { Button, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 
 // Rating in bathroom drawer
@@ -121,6 +122,8 @@ function Map() {
             <br />
             <br />
             <h2>Reviews</h2>
+            <br />
+            <Button component={Link} to="/new-rating"> Add Review </Button>
             <List>
               {selectedBathroom.ratings.length === 0 &&
                 <ListItem>

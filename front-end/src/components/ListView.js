@@ -1,18 +1,13 @@
 
 import React, {useState} from 'react'
+import { Link } from 'react-router-dom'
 
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import Divider from '@mui/material/Divider';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import TextField from '@mui/material/TextField';
+import {List, ListItem, ListItemText, ListItemAvatar} from '@mui/material';
+import {Button, Divider, TextField} from '@mui/material'
 import InputAdornment from '@mui/material/InputAdornment';
 
 //Ratings dropdown
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
+import {Accordion, AccordionSummary, AccordionDetails} from '@mui/material';
 import Rating from '@mui/material/Rating';
 
 import ManIcon from '@mui/icons-material/Man';
@@ -76,6 +71,7 @@ function ListView() {
                       <p>{`Gender: ${bathroom.gender === 'm' ? 'Male' : bathroom.gender === 'f' ? "Female" : 'All Gender'}`}</p>
                       {bathroom.gender === "Male" && `Urinals: ${bathroom.urinalCount}`}
                       <p>{`Stalls: ${bathroom.stallCount}`}</p>
+                      
                       <br />
                       <Accordion>
                         <AccordionSummary
@@ -86,6 +82,7 @@ function ListView() {
                           <h4>Reviews</h4>
                         </AccordionSummary>
                         <AccordionDetails>
+                          <Button component={Link} to="/new-rating"> Add Review </Button>
                           <List>
                             {bathroom.ratings.length === 0 &&
                               <ListItem>
