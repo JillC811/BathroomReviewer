@@ -74,7 +74,7 @@ export default function LoginPage() {
     return (
         <div className={styles.loginContainer}>
             <h1>Flushable</h1>
-            <h4>Yelp for Bathrooms at Western</h4>
+            <h4>Western's Bathroom Rating App</h4>
             
             <br />
             <br />

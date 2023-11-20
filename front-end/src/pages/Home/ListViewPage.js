@@ -1,16 +1,16 @@
 import React from 'react'
 
 import Header from '../../components/Header.js'
-import Map from '../../components/Map.js'
+import ListView from '../../components/ListView.js'
 
-function HomePage() {
+function ListViewPage() {
   return (
     <div>
       <Header />
-      <Map />
+      <ListView />
     </div>
 
   )
 }
 
-export default HomePage
+export default ListViewPage
