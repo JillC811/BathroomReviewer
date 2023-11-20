@@ -1,20 +1,24 @@
 
 import React, {useState} from 'react'
+import { Link } from 'react-router-dom'
 
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import Divider from '@mui/material/Divider';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import TextField from '@mui/material/TextField';
+import {List, ListItem, ListItemText, ListItemAvatar} from '@mui/material';
+import {Button, Divider, TextField} from '@mui/material'
 import InputAdornment from '@mui/material/InputAdornment';
+
+//Ratings dropdown
+import {Accordion, AccordionSummary, AccordionDetails} from '@mui/material';
+import Rating from '@mui/material/Rating';
 
 import ManIcon from '@mui/icons-material/Man';
 import WomanIcon from '@mui/icons-material/Woman';
 import WcIcon from '@mui/icons-material/Wc';
 import SearchIcon from "@mui/icons-material/Search";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
 
 import bathrooms from "../pages/Home/data/bathrooms.json"
+import ratings from "../pages/Home/data/ratings.json"
 import './ListView.css'
 
 
@@ -67,8 +71,62 @@ function ListView() {
                       <p>{`Gender: ${bathroom.gender === 'm' ? 'Male' : bathroom.gender === 'f' ? "Female" : 'All Gender'}`}</p>
                       {bathroom.gender === "Male" && `Urinals: ${bathroom.urinalCount}`}
                       <p>{`Stalls: ${bathroom.stallCount}`}</p>
+                      
                       <br />
-                      <h3>Reviews</h3>
+                      <Accordion>
+                        <AccordionSummary
+                          expandIcon={<ExpandMoreIcon />}
+                          aria-controls="panel1a-content"
+                          id="panel1a-header"
+                        >
+                          <h4>Reviews</h4>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                          <Button component={Link} to="/new-rating"> Add Review </Button>
+                          <List>
+                            {bathroom.ratings.length === 0 &&
+                              <ListItem>
+                                This bathroom has no reviews yet.
+                              </ListItem>
+                            }
+                            {ratings.ratings.map((rating) => {
+                              if(bathroom.ratings.includes(rating.id)){
+                                return (
+                                  <>
+                                    <ListItem alignItems="flex-start">
+                                      <ListItemText
+                                        primary={
+                                          <Rating
+                                            name="overall rating"
+                                            value={rating.overallRating}
+                                            readOnly
+                                          />
+                                        }
+                                        secondary={
+                                          <React.Fragment>
+                                            <div>
+                                              <h4>Cleanliness: </h4>
+                                              <Rating
+                                                name="cleanliness"
+                                                value={rating.cleanlinessRating}
+                                                readOnly
+                                                size="small"
+                                              />
+                                            </div>
+                                            <h4>Review: </h4>
+                                            <p>{rating.textReview}</p>
+                                          </React.Fragment>
+                                        }
+                                      />
+                                      </ListItem>
+                                      <Divider variant="middle" component="li" />
+                                  </>
+                                )
+                              }
+                            })}
+                          </List>
+                        </AccordionDetails>
+                      </Accordion>
                     </React.Fragment>
                   }
                 />
