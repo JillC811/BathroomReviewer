@@ -14,6 +14,8 @@ INSERT INTO Bathroom VALUES(0,'UCC',1,'0.000,0.000','F',4,0,4);
 
 CREATE TABLE Building (name VARCHAR PRIMARY KEY, location VARCHAR);
 
+CREATE TABLE Rating (id INTEGER PRIMARY KEY, overallRating INT, cleanlinessRating INT, textReview VARCHAR)
+
 INSERT INTO Building VALUES('UCC','0.000,0.000');
 
 INSERT INTO Building VALUES ("Ivey_Building", "43.004379707504405, -81.27719654522188");

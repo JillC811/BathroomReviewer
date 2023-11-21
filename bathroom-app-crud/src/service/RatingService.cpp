@@ -9,9 +9,9 @@
 
 
 /**
- * createBathroom method
+ * createRating method
  * 
- * Runs SQLite query to create bathroom in database
+ * Runs SQLite query to create rating in database
  * 
  * dto: Bathroom DTO to be added to database
 */
