@@ -15,14 +15,14 @@
  * 
  * dto: Bathroom DTO to be added to database
 */
-oatpp::Object<BathroomDto> BathroomService::createBathroom(const oatpp::Object<BathroomDto>& dto) {
+oatpp::Object<RatingDto> RatingService::createRating(const oatpp::Object<RatingDto>& dto) {
 
-  auto dbResult = m_database->createBathroom(dto);
+  auto dbResult = m_database->createRating(dto);
   OATPP_ASSERT_HTTP(dbResult->isSuccess(), Status::CODE_500, dbResult->getErrorMessage());
 
-  auto bathroomId = oatpp::sqlite::Utils::getLastInsertRowId(dbResult->getConnection());
+  auto ratingId = oatpp::sqlite::Utils::getLastInsertRowId(dbResult->getConnection());
 
-  return getBathroomById((v_int32) bathroomId);
+  return getRatingById((v_int32) ratingId);
 
 }
 
@@ -34,7 +34,7 @@ oatpp::Object<BathroomDto> BathroomService::createBathroom(const oatpp::Object<B
  * offset: query offset
  * limit: results limit
 */
-oatpp::Object<PageDto<oatpp::Object<BathroomDto>>> BathroomService::getAllBathrooms(const oatpp::UInt32& offset, const oatpp::UInt32& limit) {
+oatpp::Object<PageDto<oatpp::Object<BathroomDto>>> BathroomService::getAllRatings(const oatpp::UInt32& offset, const oatpp::UInt32& limit) {
 
   oatpp::UInt32 countToFetch = limit;
 
@@ -42,12 +42,12 @@ oatpp::Object<PageDto<oatpp::Object<BathroomDto>>> BathroomService::getAllBathro
     countToFetch = 10;
   }
 
-  auto dbResult = m_database->getAllBathrooms(offset, countToFetch);
+  auto dbResult = m_database->getAllRatings(offset, countToFetch);
   OATPP_ASSERT_HTTP(dbResult->isSuccess(), Status::CODE_500, dbResult->getErrorMessage());
 
-  auto items = dbResult->fetch<oatpp::Vector<oatpp::Object<BathroomDto>>>();
+  auto items = dbResult->fetch<oatpp::Vector<oatpp::Object<RatingDto>>>();
 
-  auto page = PageDto<oatpp::Object<BathroomDto>>::createShared();
+  auto page = PageDto<oatpp::Object<RatingDto>>::createShared();
   page->offset = offset;
   page->limit = countToFetch;
   page->count = items->size();
@@ -78,19 +78,19 @@ oatpp::Object<BathroomDto> BathroomService::getBathroomById(const oatpp::Int32& 
 }
 
 /**
- * getBathroomByBuilding method
+ * getRatingByBathroom method
  * 
  * Runs SQLite query to fetch all bathrooms in a given building
  * 
  * buildingName: name of building to be searched
 */
-oatpp::Object<PageDto<oatpp::Object<BathroomDto>>> BathroomService::getBathroomByBuilding(const oatpp::String& buildingName) {
+oatpp::Object<PageDto<oatpp::Object<BathroomDto>>> BathroomService::getRatingByBathroom(const oatpp::String& buildingName) {
 
 
-  auto dbResult = m_database->getBathroomByBuilding(buildingName);
+  auto dbResult = m_database->getRatingByBathroom(bathroomId);
   OATPP_ASSERT_HTTP(dbResult->isSuccess(), Status::CODE_500, dbResult->getErrorMessage());
 
-  auto items = dbResult->fetch<oatpp::Vector<oatpp::Object<BathroomDto>>>();
+  auto items = dbResult->fetch<oatpp::Vector<oatpp::Object<RatingDto>>>();
 
   auto page = PageDto<oatpp::Object<BathroomDto>>::createShared();
   page->offset = 1;
@@ -109,11 +109,11 @@ oatpp::Object<PageDto<oatpp::Object<BathroomDto>>> BathroomService::getBathroomB
  * 
  * dto: Bathroom DTO to be updated in database
 */
-oatpp::Object<BathroomDto> BathroomService::updateBathroom(const oatpp::Object<BathroomDto>& dto) {
+oatpp::Object<BathroomDto> BathroomService::updateRating(const oatpp::Object<RatingDto>& dto) {
 
-  auto dbResult = m_database->updateBathroom(dto);
+  auto dbResult = m_database->updateRating(dto);
   OATPP_ASSERT_HTTP(dbResult->isSuccess(), Status::CODE_500, dbResult->getErrorMessage());
-  return getBathroomById(dto->id);
+  return getRatingById(dto->id);
 
 }
 
@@ -124,12 +124,12 @@ oatpp::Object<BathroomDto> BathroomService::updateBathroom(const oatpp::Object<B
  * 
  * bathroomId: ID of bathroom to be deleted from database
 */
-oatpp::Object<StatusDto> BathroomService::deleteBathroom(const oatpp::Int32& bathroomId) {
-  auto dbResult = m_database->deleteBathroom(bathroomId);
+oatpp::Object<StatusDto> RatingService::deleteRating(const oatpp::Int32& ratingId) {
+  auto dbResult = m_database->deleteRating(ratingId);
   OATPP_ASSERT_HTTP(dbResult->isSuccess(), Status::CODE_500, dbResult->getErrorMessage());
   auto status = StatusDto::createShared();
   status->status = "OK";
   status->code = 200;
-  status->message = "Bathroom was successfully deleted";
+  status->message = "Rating was successfully deleted";
   return status;
 }

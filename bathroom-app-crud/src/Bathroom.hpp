@@ -28,7 +28,7 @@ class Bathroom{
          * gender: Char, M for male, F for female, B for both
          * stallCount: # of stalls in bathroom
          * urinalCount: # of urinals in bathroom
-         * ratings: rating out of 5, averaged between users ratings
+         * ratings: list of user ratings out of 5.
          * 
          * 
          **/
