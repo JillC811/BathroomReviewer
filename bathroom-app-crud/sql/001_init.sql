@@ -46,3 +46,5 @@ INSERT INTO Bathroom VALUES (19, "Middlesex_College", 3, "43.009508563203404, -8
 INSERT INTO Bathroom VALUES (20, "Middlesex_College", 3, "43.00904536669415, -81.27023953923184", 'f', 4, 0, '');
 INSERT INTO Bathroom VALUES (21, "Middlesex_College", 4, "43.00952972358097, -81.27028965424532", 'b', 3, 2, '');
 INSERT INTO Bathroom VALUES (22, "Middlesex_College", 5, "43.00951990833393, -81.27034081132147", 'm', 2, 4, '');
+
+INSERT INTO Rating VALUES(23, 4, 4, "Very good");
