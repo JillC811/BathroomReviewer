@@ -19,14 +19,14 @@ add_library(crud-lib
         src/dto/BathroomDto.hpp
         src/dto/BuildingDto.hpp
         src/dto/RatingDto.hpp
+        src/service/RatingService.cpp
+        src/service/RatingService.hpp
         src/service/UserService.cpp
         src/service/UserService.hpp
         src/service/BathroomService.cpp
         src/service/BathroomService.hpp
         src/service/BuildingService.cpp
         src/service/BuildingService.hpp
-        src/service/RatingService.cpp
-        src/service/RatingService.hpp
         src/AppComponent.hpp
         src/DatabaseComponent.hpp
         src/SwaggerComponent.hpp

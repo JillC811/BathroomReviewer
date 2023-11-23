@@ -79,8 +79,8 @@ Documentation Format:
 ### Rating Service
 
 |---|---|---|
-|`POST`|http://localhost:8000/ratings | Create new building |
-|`GET`|http://localhost:8000/ratings/offset/{offset}/limit/{limit} | Get all buildings |
-|`GET`|http://localhost:8000/ratings/{bathroomId} | Get a building by name |
+|`POST`|http://localhost:8000/ratings | Create new rating |
+|`GET`|http://localhost:8000/ratings/offset/{offset}/limit/{limit} | Get all ratings |
+|`GET`|http://localhost:8000/ratings/{bathroomId} | Get a rating by id |
 |`PUT`|http://localhost:8000/ratings/{bathroomId} | Update building by name |
 |`DELETE`|http://localhost:8000/ratings/{bathroomId} | Delete building by name |

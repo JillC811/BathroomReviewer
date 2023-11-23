@@ -22,7 +22,7 @@ public:
   }
 
 private:
-  ratingService m_ratingService; // Create user service.
+  RatingService m_ratingService; // Create user service.
 public:
   static std::shared_ptr<RatingController> createShared(
       OATPP_COMPONENT(std::shared_ptr<ObjectMapper>, objectMapper) // Inject objectMapper component here as default parameter
@@ -59,7 +59,7 @@ public:
   {
     info->summary = "Get all ratings";
 
-    info->addResponse<oatpp::Object<RatingsPageDto>>(Status::CODE_200, "application/json");
+    info->addResponse<oatpp::Object<RatingPageDto>>(Status::CODE_200, "application/json");
     info->addResponse<Object<StatusDto>>(Status::CODE_500, "application/json");
   }
   ENDPOINT("GET", "ratings/offset/{offset}/limit/{limit}", getAllRatings,
@@ -85,7 +85,7 @@ public:
     return createDtoResponse(Status::CODE_200, m_ratingService.getRatingById(ratingId));
   }
 
-    ENDPOINT_INFO(getRatingByBathroom)
+  ENDPOINT_INFO(getRatingByBathroom)
   {
     info->summary = "Get all ratings by bathroom id";
 
@@ -95,10 +95,10 @@ public:
 
     info->pathParams["Bathroom"].description = "Bathroom Id Identifier";
   }
-  ENDPOINT("GET", "rating/bathroom/{bathroomid}", getRatingByBathroom,
-           PATH(Int, bathroom))
+  ENDPOINT("GET", "rating/bathroom/{bathroomId}", getRatingByBathroom,
+           PATH(Int32, bathroomId))
   {
-    return createDtoResponse(Status::CODE_200, m_bathroomService.getBathroomByBuilding(building));
+    return createDtoResponse(Status::CODE_200, m_ratingService.getRatingByBathroom(bathroomId));
   }
 
   ////////////////////////////
@@ -119,9 +119,9 @@ public:
   }
   ENDPOINT("PUT", "ratings/{ratingName}", updateRating,
            PATH(Int32, ratingId),
-           BODY_DTO(Object<ratingDto>, ratingDto))
+           BODY_DTO(Object<RatingDto>, ratingDto))
   {
-    ratingDto->name = ratingId;
+    ratingDto->id = ratingId;
     return createDtoResponse(Status::CODE_200, m_ratingService.updateRating(ratingDto));
   }
 

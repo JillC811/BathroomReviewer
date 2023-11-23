@@ -3,10 +3,12 @@
 #include "Bathroom.hpp"
 #include "Building.hpp"
 
+
 #include "controller/UserController.hpp"
 #include "controller/BathroomController.hpp"
 #include "controller/BuildingController.hpp"
 #include "controller/StaticController.hpp"
+#include "controller/RatingController.hpp"
 
 #include "oatpp-swagger/Controller.hpp"
 
@@ -26,6 +28,7 @@ void run() {
   docEndpoints.append(router->addController(UserController::createShared())->getEndpoints());
   docEndpoints.append(router->addController(BathroomController::createShared())->getEndpoints());
   docEndpoints.append(router->addController(BuildingController::createShared())->getEndpoints());
+  docEndpoints.append(router->addController(RatingController::createShared())->getEndpoints());
 
 
   router->addController(oatpp::swagger::Controller::createShared(docEndpoints));
