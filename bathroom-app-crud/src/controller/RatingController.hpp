@@ -85,6 +85,22 @@ public:
     return createDtoResponse(Status::CODE_200, m_ratingService.getRatingById(ratingId));
   }
 
+    ENDPOINT_INFO(getRatingByBathroom)
+  {
+    info->summary = "Get all ratings by bathroom id";
+
+    info->addResponse<Object<BathroomDto>>(Status::CODE_200, "application/json");
+    info->addResponse<Object<StatusDto>>(Status::CODE_404, "application/json");
+    info->addResponse<Object<StatusDto>>(Status::CODE_500, "application/json");
+
+    info->pathParams["Bathroom"].description = "Bathroom Id Identifier";
+  }
+  ENDPOINT("GET", "rating/bathroom/{bathroomid}", getRatingByBathroom,
+           PATH(Int, bathroom))
+  {
+    return createDtoResponse(Status::CODE_200, m_bathroomService.getBathroomByBuilding(building));
+  }
+
   ////////////////////////////
   ///// Update
   /////////////////

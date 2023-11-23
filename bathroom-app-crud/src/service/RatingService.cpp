@@ -1,5 +1,5 @@
 
-#include "BathroomService.hpp"
+#include "RatingService.hpp"
 
 /**
  * Bathroom Service
@@ -34,7 +34,7 @@ oatpp::Object<RatingDto> RatingService::createRating(const oatpp::Object<RatingD
  * offset: query offset
  * limit: results limit
 */
-oatpp::Object<PageDto<oatpp::Object<BathroomDto>>> BathroomService::getAllRatings(const oatpp::UInt32& offset, const oatpp::UInt32& limit) {
+oatpp::Object<PageDto<oatpp::Object<RatingDto>>> RatingService::getAllRatings(const oatpp::UInt32& offset, const oatpp::UInt32& limit) {
 
   oatpp::UInt32 countToFetch = limit;
 
@@ -64,13 +64,13 @@ oatpp::Object<PageDto<oatpp::Object<BathroomDto>>> BathroomService::getAllRating
  * 
  * id: ID of requested bathroom
 */
-oatpp::Object<BathroomDto> BathroomService::getBathroomById(const oatpp::Int32& id, const oatpp::provider::ResourceHandle<oatpp::orm::Connection>& connection) {
+oatpp::Object<RatingDto> RatingService::getRatingById(const oatpp::Int32& id, const oatpp::provider::ResourceHandle<oatpp::orm::Connection>& connection) {
 
-  auto dbResult = m_database->getBathroomById(id, connection);
+  auto dbResult = m_database->getRatingById(id, connection);
   OATPP_ASSERT_HTTP(dbResult->isSuccess(), Status::CODE_500, dbResult->getErrorMessage());
-  OATPP_ASSERT_HTTP(dbResult->hasMoreToFetch(), Status::CODE_404, "Bathroom not found");
+  OATPP_ASSERT_HTTP(dbResult->hasMoreToFetch(), Status::CODE_404, "Rating not found");
 
-  auto result = dbResult->fetch<oatpp::Vector<oatpp::Object<BathroomDto>>>();
+  auto result = dbResult->fetch<oatpp::Vector<oatpp::Object<RatingDto>>>();
   OATPP_ASSERT_HTTP(result->size() == 1, Status::CODE_500, "Unknown error");
 
   return result[0];
@@ -84,7 +84,7 @@ oatpp::Object<BathroomDto> BathroomService::getBathroomById(const oatpp::Int32& 
  * 
  * buildingName: name of building to be searched
 */
-oatpp::Object<PageDto<oatpp::Object<BathroomDto>>> BathroomService::getRatingByBathroom(const oatpp::String& buildingName) {
+oatpp::Object<PageDto<oatpp::Object<RatingDto>>> RatingService::getRatingByBathroom(const int bathroomId) {
 
 
   auto dbResult = m_database->getRatingByBathroom(bathroomId);
@@ -92,7 +92,7 @@ oatpp::Object<PageDto<oatpp::Object<BathroomDto>>> BathroomService::getRatingByB
 
   auto items = dbResult->fetch<oatpp::Vector<oatpp::Object<RatingDto>>>();
 
-  auto page = PageDto<oatpp::Object<BathroomDto>>::createShared();
+  auto page = PageDto<oatpp::Object<RatingDto>>::createShared();
   page->offset = 1;
   page->limit = 20;
   page->count = items->size();
@@ -109,7 +109,7 @@ oatpp::Object<PageDto<oatpp::Object<BathroomDto>>> BathroomService::getRatingByB
  * 
  * dto: Bathroom DTO to be updated in database
 */
-oatpp::Object<BathroomDto> BathroomService::updateRating(const oatpp::Object<RatingDto>& dto) {
+oatpp::Object<RatingDto> RatingService::updateRating(const oatpp::Object<RatingDto>& dto) {
 
   auto dbResult = m_database->updateRating(dto);
   OATPP_ASSERT_HTTP(dbResult->isSuccess(), Status::CODE_500, dbResult->getErrorMessage());

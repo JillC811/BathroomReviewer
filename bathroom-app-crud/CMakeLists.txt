@@ -8,13 +8,14 @@ add_library(crud-lib
         src/controller/UserController.hpp
         src/controller/BathroomController.hpp
         src/controller/BuildingController.hpp
+        src/controller/RatingController.hpp
         src/db/AppDb.hpp
         src/dto/PageDto.hpp
         src/dto/StatusDto.hpp
         src/dto/UserDto.hpp
         src/dto/SignInDto.hpp
-        src/Objects/User.hpp
-        src/Objects/User.cpp
+        src/objects/User.hpp
+        src/objects/User.cpp
         src/dto/BathroomDto.hpp
         src/dto/BuildingDto.hpp
         src/dto/RatingDto.hpp
@@ -24,6 +25,8 @@ add_library(crud-lib
         src/service/BathroomService.hpp
         src/service/BuildingService.cpp
         src/service/BuildingService.hpp
+        src/service/RatingService.cpp
+        src/service/RatingService.hpp
         src/AppComponent.hpp
         src/DatabaseComponent.hpp
         src/SwaggerComponent.hpp
@@ -53,11 +56,11 @@ target_link_libraries(crud-lib
 # 1. Make sure that you've built oatpp-sqlite with -DOATPP_SQLITE_AMALGAMATION=ON flag
 # 2. If you are not willing to use SQLite amalgamation then uncomment the following lines:
 #
-#find_package(SQLite3 REQUIRED)
-#
-#target_link_libraries(crud-lib
-#        PUBLIC SQLite::SQLite3
-#)
+find_package(SQLite3 REQUIRED)
+
+target_link_libraries(crud-lib
+        PUBLIC SQLite::SQLite3
+)
 
 add_definitions(
         ## define path to swagger-ui static resources folder

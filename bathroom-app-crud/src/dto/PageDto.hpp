@@ -4,6 +4,7 @@
 
 #include "UserDto.hpp"
 #include "BathroomDto.hpp"
+#include "RatingDto.hpp"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 
@@ -34,6 +35,12 @@ class BathroomsPageDto : public PageDto<oatpp::Object<BathroomDto>> {
 class BuildingsPageDto : public PageDto<oatpp::Object<BuildingDto>> {
 
   DTO_INIT(BuildingsPageDto, PageDto<oatpp::Object<BuildingDto>>)
+
+};
+
+class RatingPageDto : public PageDto<oatpp::Object<RatingDto>> {
+
+  DTO_INIT(RatingPageDto, PageDto<oatpp::Object<RatingDto>>)
 
 };
 
