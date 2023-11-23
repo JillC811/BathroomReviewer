@@ -10,12 +10,16 @@ class Bathroom;
 class Building{
     public:
         std::string name;
+        float longitude;
+        float latitude;
         std::pair<float, float> location;
         std::vector<Bathroom> bathrooms;
 
-        Building(std::string name, std::pair<float, float> location, std::vector<Bathroom> bathrooms){
+        Building(std::string name, std::pair<float, float> location , std::vector<Bathroom> bathrooms){
             this->name = name;
             this->location = location;
+            this->longitude = location.first;
+            this->latitude = location.second;
             this-> bathrooms = bathrooms;
         }
 

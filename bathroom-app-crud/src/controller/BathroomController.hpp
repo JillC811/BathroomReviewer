@@ -54,7 +54,7 @@ public:
   ////////////////////////////
   ///// Read
   /////////////////
-
+  
   ENDPOINT_INFO(getAllBathrooms)
   {
     info->summary = "Get all bathrooms";
@@ -62,6 +62,7 @@ public:
     info->addResponse<oatpp::Object<BathroomsPageDto>>(Status::CODE_200, "application/json");
     info->addResponse<Object<StatusDto>>(Status::CODE_500, "application/json");
   }
+  ADD_CORS(getAllBathrooms);
   ENDPOINT("GET", "bathrooms/offset/{offset}/limit/{limit}", getAllBathrooms,
            PATH(UInt32, offset),
            PATH(UInt32, limit))

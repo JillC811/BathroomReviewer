@@ -14,6 +14,8 @@ class Bathroom{
     public:
         Building * building;
         int floor;
+        float longitude;
+        float latitude;
         std::pair<float, float> location;
         char gender;
         int stallCount;
@@ -26,6 +28,8 @@ class Bathroom{
             this->building = building;
             this->floor = floor;
             this->location = location;
+            this->longitude = location.first;
+            this->latitude = location.second;
             this->gender = gender;
             this->stallCount = stallCount;
             this->urinalCount = urinalCount;
@@ -56,7 +60,8 @@ class Bathroom{
             return location;
         }
         void setLocation(std::pair<float,float> loaction) {
-            this->location = loaction;
+            this->longitude = loaction.first;
+            this->latitude = loaction.second;
         }
 
         char getGender() const {

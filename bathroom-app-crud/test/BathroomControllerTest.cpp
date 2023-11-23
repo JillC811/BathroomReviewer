@@ -47,7 +47,7 @@ void BathroomControllerTest::onRun() {
     bathroomDto1->id = 1;
     bathroomDto1->building = "Test_Building";
     bathroomDto1->floor = 1;
-    bathroomDto1->location = "99, -99";
+    // bathroomDto1->location = "99, -99";
     bathroomDto1->gender = "m";
     bathroomDto1->stallCount = 99;
     bathroomDto1->urinalCount = 88;
@@ -56,7 +56,7 @@ void BathroomControllerTest::onRun() {
     bathroomDto2->id = 2;
     bathroomDto2->building = "Test_Building";
     bathroomDto2->floor = 2;
-    bathroomDto2->location = "100, -100";
+    // bathroomDto2->location = "100, -100";
     bathroomDto2->gender = "f";
     bathroomDto2->stallCount = 999;
     bathroomDto2->urinalCount = 0;
