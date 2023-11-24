@@ -146,36 +146,40 @@ public:
       /////////////////
 
       QUERY(createRating,
-            "INSERT INTO Rating"
-            "(overallRating, cleanlinessRating, textReview) VALUES "
-            "(:rating.overallRating, :rating.cleanlinessRating, :rating.textReview);",
+            "INSERT INTO bathroom"
+            "(building, floor, location, gender, stallCount, urinalCount) VALUES "
+            "(:bathroom.building, :bathroom.floor, :bathroom.location, :bathroom.gender, :bathroom.stallCount, :bathroom.urinalCount);",
             PARAM(oatpp::Object<RatingDto>, rating))
 
       QUERY(getAllRatings,
-            "SELECT * FROM Rating LIMIT :limit OFFSET :offset;",
+            "SELECT * FROM bathroom LIMIT :limit OFFSET :offset;",
             PARAM(oatpp::UInt32, offset),
             PARAM(oatpp::UInt32, limit))
 
       QUERY(getRatingById,
-            "SELECT * FROM Rating WHERE id=:id;",
+            "SELECT * FROM bathroom WHERE id=:id;",
             PARAM(oatpp::Int32, id))
 
       QUERY(getRatingByBathroom,
-            "SELECT * FROM Rating WHERE bathroom=:bathroom;",
+            "SELECT * FROM bathroom WHERE building=:building;",
             PARAM(oatpp::Int32, bathroom))
       
       QUERY(updateRating,
-            "UPDATE rating "
+            "UPDATE bathroom "
             "SET "
-            " overallRating=:bathroom.overallRating, "
-            " cleanlinessRating=:rating.cleanlinessRating, "
-            " textReview=:rating.textReview, "
+            " building=:bathroom.building, "
+            " floor=:bathroom.floor, "
+            " location=:bathroom.location, "
+            " gender=:bathroom.gender "
+            " stallCount=:bathroom.stallCount "
+            " urinalCount=:bathroom.urinalCount "
+            " ratings=:bathroom.ratings "
             "WHERE "
-            " id=:rating.id;",
+            " id=:bathroom.id;",
             PARAM(oatpp::Object<RatingDto>, rating))
 
       QUERY(deleteRating,
-            "DELETE FROM rating WHERE id=:id;",
+            "DELETE FROM bathroom WHERE id=:id;",
             PARAM(oatpp::Int32, id))
 };
 
