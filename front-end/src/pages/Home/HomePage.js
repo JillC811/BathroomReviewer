@@ -1,13 +1,13 @@
-import React from 'react'
-import { Map } from '../../components/Map/MapComponent'
+import React from "react";
+import { Map } from "../../components/Map/MapComponent.js";
 
-const HomePage = () => {
+function HomePage() {
   return (
     <div>
       <h1>HomePage</h1>
       <Map />
     </div>
-  )
+  );
 }
 
-export default HomePage
+export default HomePage;
