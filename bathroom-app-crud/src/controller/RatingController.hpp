@@ -22,7 +22,7 @@ public:
   }
 
 private:
-  ratingService m_ratingService; // Create user service.
+  RatingService m_ratingService; // Create user service.
 public:
   static std::shared_ptr<RatingController> createShared(
       OATPP_COMPONENT(std::shared_ptr<ObjectMapper>, objectMapper) // Inject objectMapper component here as default parameter
@@ -59,7 +59,7 @@ public:
   {
     info->summary = "Get all ratings";
 
-    info->addResponse<oatpp::Object<RatingsPageDto>>(Status::CODE_200, "application/json");
+    info->addResponse<oatpp::Object<RatingPageDto>>(Status::CODE_200, "application/json");
     info->addResponse<Object<StatusDto>>(Status::CODE_500, "application/json");
   }
   ENDPOINT("GET", "ratings/offset/{offset}/limit/{limit}", getAllRatings,
@@ -93,12 +93,12 @@ public:
     info->addResponse<Object<StatusDto>>(Status::CODE_404, "application/json");
     info->addResponse<Object<StatusDto>>(Status::CODE_500, "application/json");
 
-    info->pathParams["Bathroom"].description = "Bathroom Id Identifier";
+    info->pathParams["BathroomId"].description = "Bathroom Id Identifier";
   }
-  ENDPOINT("GET", "rating/bathroom/{bathroomid}", getRatingByBathroom,
-           PATH(Int, bathroom))
+  ENDPOINT("GET", "ratings/bathroom/{bathroomId}", getRatingByBathroom,
+           PATH(Int32, bathroomId))
   {
-    return createDtoResponse(Status::CODE_200, m_bathroomService.getBathroomByBuilding(building));
+    return createDtoResponse(Status::CODE_200, m_ratingService.getRatingByBathroom(bathroomId));
   }
 
   ////////////////////////////
@@ -115,13 +115,13 @@ public:
     info->addResponse<Object<StatusDto>>(Status::CODE_404, "application/json");
     info->addResponse<Object<StatusDto>>(Status::CODE_500, "application/json");
 
-    info->pathParams["ratingid"].description = "Rating id";
+    info->pathParams["ratingId"].description = "Rating id";
   }
-  ENDPOINT("PUT", "ratings/{ratingName}", updateRating,
+  ENDPOINT("PUT", "ratings/{ratingId}", updateRating,
            PATH(Int32, ratingId),
-           BODY_DTO(Object<ratingDto>, ratingDto))
+           BODY_DTO(Object<RatingDto>, ratingDto))
   {
-    ratingDto->name = ratingId;
+    ratingDto->id = ratingId;
     return createDtoResponse(Status::CODE_200, m_ratingService.updateRating(ratingDto));
   }
 

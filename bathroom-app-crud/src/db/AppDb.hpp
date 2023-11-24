@@ -146,40 +146,37 @@ public:
       /////////////////
 
       QUERY(createRating,
-            "INSERT INTO bathroom"
-            "(building, floor, location, gender, stallCount, urinalCount) VALUES "
-            "(:bathroom.building, :bathroom.floor, :bathroom.location, :bathroom.gender, :bathroom.stallCount, :bathroom.urinalCount);",
+            "INSERT INTO rating"
+            "(bathroomId, overallRating, cleanlinessRating, textReview) VALUES "
+            "(:rating.bathroomId, :rating.overallRating, :rating.cleanlinessRating, :rating.textReview);",
             PARAM(oatpp::Object<RatingDto>, rating))
 
       QUERY(getAllRatings,
-            "SELECT * FROM bathroom LIMIT :limit OFFSET :offset;",
+            "SELECT * FROM rating LIMIT :limit OFFSET :offset;",
             PARAM(oatpp::UInt32, offset),
             PARAM(oatpp::UInt32, limit))
 
       QUERY(getRatingById,
-            "SELECT * FROM bathroom WHERE id=:id;",
+            "SELECT * FROM rating WHERE id=:id;",
             PARAM(oatpp::Int32, id))
 
       QUERY(getRatingByBathroom,
-            "SELECT * FROM bathroom WHERE building=:building;",
-            PARAM(oatpp::Int32, bathroom))
+            "SELECT * FROM rating WHERE bathroomId=:bathroomId;",
+            PARAM(oatpp::Int32, bathroomId))
       
       QUERY(updateRating,
-            "UPDATE bathroom "
+            "UPDATE rating"
             "SET "
-            " building=:bathroom.building, "
-            " floor=:bathroom.floor, "
-            " location=:bathroom.location, "
-            " gender=:bathroom.gender "
-            " stallCount=:bathroom.stallCount "
-            " urinalCount=:bathroom.urinalCount "
-            " ratings=:bathroom.ratings "
+            " bathroomId=:rating.bathroomId, "
+            " overallRating=:rating.overallRating, "
+            " cleanlinessRating=:rating.cleanlinessRating, "
+            " textReview=:rating.textReview "
             "WHERE "
-            " id=:bathroom.id;",
+            " id=:rating.id;",
             PARAM(oatpp::Object<RatingDto>, rating))
 
       QUERY(deleteRating,
-            "DELETE FROM bathroom WHERE id=:id;",
+            "DELETE FROM rating WHERE id=:id;",
             PARAM(oatpp::Int32, id))
 };
 
