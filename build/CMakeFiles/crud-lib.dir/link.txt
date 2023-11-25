@@ -1,2 +1,0 @@
-/usr/bin/ar qc libcrud-lib.a "CMakeFiles/crud-lib.dir/src/Objects/User.cpp.o" "CMakeFiles/crud-lib.dir/src/service/UserService.cpp.o" "CMakeFiles/crud-lib.dir/src/service/BathroomService.cpp.o" "CMakeFiles/crud-lib.dir/src/service/BuildingService.cpp.o" "CMakeFiles/crud-lib.dir/src/ErrorHandler.cpp.o"
-/usr/bin/ranlib libcrud-lib.a
