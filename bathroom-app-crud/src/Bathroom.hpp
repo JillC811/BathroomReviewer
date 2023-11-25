@@ -21,7 +21,19 @@ class Bathroom{
         int stallCount;
         int urinalCount;
         std::vector<int> ratings;
-
+        /**Bathroom object constructor
+         *
+         * id: randomly assigned integer for bathroom
+         * building: name of building bathroom is in
+         * floor: floor number bathroom is on
+         * location: latitude and longitude coordinates of bathroom
+         * gender: Char, M for male, F for female, B for both
+         * stallCount: # of stalls in bathroom
+         * urinalCount: # of urinals in bathroom
+         * ratings: list of user ratings out of 5.
+         * 
+         * 
+         **/
         Bathroom(int id, Building* building, int floor, std::pair<float, float> location, char gender, int stallCount, int urinalCount, std::vector<int> ratings)
         {
             this->id = id;
@@ -35,6 +47,9 @@ class Bathroom{
             this->urinalCount = urinalCount;
             this->ratings = ratings;
         }
+        /**
+         * various getters and setters for bathroom attributes
+        */
         int getID() const { 
             return id; 
         }

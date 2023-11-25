@@ -5,6 +5,7 @@
 #include "dto/UserDto.hpp"
 #include "dto/BathroomDto.hpp"
 #include "dto/BuildingDto.hpp"
+#include "dto/RatingDto.hpp"
 #include "oatpp-sqlite/orm.hpp"
 
 #include OATPP_CODEGEN_BEGIN(DbClient) //<- Begin Codegen
@@ -140,6 +141,43 @@ public:
             "DELETE FROM Building WHERE name=:name;",
             PARAM(oatpp::String, name))
       
+      ////////////////////////////
+      ///// Ratings
+      /////////////////
+
+      QUERY(createRating,
+            "INSERT INTO rating"
+            "(bathroomId, overallRating, cleanlinessRating, textReview) VALUES "
+            "(:rating.bathroomId, :rating.overallRating, :rating.cleanlinessRating, :rating.textReview);",
+            PARAM(oatpp::Object<RatingDto>, rating))
+
+      QUERY(getAllRatings,
+            "SELECT * FROM rating LIMIT :limit OFFSET :offset;",
+            PARAM(oatpp::UInt32, offset),
+            PARAM(oatpp::UInt32, limit))
+
+      QUERY(getRatingById,
+            "SELECT * FROM rating WHERE id=:id;",
+            PARAM(oatpp::Int32, id))
+
+      QUERY(getRatingByBathroom,
+            "SELECT * FROM rating WHERE bathroomId=:bathroomId;",
+            PARAM(oatpp::Int32, bathroomId))
+      
+      QUERY(updateRating,
+            "UPDATE rating"
+            "SET "
+            " bathroomId=:rating.bathroomId, "
+            " overallRating=:rating.overallRating, "
+            " cleanlinessRating=:rating.cleanlinessRating, "
+            " textReview=:rating.textReview "
+            "WHERE "
+            " id=:rating.id;",
+            PARAM(oatpp::Object<RatingDto>, rating))
+
+      QUERY(deleteRating,
+            "DELETE FROM rating WHERE id=:id;",
+            PARAM(oatpp::Int32, id))
 };
 
 #include OATPP_CODEGEN_END(DbClient) //<- End Codegen

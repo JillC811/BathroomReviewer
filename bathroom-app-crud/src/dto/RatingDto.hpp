@@ -19,6 +19,7 @@ class RatingDto : public oatpp::DTO {
   DTO_INIT(RatingDto, DTO)
 
   DTO_FIELD(Int32, id);
+  DTO_FIELD(Int32, bathroomId);
   DTO_FIELD(Int32, overallRating);
   DTO_FIELD(Int32, cleanlinessRating);
   DTO_FIELD(String, textReview);
