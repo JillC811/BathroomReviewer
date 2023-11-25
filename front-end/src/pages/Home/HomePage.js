@@ -11,11 +11,7 @@ function HomePage() {
     </div>
 
   )
-    <div>
-      <h1>HomePage</h1>
-      <Map />
-    </div>
-  );
+
 }
 
 export default HomePage;
