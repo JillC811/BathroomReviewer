@@ -47,6 +47,7 @@ cmake-build-debug/
 
 # dependencies
 /front-end/node_modules
+/front-end/node_modules
 /.pnp
 .pnp.js
 
@@ -67,4 +68,12 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-/.vscode
+settings.json
+jsconfig.json
+.vscode/
+```
+
+settings.json
+jsconfig.json
+.vscode/
+```
