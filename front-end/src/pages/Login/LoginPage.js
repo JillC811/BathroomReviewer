@@ -3,34 +3,48 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import styles from "./login-page.module.css"
+import { UserContext } from '../../usercontext.js'
+import { useContext } from 'react'
 
 export default function LoginPage() {
 
     const navigate = useNavigate()
     const [loginMode, setLoginMode] = React.useState("login") // login or register
 
+    // const { setUser } = useContext(UserContext)
+
+
     const signIn = async (e) => {
-        const email = e.target[0].value
+        e.preventDefault()
+        const username = e.target[0].value
         const password = e.target[1].value
 
         // TODO: re
 
         const signInUser = await fetch(
-            "http://localhost:8000/users/login",
+            "http://localhost:8000/users/signin",
             {
                 method: "post",
                 headers: {
                 "Content-type": "application/json",
                 },
                 body: JSON.stringify({
-                email,
-                password
+                "username": username,
+                "password": password
                 }),
             }
-        );
-
-        navigate("/home")
-        console.log("signed in")
+        ).then(async (res) => {
+            const u = await res.json()
+            // setUser(u);
+            navigate("/home")
+            console.log("signed in", u)
+        })
+        .catch(err => {
+            console.log(err)
+            alert("Invalid username or password")
+        })
+        
+        
     }
 
     const register = async (e) => {
@@ -109,8 +123,8 @@ export default function LoginPage() {
                     </>
                 }
                 <p>
-                    <label>Email address</label><br/>
-                    <input type="email" name="email" required />
+                    <label>Username</label><br/>
+                    <input type="text" name="email" required />
                 </p>
                 <p>
                     <label>Password</label>

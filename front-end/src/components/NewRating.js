@@ -7,6 +7,7 @@ import TextField from '@mui/material/TextField';
 import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
 import { Button, FormControl, FormLabel } from '@mui/material';
+import { UserContext } from '../usercontext';
 
 import './NewRating.css'
 
@@ -18,7 +19,9 @@ function NewRating() {
     })
 
     let { state } = useLocation();
-    console.log(state)
+    console.log(state);
+
+    const { user, setUser } = React.useContext(UserContext)
 
     const[bathroom, setBathroom] = useState(state.bathroom);
 

@@ -45,6 +45,19 @@ public:
     info->addResponse<Object<StatusDto>>(Status::CODE_404, "application/json");
     info->addResponse<Object<StatusDto>>(Status::CODE_500, "application/json");
   }
+
+  ENDPOINT_INFO(signIn) {
+    info->summary = "Sign in with user name and password";
+    info->addResponse<Object<StatusDto>>(Status::CODE_200, "application/json");
+    info->addResponse<Object<StatusDto>>(Status::CODE_500, "application/json");
+  }
+  ADD_CORS(signIn)
+  ENDPOINT("POST", "users/signin", signIn,
+           BODY_DTO(Object<signInDto>, params))
+  {
+    return createDtoResponse(Status::CODE_200, m_userService.signIn(params));
+  }
+
   ENDPOINT("POST", "users", createUser,
            BODY_DTO(Object<UserDto>, userDto))
   {

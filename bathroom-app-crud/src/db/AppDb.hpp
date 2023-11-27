@@ -38,7 +38,11 @@ public:
             "(username, email, password, role) VALUES "
             "(:user.username, :user.email, :user.password, :user.role);",
             PARAM(oatpp::Object<UserDto>, user))
-      
+      QUERY(signIn,
+            "SELECT * FROM AppUser WHERE username=:username AND password=:password;",
+            PARAM(oatpp::String, username),
+            PARAM(oatpp::String, password)
+      )
       QUERY(getAllUsers,
             "SELECT * FROM AppUser LIMIT :limit OFFSET :offset;",
             PARAM(oatpp::UInt32, offset),
