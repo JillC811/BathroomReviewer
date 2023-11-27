@@ -18,7 +18,11 @@ import ListItemText from "@mui/material/ListItemText";
 import Rating from "@mui/material/Rating";
 import { useEffect } from "react";
 import { UserContext } from "../../usercontext";
-
+import {
+  Link as RouterLink,
+  LinkProps as RouterLinkProps,
+  MemoryRouter,
+} from 'react-router-dom';
 export class Map extends React.Component {
 
   static contextType = UserContext;
@@ -45,6 +49,9 @@ export class Map extends React.Component {
       },
       zoom: 15,
     };
+    this.LinkBehavior = React.forwardRef((props, ref) => (
+      <RouterLink ref={ref} to="/material-ui/getting-started/installation/" {...props} />
+    ));
   }
   componentDidMount() {
     this.fetchData();
@@ -112,6 +119,8 @@ export class Map extends React.Component {
   setMapWidth = (width) => {
     this.setState({ mapWidth: width });
   };
+
+  
 
   render() {
     return this.state.loaded ? (
@@ -204,7 +213,7 @@ export class Map extends React.Component {
               <br />
               <h2>Reviews</h2>
               <br />
-              <Button component={Link} to="/new-rating">
+              <Button component={this.LinkBehavior} to={{pathname: "/new-rating"}} state={{bathroom: Number(this.state.selectedBathroom.id)}}>
                 {" "}
                 Add Review{" "}
               </Button>

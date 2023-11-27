@@ -9,9 +9,13 @@ import InputLabel from '@mui/material/InputLabel';
 import { Button, FormControl, FormLabel } from '@mui/material';
 import { UserContext } from '../usercontext';
 
+import { useNavigate } from 'react-router-dom';
+
 import './NewRating.css'
 
 function NewRating() {
+
+    const navigate = useNavigate()
     const [inputs, setInputs] = useState({
         overallRating: "",
         cleanlinessRating: "",
@@ -21,7 +25,7 @@ function NewRating() {
     let { state } = useLocation();
     console.log(state);
 
-    const { user, setUser } = React.useContext(UserContext)
+    // const { user, setUser } = React.useContext(UserContext)
 
     const[bathroom, setBathroom] = useState(state.bathroom);
 
@@ -52,6 +56,8 @@ function NewRating() {
             })
         }).then((res) => {
             console.log(res);
+            alert("Rating submitted!");
+            navigate("/home");
         })
     }
     console.log(bathroom)
