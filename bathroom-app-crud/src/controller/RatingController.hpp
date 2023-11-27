@@ -45,6 +45,7 @@ public:
     info->addResponse<Object<RatingDto>>(Status::CODE_404, "application/json");
     info->addResponse<Object<RatingDto>>(Status::CODE_500, "application/json");
   }
+  ADD_CORS(createRating)
   ENDPOINT("POST", "ratings", createRating,
            BODY_DTO(Object<RatingDto>, ratingDto))
   {
@@ -62,6 +63,7 @@ public:
     info->addResponse<oatpp::Object<RatingPageDto>>(Status::CODE_200, "application/json");
     info->addResponse<Object<StatusDto>>(Status::CODE_500, "application/json");
   }
+  ADD_CORS(getAllRatings)
   ENDPOINT("GET", "ratings/offset/{offset}/limit/{limit}", getAllRatings,
             PATH(UInt32, offset),
            PATH(UInt32, limit))

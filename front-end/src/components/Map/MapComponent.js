@@ -28,6 +28,7 @@ export class Map extends React.Component {
       drawerOpen: false,
       mapWidth: "100vw",
       loaded: false,
+      rathings: null
     };
     this.containerStyle = {
       width: this.state.mapWidth,
@@ -72,9 +73,25 @@ export class Map extends React.Component {
       }
     );
     const data2 = await res2.json();
+      const res3 = await fetch(
+      "http://localhost:8000/ratings/offset/0/limit/50",
+      {
+        method: "get",
+        headers: {
+          "Content-type": "application/json",
+          Accept: "*/*",
+          "Accept-Encoding": "gzip, deflate, br",
+          Connection: "keep-alive",
+        },
+      }
+    );
+    const data3 = await res3.json();
+
+
     this.setState({
       Washrooms: data.items,
       Buildings: data2.items,
+      ratings: data3.items
     });
     console.log(this.state);
     this.setState({ loaded: true });
@@ -163,12 +180,12 @@ export class Map extends React.Component {
                 <CloseIcon />
               </IconButton>
               <h1>{this.state.selectedBathroom.building}</h1>
-              <h3>{`Floor ${this.state.selectedBathroom.floor}, ${this.state.selectedBathroom.location}`}</h3>
+              <h3>{`Floor ${this.state.selectedBathroom.floor}, ${this.state.selectedBathroom.id}`}</h3>
               <br />
               <br />
               <h2>Information</h2>
               <p>{`Floor: ${this.state.selectedBathroom.floor}`}</p>
-              <p>{`Location: ${this.state.selectedBathroom.location}`}</p>
+              <p>{`Location: ${this.state.selectedBathroom.longitude}, ${this.state.selectedBathroom.latitude}`}</p>
               <p>{`Gender: ${
                 this.state.selectedBathroom.gender === "m"
                   ? "Male"
@@ -188,11 +205,11 @@ export class Map extends React.Component {
                 Add Review{" "}
               </Button>
               <List>
-                {this.state.selectedBathroom.ratings.length === 0 && (
+                {this.state.ratings.length === 0 && (
                   <ListItem>This bathroom has no reviews yet.</ListItem>
                 )}
                 {this.state.ratings.map((rating) => {
-                  if (this.state.selectedBathroom.ratings.includes(rating.id)) {
+                  if (this.state.selectedBathroom.id == rating.bathroomId) {
                     return (
                       <>
                         <ListItem alignItems="flex-start">

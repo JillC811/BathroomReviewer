@@ -15,7 +15,19 @@ export default function LoginPage() {
 
         // TODO: re
 
-        console.log(email, password)
+        const signInUser = await fetch(
+            "http://localhost:8000/users/login",
+            {
+                method: "post",
+                headers: {
+                "Content-type": "application/json",
+                },
+                body: JSON.stringify({
+                email,
+                password
+                }),
+            }
+        );
 
         navigate("/home")
         console.log("signed in")
