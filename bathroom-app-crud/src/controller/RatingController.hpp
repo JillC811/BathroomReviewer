@@ -11,9 +11,11 @@
 #include OATPP_CODEGEN_BEGIN(ApiController) //<- Begin Codegen
 
 /**
- * Rating REST controller.
- * @author Jill
- */
+ * @brief Ratings REST controller 
+ * 
+ * @authors Justin Tsang, Elizabeth Shiu, Joey Gendy, Colton Undseth, Jill Chong
+ * 
+*/
 class RatingController : public oatpp::web::server::api::ApiController
 {
 public:
@@ -36,6 +38,10 @@ public:
   ///// Create
   /////////////////
 
+  /**
+   * @brief Endpoint information for adding a rating into database
+   * 
+   */
   ENDPOINT_INFO(createRating)
   {
     info->summary = "Create a new rating";
@@ -57,6 +63,10 @@ public:
   ///// Read
   /////////////////
 
+  /**
+   * @brief Endpoint information for getting all ratings a user has left
+   * 
+   */
   ENDPOINT_INFO(getRatingsByUser)
   {
     info->summary = "Get all ratings by user id";
@@ -75,6 +85,10 @@ public:
     return createDtoResponse(Status::CODE_200, m_ratingService.getRatingsByUser(userName, offset, limit));
   }
 
+  /**
+   * @brief Endpoint information for getting all ratings from database
+   * 
+   */
   ENDPOINT_INFO(getAllRatings)
   {
     info->summary = "Get all ratings";
@@ -90,6 +104,10 @@ public:
     return createDtoResponse(Status::CODE_200, m_ratingService.getAllRatings(offset, limit));
   }
 
+  /**
+   * @brief Endpoint information for getting a rating from database by id
+   * 
+   */
   ENDPOINT_INFO(getRatingById)
   {
     info->summary = "Get a rating by id";
@@ -106,6 +124,10 @@ public:
     return createDtoResponse(Status::CODE_200, m_ratingService.getRatingById(ratingId));
   }
 
+  /**
+   * @brief Endpoint information for getting all ratings for a bathroom in database
+   * 
+   */
     ENDPOINT_INFO(getRatingByBathroom)
   {
     info->summary = "Get all ratings by bathroom id";
@@ -126,6 +148,10 @@ public:
   ///// Update
   /////////////////
 
+  /**
+   * @brief Endpoint information for editing a rating
+   * 
+   */
   ENDPOINT_INFO(updateRating)
   {
     info->summary = "Update Rating by id";
@@ -151,6 +177,10 @@ public:
   ///// Delete
   /////////////////
 
+  /**
+   * @brief Endpoint information for deleting a rating from database
+   * 
+   */
   ENDPOINT_INFO(deleteRating)
   {
     info->summary = "Delete rating by id";

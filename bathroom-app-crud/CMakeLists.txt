@@ -4,7 +4,6 @@ project(crud)
 set(CMAKE_CXX_STANDARD 11)
 
 add_library(crud-lib
-        src/controller/StaticController.hpp
         src/controller/UserController.hpp
         src/controller/BathroomController.hpp
         src/controller/BuildingController.hpp

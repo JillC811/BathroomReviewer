@@ -36,9 +36,8 @@ public:
   ////////////////////////////
   ///// Create
   /////////////////
-
   /**
-   * Endpoint information for creating bathroom into database
+   * @brief Endpoint information for adding a bathroom into database
    * 
    */
   ENDPOINT_INFO(createBathroom)
@@ -52,7 +51,7 @@ public:
     info->addResponse<Object<BathroomDto>>(Status::CODE_500, "application/json");
   }
   /**
- * Endpoint for creating bathroom into database
+ * @brief Endpoint for creating bathroom into database
  */
   ENDPOINT("POST", "bathrooms", createBathroom,
            BODY_DTO(Object<BathroomDto>, bathroomDto))
@@ -64,6 +63,10 @@ public:
   ///// Read
   /////////////////
   
+  /**
+   * @brief Endpoint information for getting all bathrooms from database
+   * 
+   */
   ENDPOINT_INFO(getAllBathrooms)
   {
     info->summary = "Get all bathrooms";
@@ -79,6 +82,10 @@ public:
     return createDtoResponse(Status::CODE_200, m_bathroomService.getAllBathrooms(offset, limit));
   }
 
+  /**
+   * @brief Endpoint information for getting one bathroom by id
+   * 
+   */
   ENDPOINT_INFO(getBathroomById)
   {
     info->summary = "Get one Bathroom by Id";
@@ -95,6 +102,10 @@ public:
     return createDtoResponse(Status::CODE_200, m_bathroomService.getBathroomById(bathroomId));
   }
 
+    /**
+   * @brief Endpoint information for getting all bathrooms in a building by building name
+   * 
+   */
   ENDPOINT_INFO(getBathroomByBuilding)
   {
     info->summary = "Get all bathrooms by building name";
@@ -115,6 +126,10 @@ public:
   ///// Update
   /////////////////
 
+  /**
+   * @brief Endpoint information for updating bathroom info by id
+   * 
+   */
   ENDPOINT_INFO(updateBathroom)
   {
     info->summary = "Update Bathroom by Bathroomid";
@@ -139,6 +154,10 @@ public:
   ///// Delete
   /////////////////
 
+    /**
+   * @brief Endpoint information for deleting bathroom from database by id
+   * 
+   */
   ENDPOINT_INFO(deleteBathroom)
   {
     info->summary = "Delete Bathroom by id";
