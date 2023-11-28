@@ -22,7 +22,8 @@ import {
   LinkProps as RouterLinkProps,
   MemoryRouter,
 } from 'react-router-dom';
-export class Map extends React.Component {
+import RatingList from "../RatingList";
+export class MapComponent extends React.Component {
 
 
   constructor(props) {
@@ -196,7 +197,6 @@ export class Map extends React.Component {
               <br />
               <h2>Information</h2>
               <p>{`Floor: ${this.state.selectedBathroom.floor}`}</p>
-              <p>{`Location: ${this.state.selectedBathroom.longitude}, ${this.state.selectedBathroom.latitude}`}</p>
               <p>{`Gender: ${
                 this.state.selectedBathroom.gender === "m"
                   ? "Male"
@@ -204,60 +204,14 @@ export class Map extends React.Component {
                   ? "Female"
                   : "All Gender"
               }`}</p>
-              {this.state.selectedBathroom.gender === "Male" &&
+              {this.state.selectedBathroom.gender === "m" &&
                 `Urinals: ${this.state.selectedBathroom.urinalCount}`}
               <p>{`Stalls: ${this.state.selectedBathroom.stallCount}`}</p>
               <br />
               <br />
               <h2>Reviews</h2>
               <br />
-              <Button component={this.LinkBehavior} to={{pathname: "/new-rating"}} state={{bathroom: Number(this.state.selectedBathroom.id)}}>
-                {" "}
-                Add Review{" "}
-              </Button>
-              <List>
-                {this.state.ratings.length === 0 && (
-                  <ListItem>This bathroom has no reviews yet.</ListItem>
-                )}
-                {this.state.ratings.map((rating) => {
-                  if (this.state.selectedBathroom.id == rating.bathroomId) {
-                    return (
-                      <>
-                        <ListItem alignItems="flex-start">
-                          <ListItemText
-                            primary={
-                              <React.Fragment>
-                              <h4>{rating.uploader}</h4>
-                              <Rating
-                                name="overall rating"
-                                value={rating.overallRating}
-                                readOnly
-                              />
-                              </React.Fragment>
-                            }
-                            secondary={
-                              <React.Fragment>
-                                <div>
-                                  <h4>Cleanliness: </h4>
-                                  <Rating
-                                    name="cleanliness"
-                                    value={rating.cleanlinessRating}
-                                    readOnly
-                                    size="small"
-                                  />
-                                </div>
-                                <h4>Review: </h4>
-                                <p>{rating.textReview}</p>
-                              </React.Fragment>
-                            }
-                          />
-                        </ListItem>
-                        <Divider variant="middle" component="li" />
-                      </>
-                    );
-                  }
-                })}
-              </List>
+              <RatingList bathroom={this.state.selectedBathroom} />
             </div>
           </Drawer>
         )}

@@ -127,7 +127,6 @@ function ListView() {
                   secondary={
                     <React.Fragment>
                       <p>{`Floor: ${bathroom.floor}`}</p>
-                      <p>{`Location: ${bathroom.latitude} , ${bathroom.longitude}`}</p>
                       <p>{`Gender: ${bathroom.gender === 'm' ? 'Male' : bathroom.gender === 'f' ? "Female" : 'All Gender'}`}</p>
                       {bathroom.gender === "Male" && `Urinals: ${bathroom.urinalCount}`}
                       <p>{`Stalls: ${bathroom.stallCount}`}</p>
