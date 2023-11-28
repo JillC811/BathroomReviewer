@@ -90,40 +90,61 @@ void BuildingControllerTest::onRun() {
     // OATPP_ASSERT(newBuildingDto2->latitude == "444");
 
     /* Test the getAllBuildings endpoint */
-    // auto getAllBuildingsResponse = client->getAllBuildings(0, 99);
 
-    // OATPP_ASSERT(getAllBuildingsResponse->getStatusCode() == 200);
+    auto getAllBuildingsResponse = client->getAllBuildings(1, 99);
 
-    // auto allBuildingsDto = getAllBuildingsResponse->readBodyToDto<oatpp::Object<PageDto<oatpp::Object<BuildingDto>>>>(objectMapper.get());
+    OATPP_ASSERT(getAllBuildingsResponse->getStatusCode() == 200);
 
-    /* This testing code is not yet complete */
+    auto allBuildingsDto = getAllBuildingsResponse->readBodyToDto<oatpp::Object<PageDto<oatpp::Object<BuildingDto>>>>(objectMapper.get());
 
     /* Assert that getBathroomsByBuilding endpoint gets both added buildings */
+    OATPP_ASSERT(allBuildingsDto->count == 5); //should be 5 because it is the 3 other buildings + the 2 just added for test
 
-    // OATPP_ASSERT(allBuildingsDto->count == 2);
+    auto extractedBuildingDto1 = allBuildingsDto->items[3];
+    auto extractedBuildingDto2 = allBuildingsDto->items[4];
 
-    // auto extractedBuildingDto1 = allBuildingsDto->items[0];
-    // auto extractedBuildingDto2 = allBuildingsDto->items[1];
+     /* Assert the valeus of each of the Bathroom DTOs to make sure the endpoints fetched the right object */
+    OATPP_ASSERT(extractedBuildingDto1->name == "Test_Building_1");
+    OATPP_ASSERT(extractedBuildingDto1->latitude == "111");
+    OATPP_ASSERT(extractedBuildingDto1->longitude == "222");
 
-    // /* Assert the valeus of each of the Bathroom DTOs to make sure the endpoints fetched the right object */
-    // OATPP_ASSERT(extractedBuildingDto1->name == "Test_Building_1");
-    // OATPP_ASSERT(extractedBuildingDto1->location == "111, 222");
+    OATPP_ASSERT(extractedBuildingDto2->name == "Test_Building_2");
+    OATPP_ASSERT(extractedBuildingDto2->latitude == "333");
+    OATPP_ASSERT(extractedBuildingDto2->longitude == "444");
 
-    // OATPP_ASSERT(extractedBuildingDto2->name == "Test_Building_2");
-    // OATPP_ASSERT(extractedBuildingDto2->location == "222, 333");
 
     /* Test the updateBuilding endpoint */
     // buildingDto1->name = "Test_Building_3";
+
     // auto updateBuildingResponse = client->updateBuilding("Test_Building_1", buildingDto1);
 
-    // OATPP_ASSERT(updateBuildingResponse->getStatusCode() == 200);
+
+    // std::cout << updateBuildingResponse->getStatusCode() << std::endl;
+
+    //OATPP_ASSERT(updateBuildingResponse->getStatusCode() == 200);
 
     // auto updatedBuildingDto = updateBuildingResponse->readBodyToDto<oatpp::Object<BuildingDto>>(objectMapper.get());
 
-    // /* Assert that the Bathroom DTO reflects new values after being updated */
+    /* Assert that the Bathroom DTO reflects new values after being updated */
     // OATPP_ASSERT(updatedBuildingDto->name == "Test_Building_3");
-    // OATPP_ASSERT(updatedBuildingDto->location == "111, 222");
+    // OATPP_ASSERT(updatedBuildingDto->latitude == "111");
+    // OATPP_ASSERT(updatedBuildingDto->longitude == "222");
 
+
+    auto deletedBuildingResponse1 = client->deleteBuilding("Test_Building_1");
+    auto deletedBuildingResponse2 = client->deleteBuilding("Test_Building_2");
+
+    OATPP_ASSERT(deletedBuildingResponse1->getStatusCode() == 200);
+    OATPP_ASSERT(deletedBuildingResponse2->getStatusCode() == 200);
+
+    auto getAllBuildingsResponseNew = client->getAllBuildings(1, 99);
+
+    OATPP_ASSERT(getAllBuildingsResponseNew->getStatusCode() == 200);
+
+    auto allBuildingsDtoNew = getAllBuildingsResponseNew->readBodyToDto<oatpp::Object<PageDto<oatpp::Object<BuildingDto>>>>(objectMapper.get());
+
+
+    OATPP_ASSERT(allBuildingsDtoNew->count == 3);
 
   }, std::chrono::minutes(10) /* test timeout */);
 

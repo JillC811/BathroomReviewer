@@ -36,10 +36,6 @@ oatpp::Object<PageDto<oatpp::Object<BuildingDto>>> BuildingService::getAllBuildi
 
   oatpp::UInt32 countToFetch = limit;
 
-  if(limit > 10) {
-    countToFetch = 10;
-  }
-
   auto dbResult = m_database->getAllBuildings(offset, countToFetch);
   OATPP_ASSERT_HTTP(dbResult->isSuccess(), Status::CODE_500, dbResult->getErrorMessage());
 

@@ -10,13 +10,8 @@ import { Button, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
 // Rating in bathroom drawer
-import ratings from "../pages/Home/data/ratings.json";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import Divider from "@mui/material/Divider";
-import ListItemText from "@mui/material/ListItemText";
-import Rating from "@mui/material/Rating";
 import { useEffect } from "react";
+import RatingList from "./RatingList";
 
 function Map() {
   const [mapWidth, setMapWidth] = React.useState("100vw");
@@ -154,50 +149,8 @@ function Map() {
             <br />
             <h2>Reviews</h2>
             <br />
-            <Button component={Link} to="/new-rating">
-              {" "}
-              Add Review{" "}
-            </Button>
-            <List>
-              {selectedBathroom.ratings.length === 0 && (
-                <ListItem>This bathroom has no reviews yet.</ListItem>
-              )}
-              {ratings.ratings.map((rating) => {
-                if (selectedBathroom.ratings.includes(rating.id)) {
-                  return (
-                    <>
-                      <ListItem alignItems="flex-start">
-                        <ListItemText
-                          primary={
-                            <Rating
-                              name="overall rating"
-                              value={rating.overallRating}
-                              readOnly
-                            />
-                          }
-                          secondary={
-                            <React.Fragment>
-                              <div>
-                                <h4>Cleanliness: </h4>
-                                <Rating
-                                  name="cleanliness"
-                                  value={rating.cleanlinessRating}
-                                  readOnly
-                                  size="small"
-                                />
-                              </div>
-                              <h4>Review: </h4>
-                              <p>{rating.textReview}</p>
-                            </React.Fragment>
-                          }
-                        />
-                      </ListItem>
-                      <Divider variant="middle" component="li" />
-                    </>
-                  );
-                }
-              })}
-            </List>
+              <RatingList />
+                    
           </div>
         </Drawer>
       )}
