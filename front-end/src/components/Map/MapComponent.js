@@ -226,11 +226,14 @@ export class Map extends React.Component {
                         <ListItem alignItems="flex-start">
                           <ListItemText
                             primary={
+                              <React.Fragment>
+                              <h4>{rating.uploader}</h4>
                               <Rating
                                 name="overall rating"
                                 value={rating.overallRating}
                                 readOnly
                               />
+                              </React.Fragment>
                             }
                             secondary={
                               <React.Fragment>

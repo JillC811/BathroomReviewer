@@ -48,29 +48,36 @@ export default function LoginPage() {
     }
 
     const register = async (e) => {
+        e.preventDefault()
         const first_name = e.target[0].value
         const last_name = e.target[1].value
         const email = e.target[2].value
-        const password = e.target[3].value
+        const username = e.target[3].value
+        const password = e.target[4].value
+        
 
-        console.log(first_name, last_name, email, password)
+        console.log(first_name, last_name, username, password)
 
-        // const createUser = await fetch(
-        //     "http://localhost:8000/users",
-        //     {
-        //         method: "post",
-        //         headers: {
-        //         "Content-type": "application/json",
-        //         },
-        //         body: JSON.stringify({
-        //         first_name,
-        //         last_name,
-        //         email,
-        //         password
-        //         }),
-        //     }
-        // );
-        // const createUserResponse = await createUser.json();
+        const createUser = await fetch(
+            "http://localhost:8000/users",
+            {
+                method: "post",
+                headers: {
+                "Content-type": "application/json",
+                },
+                body: JSON.stringify({
+                // "firstname": first_name,
+                // "lastname": last_name,
+                "email": email,
+                "username": username,
+                "password": password,
+                }),
+            }
+        ).then(async (res) => {
+            const u = await res.json()
+            console.warn(u)
+            dispatch(setUser(u));
+        });
 
 
         // TODO: set state of user's credentials and that they're signed in
@@ -119,6 +126,10 @@ export default function LoginPage() {
                             <label>Last Name</label>
                             <br/>
                             <input type="text" name="last_name" required />
+                        </p>
+                        <p>
+                            <label>Email</label><br/>
+                            <input type="email" name="email" required />
                         </p>
                     </>
                 }

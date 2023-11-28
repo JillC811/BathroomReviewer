@@ -25,7 +25,7 @@ class RatingDto : public oatpp::DTO {
   DTO_FIELD(Int32, cleanlinessRating);
   DTO_FIELD(String, textReview);
 
-};
+}; 
 
 #include OATPP_CODEGEN_END(DTO)
 

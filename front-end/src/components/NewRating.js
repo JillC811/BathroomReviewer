@@ -40,7 +40,11 @@ function NewRating() {
     const handleSubmit = (e) => {
         e.preventDefault();     //prevents page from refreshing on submit
         console.log(inputs)
-        console.log(user.user.id)
+        if(user.user === null) {
+            alert("Please log in to submit a rating!");
+            navigate("/");
+            return;
+        }
 
         fetch("http://localhost:8000/ratings", {
             method: "post",
@@ -55,7 +59,7 @@ function NewRating() {
                 overallRating: Number(inputs.overallRating),
                 cleanlinessRating: Number(inputs.cleanlinessRating),
                 textReview: inputs.textReview,
-                userId: user.user.id
+                uploader: user.user.username
             })
         }).then((res) => {
             console.log(res);

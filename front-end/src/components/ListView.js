@@ -157,11 +157,14 @@ function ListView() {
                                     <ListItem alignItems="flex-start">
                                       <ListItemText
                                         primary={
-                                          <Rating
-                                            name="overall rating"
-                                            value={rating.overallRating}
-                                            readOnly
-                                          />
+                                          <React.Fragment>
+                                            <h4>{rating.uploader}</h4>
+                                            <Rating
+                                              name="overall rating"
+                                              value={rating.overallRating}
+                                              readOnly
+                                            />
+                                          </React.Fragment>
                                         }
                                         secondary={
                                           <React.Fragment>
