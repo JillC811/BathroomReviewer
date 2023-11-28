@@ -151,8 +151,8 @@ public:
 
       QUERY(createRating,
             "INSERT INTO rating"
-            "(bathroomId, overallRating, cleanlinessRating, textReview) VALUES "
-            "(:rating.bathroomId, :rating.overallRating, :rating.cleanlinessRating, :rating.textReview);",
+            "(bathroomId, uploader, overallRating, cleanlinessRating, textReview) VALUES "
+            "(:rating.bathroomId, :rating.uploader, :rating.overallRating, :rating.cleanlinessRating, :rating.textReview);",
             PARAM(oatpp::Object<RatingDto>, rating))
 
       QUERY(getAllRatings,
@@ -164,6 +164,10 @@ public:
             "SELECT * FROM rating WHERE id=:id;",
             PARAM(oatpp::Int32, id))
 
+      QUERY(getRatingByUser,
+            "SELECT * FROM rating WHERE uploader=:uploader;",
+            PARAM(oatpp::String, uploader))
+
       QUERY(getRatingByBathroom,
             "SELECT * FROM rating WHERE bathroomId=:bathroomId;",
             PARAM(oatpp::Int32, bathroomId))
@@ -171,6 +175,7 @@ public:
       QUERY(updateRating,
             "UPDATE rating"
             "SET "
+            " uploader=:rating.uploader, "
             " bathroomId=:rating.bathroomId, "
             " overallRating=:rating.overallRating, "
             " cleanlinessRating=:rating.cleanlinessRating, "

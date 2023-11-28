@@ -10,9 +10,11 @@ class Rating{
     public:
         int overallRating;
         int cleanlinessRating;
+        String username;
         String textReview;
-    Rating(int id, int overallRating, int cleanlinessRating, String textReview){
+    Rating(int id, String username, int overallRating, int cleanlinessRating, String textReview){
         this->id = id;
+        this->username = username;
         this->overallRating = overallRating;
         this->cleanlinessRating = cleanlinessRating;
         this->textReview = textReview;
