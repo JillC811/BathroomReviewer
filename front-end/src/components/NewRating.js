@@ -7,13 +7,15 @@ import TextField from '@mui/material/TextField';
 import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
 import { Button, FormControl, FormLabel } from '@mui/material';
-import { UserContext } from '../usercontext';
 
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import './NewRating.css'
 
 function NewRating() {
+
+    const user = useSelector(state => state.user)
 
     const navigate = useNavigate()
     const [inputs, setInputs] = useState({
@@ -25,7 +27,6 @@ function NewRating() {
     let { state } = useLocation();
     console.log(state);
 
-    // const { user, setUser } = React.useContext(UserContext)
 
     const[bathroom, setBathroom] = useState(state.bathroom);
 
@@ -39,6 +40,7 @@ function NewRating() {
     const handleSubmit = (e) => {
         e.preventDefault();     //prevents page from refreshing on submit
         console.log(inputs)
+        console.log(user.user.id)
 
         fetch("http://localhost:8000/ratings", {
             method: "post",
@@ -52,7 +54,8 @@ function NewRating() {
                 bathroomId: Number(bathroom),
                 overallRating: Number(inputs.overallRating),
                 cleanlinessRating: Number(inputs.cleanlinessRating),
-                textReview: inputs.textReview
+                textReview: inputs.textReview,
+                userId: user.user.id
             })
         }).then((res) => {
             console.log(res);
@@ -60,7 +63,6 @@ function NewRating() {
             navigate("/home");
         })
     }
-    console.log(bathroom)
     return(
         <div class="flex-box">
             <form onSubmit={handleSubmit} class="rating-form">

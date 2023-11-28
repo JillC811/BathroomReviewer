@@ -17,7 +17,6 @@ import Divider from "@mui/material/Divider";
 import ListItemText from "@mui/material/ListItemText";
 import Rating from "@mui/material/Rating";
 import { useEffect } from "react";
-import { UserContext } from "../../usercontext";
 import {
   Link as RouterLink,
   LinkProps as RouterLinkProps,
@@ -25,7 +24,6 @@ import {
 } from 'react-router-dom';
 export class Map extends React.Component {
 
-  static contextType = UserContext;
 
   constructor(props) {
     super(props);

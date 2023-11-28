@@ -3,15 +3,15 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import styles from "./login-page.module.css"
-import { UserContext } from '../../usercontext.js'
-import { useContext } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { setUser } from '../../store/userReducer'
 
 export default function LoginPage() {
 
     const navigate = useNavigate()
     const [loginMode, setLoginMode] = React.useState("login") // login or register
-
-    // const { setUser } = useContext(UserContext)
+    const dispatch = useDispatch()
+    const user = useSelector(state => state.user)
 
 
     const signIn = async (e) => {
@@ -35,9 +35,9 @@ export default function LoginPage() {
             }
         ).then(async (res) => {
             const u = await res.json()
-            // setUser(u);
+            console.warn(u)
+            dispatch(setUser(u));
             navigate("/home")
-            console.log("signed in", u)
         })
         .catch(err => {
             console.log(err)
