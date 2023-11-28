@@ -5,6 +5,7 @@
 #include "dto/UserDto.hpp"
 #include "dto/BathroomDto.hpp"
 #include "dto/BuildingDto.hpp"
+#include "dto/RatingDto.hpp"
 #include "oatpp-sqlite/orm.hpp"
 
 #include OATPP_CODEGEN_BEGIN(DbClient) //<- Begin Codegen
@@ -37,7 +38,11 @@ public:
             "(username, email, password, role) VALUES "
             "(:user.username, :user.email, :user.password, :user.role);",
             PARAM(oatpp::Object<UserDto>, user))
-      
+      QUERY(signIn,
+            "SELECT * FROM AppUser WHERE username=:username AND password=:password;",
+            PARAM(oatpp::String, username),
+            PARAM(oatpp::String, password)
+      )
       QUERY(getAllUsers,
             "SELECT * FROM AppUser LIMIT :limit OFFSET :offset;",
             PARAM(oatpp::UInt32, offset),
@@ -68,26 +73,26 @@ public:
       /////////////////
 
       QUERY(createBathroom,
-            "INSERT INTO bathroom"
+            "INSERT INTO Bathroom"
             "(building, floor, location, gender, stallCount, urinalCount) VALUES "
             "(:bathroom.building, :bathroom.floor, :bathroom.location, :bathroom.gender, :bathroom.stallCount, :bathroom.urinalCount);",
             PARAM(oatpp::Object<BathroomDto>, bathroom))
 
       QUERY(getAllBathrooms,
-            "SELECT * FROM bathroom LIMIT :limit OFFSET :offset;",
+            "SELECT * FROM Bathroom LIMIT :limit OFFSET :offset;",
             PARAM(oatpp::UInt32, offset),
             PARAM(oatpp::UInt32, limit))
 
       QUERY(getBathroomById,
-            "SELECT * FROM bathroom WHERE id=:id;",
+            "SELECT * FROM Bathroom WHERE id=:id;",
             PARAM(oatpp::Int32, id))
 
       QUERY(getBathroomByBuilding,
-            "SELECT * FROM bathroom WHERE building=:building;",
+            "SELECT * FROM Bathroom WHERE building=:building;",
             PARAM(oatpp::String, building))
       
       QUERY(updateBathroom,
-            "UPDATE bathroom "
+            "UPDATE Bathroom "
             "SET "
             " building=:bathroom.building, "
             " floor=:bathroom.floor, "
@@ -101,7 +106,7 @@ public:
             PARAM(oatpp::Object<BathroomDto>, bathroom))
 
       QUERY(deleteBathroom,
-            "DELETE FROM bathroom WHERE id=:id;",
+            "DELETE FROM Bathroom WHERE id=:id;",
             PARAM(oatpp::Int32, id))
 
       ////////////////////////////
@@ -140,6 +145,48 @@ public:
             "DELETE FROM Building WHERE name=:name;",
             PARAM(oatpp::String, name))
       
+      ////////////////////////////
+      ///// Ratings
+      /////////////////
+
+      QUERY(createRating,
+            "INSERT INTO Rating"
+            "(bathroomId, uploader, overallRating, cleanlinessRating, textReview) VALUES "
+            "(:rating.bathroomId, :rating.uploader, :rating.overallRating, :rating.cleanlinessRating, :rating.textReview);",
+            PARAM(oatpp::Object<RatingDto>, rating))
+
+      QUERY(getAllRatings,
+            "SELECT * FROM Rating LIMIT :limit OFFSET :offset;",
+            PARAM(oatpp::UInt32, offset),
+            PARAM(oatpp::UInt32, limit))
+
+      QUERY(getRatingById,
+            "SELECT * FROM Rating WHERE id=:id;",
+            PARAM(oatpp::Int32, id))
+
+      QUERY(getRatingByUser,
+            "SELECT * FROM Rating WHERE uploader=:uploader;",
+            PARAM(oatpp::String, uploader))
+
+      QUERY(getRatingByBathroom,
+            "SELECT * FROM Rating WHERE bathroomId=:bathroomId;",
+            PARAM(oatpp::Int32, bathroomId))
+      
+      QUERY(updateRating,
+            "UPDATE Rating"
+            "SET "
+            " uploader=:rating.uploader, "
+            " bathroomId=:rating.bathroomId, "
+            " overallRating=:rating.overallRating, "
+            " cleanlinessRating=:rating.cleanlinessRating, "
+            " textReview=:rating.textReview "
+            "WHERE "
+            " id=:rating.id;",
+            PARAM(oatpp::Object<RatingDto>, rating))
+
+      QUERY(deleteRating,
+            "DELETE FROM Rating WHERE id=:id;",
+            PARAM(oatpp::Int32, id))
 };
 
 #include OATPP_CODEGEN_END(DbClient) //<- End Codegen

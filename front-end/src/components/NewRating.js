@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 import Rating from '@mui/material/Rating';
 import TextField from '@mui/material/TextField';
@@ -8,14 +8,27 @@ import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
 import { Button, FormControl, FormLabel } from '@mui/material';
 
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
 import './NewRating.css'
 
 function NewRating() {
+
+    const user = useSelector(state => state.user)
+
+    const navigate = useNavigate()
     const [inputs, setInputs] = useState({
         overallRating: "",
         cleanlinessRating: "",
         textReview: ""
     })
+
+    let { state } = useLocation();
+    console.log(state);
+
+
+    const[bathroom, setBathroom] = useState(state.bathroom);
 
     const handleChange = (e) => {
         setInputs((prevState) => ({
@@ -27,6 +40,32 @@ function NewRating() {
     const handleSubmit = (e) => {
         e.preventDefault();     //prevents page from refreshing on submit
         console.log(inputs)
+        if(user.user === null) {
+            alert("Please log in to submit a rating!");
+            navigate("/");
+            return;
+        }
+
+        fetch("http://localhost:8000/ratings", {
+            method: "post",
+            headers: {
+                "Content-type": "application/json",
+                Accept: "*/*",
+                "Accept-Encoding": "gzip, deflate, br",
+                Connection: "keep-alive",
+            },
+            body: JSON.stringify({
+                bathroomId: Number(bathroom),
+                overallRating: Number(inputs.overallRating),
+                cleanlinessRating: Number(inputs.cleanlinessRating),
+                textReview: inputs.textReview,
+                uploader: user.user.username
+            })
+        }).then((res) => {
+            console.log(res);
+            alert("Rating submitted!");
+            navigate("/home");
+        })
     }
     return(
         <div class="flex-box">

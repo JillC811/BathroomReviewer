@@ -14,8 +14,14 @@ class Building{
         float latitude;
         std::pair<float, float> location;
         std::vector<Bathroom> bathrooms;
-
-        Building(std::string name, std::pair<float, float> location , std::vector<Bathroom> bathrooms){
+/**
+ * Building object constructor
+ * 
+ * name: name of building
+ * location: longitude and latitude coordinates of building
+ * bathrooms: vector of bathrooms located inside building
+*/
+        Building(std::string name, std::pair<float, float> location, std::vector<Bathroom> bathrooms){
             this->name = name;
             this->location = location;
             this->longitude = location.first;

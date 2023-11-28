@@ -11,7 +11,9 @@
  * Status Dto
 **/
 class StatusDto : public oatpp::DTO {
-
+  /**
+   * 
+  */
   DTO_INIT(StatusDto, DTO)
 
   DTO_FIELD_INFO(status) {
