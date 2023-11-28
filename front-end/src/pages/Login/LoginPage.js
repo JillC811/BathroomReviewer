@@ -6,13 +6,12 @@ import styles from "./login-page.module.css"
 import { useSelector, useDispatch } from 'react-redux'
 import { setUser } from '../../store/userReducer'
 
-export default function LoginPage() {
+export default function LoginPage() {  
 
     const navigate = useNavigate()
     const [loginMode, setLoginMode] = React.useState("login") // login or register
     const dispatch = useDispatch()
     const user = useSelector(state => state.user)
-
 
     const signIn = async (e) => {
         e.preventDefault()
