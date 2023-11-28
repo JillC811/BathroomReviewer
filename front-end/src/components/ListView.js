@@ -8,7 +8,6 @@ import InputAdornment from '@mui/material/InputAdornment';
 
 //Ratings dropdown
 import {Accordion, AccordionSummary, AccordionDetails} from '@mui/material';
-import Rating from '@mui/material/Rating';
 
 import ManIcon from '@mui/icons-material/Man';
 import WomanIcon from '@mui/icons-material/Woman';
@@ -29,6 +28,7 @@ import {
   MemoryRouter,
 } from 'react-router-dom';
 import { StaticRouter } from 'react-router-dom/server';
+import RatingList from './RatingList';
 
 
 function ListView() {
@@ -142,53 +142,7 @@ function ListView() {
                           <h4>Reviews</h4>
                         </AccordionSummary>
                         <AccordionDetails>
-                          <Button component={LinkBehavior} to={{pathname: "/new-rating"}} state={{bathroom: Number(bathroom.id)}} variant="contained" color="primary"
-                          > Add Review </Button>
-                          <List>
-                            {bathroom.ratings.length === 0 &&
-                              <ListItem>
-                                This bathroom has no reviews yet.
-                              </ListItem>
-                            }
-                            {ratings.map((rating) => {
-                              if(rating.bathroomId == bathroom.id){
-                                return (
-                                  <>
-                                    <ListItem alignItems="flex-start">
-                                      <ListItemText
-                                        primary={
-                                          <React.Fragment>
-                                            <h4>{rating.uploader}</h4>
-                                            <Rating
-                                              name="overall rating"
-                                              value={rating.overallRating}
-                                              readOnly
-                                            />
-                                          </React.Fragment>
-                                        }
-                                        secondary={
-                                          <React.Fragment>
-                                            <div>
-                                              <h4>Cleanliness: </h4>
-                                              <Rating
-                                                name="cleanliness"
-                                                value={rating.cleanlinessRating}
-                                                readOnly
-                                                size="small"
-                                              />
-                                            </div>
-                                            <h4>Review: </h4>
-                                            <p>{rating.textReview}</p>
-                                          </React.Fragment>
-                                        }
-                                      />
-                                      </ListItem>
-                                      <Divider variant="middle" component="li" />
-                                  </>
-                                )
-                              }
-                            })}
-                          </List>
+                          <RatingList bathroom={bathroom}/>
                         </AccordionDetails>
                       </Accordion>
                     </React.Fragment>
