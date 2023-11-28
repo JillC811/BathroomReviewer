@@ -67,9 +67,10 @@ public:
       ///// Bathrooms
       /////////////////
 
+      //this create bathroom method does not add a rating meaning trying to get a rating doesnt work after creating a bathroom :bathroom.ratings
       QUERY(createBathroom,
             "INSERT INTO bathroom"
-            "(building, floor, location, gender, stallCount, urinalCount) VALUES "
+            "(building, floor, location, gender, stallCount, urinalCount, ratings) VALUES "
             "(:bathroom.building, :bathroom.floor, :bathroom.location, :bathroom.gender, :bathroom.stallCount, :bathroom.urinalCount);",
             PARAM(oatpp::Object<BathroomDto>, bathroom))
 
