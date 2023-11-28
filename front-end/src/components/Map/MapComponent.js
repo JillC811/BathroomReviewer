@@ -2,21 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 // Map
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
-import bathrooms from "../../pages/Home/data/bathrooms.json";
-import bathroomIcon from "../../assets/restroom-sign-svgrepo-com-white.svg";
+import unisexBathroomIcon from "../../assets/restroom-sign-svgrepo-com-white.svg";
+import menBathroomIcon from "../../assets/Pictograms-nps-accommodations-mens-restroom.svg";
+import womenBathroomIcon from "../../assets/Pictograms-nps-accommodations-womens_restroom.svg"
 // View Bathroom Drawer
 import Drawer from "@mui/material/Drawer";
 import { Button, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
 // Rating in bathroom drawer
-import ratings from "../../pages/Home/data/ratings.json";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import Divider from "@mui/material/Divider";
-import ListItemText from "@mui/material/ListItemText";
-import Rating from "@mui/material/Rating";
-import { useEffect } from "react";
 import {
   Link as RouterLink,
   LinkProps as RouterLinkProps,
@@ -145,7 +139,11 @@ export class MapComponent extends React.Component {
                   lat: lat,
                   lng: lng,
                 }}
-                icon={bathroomIcon}
+                icon={
+                  (bathroom.gender === 'm') ? menBathroomIcon 
+                    : (bathroom.gender === 'f') ? womenBathroomIcon 
+                    : unisexBathroomIcon
+                  }
                 onClick={() => {
                   this.setSelectedBathroom(bathroom);
                   if (!this.state.drawerOpen) {

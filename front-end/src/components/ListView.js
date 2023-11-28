@@ -15,9 +15,6 @@ import WcIcon from '@mui/icons-material/Wc';
 import SearchIcon from "@mui/icons-material/Search";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-
-import bathrooms from "../pages/Home/data/bathrooms.json"
-import ratings from "../pages/Home/data/ratings.json"
 import './ListView.css'
 
 import { useEffect } from 'react';
