@@ -75,3 +75,12 @@ Documentation Format:
 |`GET`|http://localhost:8000/buildings/{buildingName} | Get a building by name |
 |`PUT`|http://localhost:8000/buildings/{buildingName} | Update building by name |
 |`DELETE`|http://localhost:8000/buildings/{buildingName} | Delete building by name |
+
+### Rating Service
+
+|---|---|---|
+|`POST`|http://localhost:8000/ratings | Create new building |
+|`GET`|http://localhost:8000/ratings/offset/{offset}/limit/{limit} | Get all buildings |
+|`GET`|http://localhost:8000/ratings/{bathroomId} | Get a building by name |
+|`PUT`|http://localhost:8000/ratings/{bathroomId} | Update building by name |
+|`DELETE`|http://localhost:8000/ratings/{bathroomId} | Delete building by name |

@@ -14,23 +14,42 @@ class Bathroom{
     public:
         Building * building;
         int floor;
+        float longitude;
+        float latitude;
         std::pair<float, float> location;
         char gender;
         int stallCount;
         int urinalCount;
         std::vector<int> ratings;
-
+        /**Bathroom object constructor
+         *
+         * id: randomly assigned integer for bathroom
+         * building: name of building bathroom is in
+         * floor: floor number bathroom is on
+         * location: latitude and longitude coordinates of bathroom
+         * gender: Char, M for male, F for female, B for both
+         * stallCount: # of stalls in bathroom
+         * urinalCount: # of urinals in bathroom
+         * ratings: list of user ratings out of 5.
+         * 
+         * 
+         **/
         Bathroom(int id, Building* building, int floor, std::pair<float, float> location, char gender, int stallCount, int urinalCount, std::vector<int> ratings)
         {
             this->id = id;
             this->building = building;
             this->floor = floor;
             this->location = location;
+            this->longitude = location.first;
+            this->latitude = location.second;
             this->gender = gender;
             this->stallCount = stallCount;
             this->urinalCount = urinalCount;
             this->ratings = ratings;
         }
+        /**
+         * various getters and setters for bathroom attributes
+        */
         int getID() const { 
             return id; 
         }
@@ -56,7 +75,8 @@ class Bathroom{
             return location;
         }
         void setLocation(std::pair<float,float> loaction) {
-            this->location = loaction;
+            this->longitude = loaction.first;
+            this->latitude = loaction.second;
         }
 
         char getGender() const {
