@@ -2,9 +2,9 @@
 #include "RatingService.hpp"
 
 /**
- * Bathroom Service
+ * Rating Service
  * 
- * Contains bathroom CRUD logic.
+ * Contains rating CRUD logic.
 */
 
 
@@ -13,7 +13,7 @@
  * 
  * Runs SQLite query to create rating in database
  * 
- * dto: Bathroom DTO to be added to database
+ * dto: Rating DTO to be added to database
 */
 oatpp::Object<RatingDto> RatingService::createRating(const oatpp::Object<RatingDto>& dto) {
 
@@ -27,9 +27,9 @@ oatpp::Object<RatingDto> RatingService::createRating(const oatpp::Object<RatingD
 }
 
 /**
- * getAllBathrooms method
+ * getAllRatings method
  * 
- * Runs SQLite query to fetch all bathrooms logged in app
+ * Runs SQLite query to fetch all ratings logged in app
  * 
  * offset: query offset
  * limit: results limit
@@ -54,11 +54,11 @@ oatpp::Object<PageDto<oatpp::Object<RatingDto>>> RatingService::getAllRatings(co
 }
 
 /**
- * getBathroomById method
+ * getRatingById method
  * 
- * Runs SQLite query to fetch a specific bathroom by id.
+ * Runs SQLite query to fetch a specific rating by id.
  * 
- * id: ID of requested bathroom
+ * id: ID of requested rating
 */
 oatpp::Object<RatingDto> RatingService::getRatingById(const oatpp::Int32& id, const oatpp::provider::ResourceHandle<oatpp::orm::Connection>& connection) {
 
@@ -76,9 +76,9 @@ oatpp::Object<RatingDto> RatingService::getRatingById(const oatpp::Int32& id, co
 /**
  * getRatingByBathroom method
  * 
- * Runs SQLite query to fetch all bathrooms in a given building
+ * Runs SQLite query to fetch all ratings in a given building
  * 
- * buildingName: name of building to be searched
+ * bathroomId: id of rating to be searched
 */
 oatpp::Object<PageDto<oatpp::Object<RatingDto>>> RatingService::getRatingByBathroom(const int bathroomId) {
 
@@ -99,11 +99,11 @@ oatpp::Object<PageDto<oatpp::Object<RatingDto>>> RatingService::getRatingByBathr
 }
 
 /**
- * updateBathroom method
+ * updateRating method
  * 
- * Runs SQLite query to update a given bathroom
+ * Runs SQLite query to update a given rating
  * 
- * dto: Bathroom DTO to be updated in database
+ * dto: rating DTO to be updated in database
 */
 oatpp::Object<RatingDto> RatingService::updateRating(const oatpp::Object<RatingDto>& dto) {
 
@@ -114,11 +114,11 @@ oatpp::Object<RatingDto> RatingService::updateRating(const oatpp::Object<RatingD
 }
 
 /**
- * deleteBathroom method
+ * deleteRating method
  * 
  * Runs SQLite query to delete a given bathroom
  * 
- * bathroomId: ID of bathroom to be deleted from database
+ * ratingId: ID of rating to be deleted from database
 */
 oatpp::Object<StatusDto> RatingService::deleteRating(const oatpp::Int32& ratingId) {
   auto dbResult = m_database->deleteRating(ratingId);

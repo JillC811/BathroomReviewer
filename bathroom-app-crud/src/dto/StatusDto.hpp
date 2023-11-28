@@ -8,7 +8,11 @@
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 /**
- * Status Dto
+ * Status Dto to return status of API call
+ * 
+ * Status:
+ * Code: 
+ * Message:
 **/
 class StatusDto : public oatpp::DTO {
   /**

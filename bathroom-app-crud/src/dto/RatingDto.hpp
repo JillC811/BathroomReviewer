@@ -10,6 +10,7 @@
  * Bathroom Rating DTO
  * 
  * id: review id 
+ * uploader: username of rating author
  * overallRating: Overall rating of bathroom from user
  * cleanlinessRating: Rating of how clean bathroom from user
  * textReview: Review of bathroom written by user, limited to number of characters
