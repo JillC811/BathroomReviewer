@@ -56,6 +56,24 @@ public:
   ///// Read
   /////////////////
 
+  ENDPOINT_INFO(getRatingsByUser)
+  {
+    info->summary = "Get all ratings by user id";
+
+    info->addResponse<oatpp::Object<RatingPageDto>>(Status::CODE_200, "application/json");
+    info->addResponse<Object<StatusDto>>(Status::CODE_500, "application/json");
+
+    info->pathParams["userName"].description = "User Identifier";
+  }
+  ADD_CORS(getRatingsByUser)
+  ENDPOINT("GET", "ratings/user/{userName}/offset/{offset}/limit/{limit}", getRatingsByUser,
+           PATH(String, userName),
+           PATH(UInt32, offset),
+           PATH(UInt32, limit))
+  {
+    return createDtoResponse(Status::CODE_200, m_ratingService.getRatingsByUser(userName, offset, limit));
+  }
+
   ENDPOINT_INFO(getAllRatings)
   {
     info->summary = "Get all ratings";

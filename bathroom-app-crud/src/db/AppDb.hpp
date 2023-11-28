@@ -134,7 +134,7 @@ public:
             "UPDATE Building "
             "SET "
             " name=:building.name, "
-            " location=:building.location, "
+            " location=:building.location "
             "WHERE "
             " name=:building.name;",
             PARAM(oatpp::Object<BuildingDto>, building))
@@ -165,15 +165,18 @@ public:
             PARAM(oatpp::Int32, id))
 
       QUERY(getRatingByUser,
-            "SELECT * FROM rating WHERE uploader=:uploader;",
-            PARAM(oatpp::String, uploader))
+            "SELECT * FROM rating WHERE uploader=:uploader LIMIT :limit OFFSET :offset;",
+            PARAM(oatpp::String, uploader),
+            PARAM(oatpp::UInt32, offset),
+            PARAM(oatpp::UInt32, limit)
+            )
 
       QUERY(getRatingByBathroom,
             "SELECT * FROM rating WHERE bathroomId=:bathroomId;",
             PARAM(oatpp::Int32, bathroomId))
       
       QUERY(updateRating,
-            "UPDATE rating"
+            "UPDATE rating "
             "SET "
             " uploader=:rating.uploader, "
             " bathroomId=:rating.bathroomId, "
