@@ -8,6 +8,17 @@
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 
+/**
+ * @brief Page DTO class: one page of data based on the specified offset and limit
+ * 
+ * @param offset: query offset
+ * @param limit: results limit
+ * @param count: number of returned results
+ * @param items: returned result
+ * 
+ * @authors Justin Tsang, Elizabeth Shiu, Joey Gendy, Colton Undseth, Jill Chong
+*/
+
 template<class T>
 
 /**

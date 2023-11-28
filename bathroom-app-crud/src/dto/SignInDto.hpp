@@ -6,11 +6,12 @@
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 /**
- * DTO for sign in procedure
- * @author justin
+ * @brief Sign in DTO class, holds sign in data
  * 
- * @param username username to be used for sign in
- * @param password password to be used for sign in
+ * @param userName: entered username
+ * @param password: entered password
+ * 
+ * @authors Justin Tsang, Elizabeth Shiu, Joey Gendy, Colton Undseth, Jill Chong
 **/
 
 class signInDto : public oatpp::DTO {

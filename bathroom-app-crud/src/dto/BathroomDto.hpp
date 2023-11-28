@@ -7,20 +7,18 @@
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 /**
- * @brief Bathroom DTO class, contains information about specific bathrooms
- * DTO object to transfer data about bathroom from database
- * @author Joey
+ * @brief Bathroom DTO class: contains information on bathroom
  * 
- * 
- * @param id: randomly assigned integer for bathroom
+ * @param id: bathroom identifier
  * @param building: name of building bathroom is in
- * @param floor: floor number bathroom is on
- * @param longitude longitude of bathroom
- * @param latitude latitude of bathroom
- * @param gender M for male, F for female, B for both
- * @param stallCount# of stalls in bathroom
+ * @param floor: floor bathroom is on
+ * @param location: latitude and longitude coordinates of bathroom
+ * @param gender: Char, M for male, F for female, B for both
+ * @param stallCount: # of stalls in bathroom
  * @param urinalCount: # of urinals in bathroom
- * @param ratings: list of user ratings 
+ * @param ratings: rating out of 5, averaged between users ratings
+ * 
+ * @authors Justin Tsang, Elizabeth Shiu, Joey Gendy, Colton Undseth, Jill Chong
 */
 class BathroomDto : public oatpp::DTO {
   

@@ -8,10 +8,14 @@
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 /**
- * Status Dto to return status of API call
- * @author elizabeth
+ * @brief Status DTO class: return status of API call
  * 
-**/
+ * @param status: status text
+ * @param code: status code
+ * @param message: status message
+ * 
+ * @authors Justin Tsang, Elizabeth Shiu, Joey Gendy, Colton Undseth, Jill Chong
+*/
 class StatusDto : public oatpp::DTO {
   /**initialize statusDTO */
   DTO_INIT(StatusDto, DTO)

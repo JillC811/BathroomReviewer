@@ -12,6 +12,7 @@
  * @param email: user's email
  * @param role: whether user is an admin or not
  * 
+ * @authors Justin Tsang, Elizabeth Shiu, Joey Gendy, Colton Undseth, Jill Chong
 **/
 
 User::User() {
