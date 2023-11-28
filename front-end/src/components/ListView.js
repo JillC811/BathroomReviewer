@@ -42,7 +42,7 @@ function ListView() {
     const query = e.target.value;
     setSearchQuery(query);
     
-    const filteredData = bathrooms.filter((bathroom) => bathroom.building.toLowerCase().includes(query.toLowerCase()));
+    const filteredData = bathrooms.filter((bathroom) => bathroom.building.replace('_', ' ').toLowerCase().includes(query.toLowerCase()));
     setFilteredBathrooms(filteredData);
   };
 
@@ -123,7 +123,7 @@ function ListView() {
                   {(bathroom.gender === 'm') ? <ManIcon fontSize="large"/> : (bathroom.gender === 'f') ? <WomanIcon fontSize="large"/> : <WcIcon fontSize="large"/>}
                 </ListItemAvatar>
                 <ListItemText
-                  primary={<h2>{bathroom.building}</h2>}
+                  primary={<h2>{bathroom.building.replace('_', ' ')}</h2>}
                   secondary={
                     <React.Fragment>
                       <p>{`Floor: ${bathroom.floor}`}</p>
