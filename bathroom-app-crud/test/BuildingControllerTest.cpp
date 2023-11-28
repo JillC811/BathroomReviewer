@@ -105,10 +105,13 @@ void BuildingControllerTest::onRun() {
 
      /* Assert the valeus of each of the Bathroom DTOs to make sure the endpoints fetched the right object */
     OATPP_ASSERT(extractedBuildingDto1->name == "Test_Building_1");
-    OATPP_ASSERT(extractedBuildingDto1->location == "111, 222");
+    OATPP_ASSERT(extractedBuildingDto1->latitude == "111");
+    OATPP_ASSERT(extractedBuildingDto1->longitude == "222");
 
     OATPP_ASSERT(extractedBuildingDto2->name == "Test_Building_2");
-    OATPP_ASSERT(extractedBuildingDto2->location == "333, 444");
+    OATPP_ASSERT(extractedBuildingDto2->latitude == "333");
+    OATPP_ASSERT(extractedBuildingDto2->longitude == "444");
+
 
     /* Test the updateBuilding endpoint */
     // buildingDto1->name = "Test_Building_3";
@@ -124,7 +127,9 @@ void BuildingControllerTest::onRun() {
 
     /* Assert that the Bathroom DTO reflects new values after being updated */
     // OATPP_ASSERT(updatedBuildingDto->name == "Test_Building_3");
-    // OATPP_ASSERT(updatedBuildingDto->location == "111, 222");
+    // OATPP_ASSERT(updatedBuildingDto->latitude == "111");
+    // OATPP_ASSERT(updatedBuildingDto->longitude == "222");
+
 
     auto deletedBuildingResponse1 = client->deleteBuilding("Test_Building_1");
     auto deletedBuildingResponse2 = client->deleteBuilding("Test_Building_2");

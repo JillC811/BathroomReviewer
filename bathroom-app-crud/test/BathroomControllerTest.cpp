@@ -46,7 +46,8 @@ void BathroomControllerTest::onRun() {
 
     bathroomDto1->building = "Test_Building";
     bathroomDto1->floor = 1;
-    // bathroomDto1->location = "99, -99";
+    // bathroomDto1->latitude = "99";
+    // bathroomDto1->longitude = "-99";
     bathroomDto1->gender = "m";
     bathroomDto1->stallCount = 99;
     bathroomDto1->urinalCount = 88;
@@ -54,7 +55,8 @@ void BathroomControllerTest::onRun() {
 
     bathroomDto2->building = "Test_Building";
     bathroomDto2->floor = 2;
-    // bathroomDto2->location = "100, -100";
+    // bathroomDto2->latitude = "100";
+    // bathroomDto2->longitude = "-100";
     bathroomDto2->gender = "f";
     bathroomDto2->stallCount = 999;
     bathroomDto2->urinalCount = 0;
@@ -93,7 +95,8 @@ void BathroomControllerTest::onRun() {
     /* Assert the valeus of each of the Bathroom DTOs to make sure the endpoints fetched the right object */
     OATPP_ASSERT(extractedBathroomDto1->building == "Test_Building");
     OATPP_ASSERT(extractedBathroomDto1->floor == 1);
-    OATPP_ASSERT(extractedBathroomDto1->location == "99, -99");
+    OATPP_ASSERT(extractedBathroomDto1->latitude == "99");
+    OATPP_ASSERT(extractedBathroomDto1->longitude == "-99");
     OATPP_ASSERT(extractedBathroomDto1->gender == "m");
     OATPP_ASSERT(extractedBathroomDto1->stallCount == 99);
     OATPP_ASSERT(extractedBathroomDto1->urinalCount == 88);
@@ -101,7 +104,8 @@ void BathroomControllerTest::onRun() {
 
     OATPP_ASSERT(extractedBathroomDto2->building == "Test_Building");
     OATPP_ASSERT(extractedBathroomDto2->floor == 2);
-    OATPP_ASSERT(extractedBathroomDto2->location == "100, -100");
+    OATPP_ASSERT(extractedBathroomDto2->latitude == "100");
+    OATPP_ASSERT(extractedBathroomDto2->longitude == "-100");
     OATPP_ASSERT(extractedBathroomDto2->gender == "f");
     OATPP_ASSERT(extractedBathroomDto2->stallCount == 999);
     OATPP_ASSERT(extractedBathroomDto2->urinalCount == 0);
@@ -118,7 +122,8 @@ void BathroomControllerTest::onRun() {
     /* Assert that the Bathroom DTO reflects new values after being updated */
     // OATPP_ASSERT(updatedBathroomDto->building == "Test_Building");
     // OATPP_ASSERT(updatedBathroomDto->floor == 1);
-    // OATPP_ASSERT(updatedBathroomDto->location == "99, -99");
+    // OATPP_ASSERT(extractedBathroomDto1->latitude == "99");
+    // OATPP_ASSERT(extractedBathroomDto1->longitude == "-99");
     // OATPP_ASSERT(updatedBathroomDto->gender == "b");
     // OATPP_ASSERT(updatedBathroomDto->stallCount == 99);
     // OATPP_ASSERT(updatedBathroomDto->urinalCount == 88);

@@ -75,8 +75,8 @@ public:
       //this create bathroom method does not add a rating meaning trying to get a rating doesnt work after creating a bathroom :bathroom.ratings
       QUERY(createBathroom,
             "INSERT INTO Bathroom"
-            "(building, floor, location, gender, stallCount, urinalCount) VALUES "
-            "(:bathroom.building, :bathroom.floor, :bathroom.location, :bathroom.gender, :bathroom.stallCount, :bathroom.urinalCount);",
+            "(building, floor, latitude, longitude, gender, stallCount, urinalCount) VALUES "
+            "(:bathroom.building, :bathroom.floor, :bathroom.latitude, :bathroom.longitude, :bathroom.gender, :bathroom.stallCount, :bathroom.urinalCount);",
             PARAM(oatpp::Object<BathroomDto>, bathroom))
 
       QUERY(getAllBathrooms,
@@ -97,7 +97,8 @@ public:
             "SET "
             " building=:bathroom.building, "
             " floor=:bathroom.floor, "
-            " location=:bathroom.location, "
+            " latitude=:bathroom.latitude, "
+            " longitude=:bathroom.longitude, "
             " gender=:bathroom.gender "
             " stallCount=:bathroom.stallCount "
             " urinalCount=:bathroom.urinalCount "
@@ -116,8 +117,8 @@ public:
 
       QUERY(createBuilding,
             "INSERT INTO Building"
-            "(name, location) VALUES "
-            "(:building.name, :building.location);",
+            "(name, latitude, longitude) VALUES "
+            "(:building.name, :building.latitude, :building.longitude);",
             PARAM(oatpp::Object<BuildingDto>, building))
 
       QUERY(getAllBuildings,
@@ -135,7 +136,8 @@ public:
             "UPDATE Building "
             "SET "
             " name=:building.name, "
-            " location=:building.location, "
+            " latitude=:bathroom.latitude, "
+            " longitude=:bathroom.longitude, "
             "WHERE "
             " name=:building.name;",
             PARAM(oatpp::Object<BuildingDto>, building))
