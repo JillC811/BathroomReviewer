@@ -73,26 +73,26 @@ public:
       /////////////////
 
       QUERY(createBathroom,
-            "INSERT INTO bathroom"
+            "INSERT INTO Bathroom"
             "(building, floor, location, gender, stallCount, urinalCount) VALUES "
             "(:bathroom.building, :bathroom.floor, :bathroom.location, :bathroom.gender, :bathroom.stallCount, :bathroom.urinalCount);",
             PARAM(oatpp::Object<BathroomDto>, bathroom))
 
       QUERY(getAllBathrooms,
-            "SELECT * FROM bathroom LIMIT :limit OFFSET :offset;",
+            "SELECT * FROM Bathroom LIMIT :limit OFFSET :offset;",
             PARAM(oatpp::UInt32, offset),
             PARAM(oatpp::UInt32, limit))
 
       QUERY(getBathroomById,
-            "SELECT * FROM bathroom WHERE id=:id;",
+            "SELECT * FROM Bathroom WHERE id=:id;",
             PARAM(oatpp::Int32, id))
 
       QUERY(getBathroomByBuilding,
-            "SELECT * FROM bathroom WHERE building=:building;",
+            "SELECT * FROM Bathroom WHERE building=:building;",
             PARAM(oatpp::String, building))
       
       QUERY(updateBathroom,
-            "UPDATE bathroom "
+            "UPDATE Bathroom "
             "SET "
             " building=:bathroom.building, "
             " floor=:bathroom.floor, "
@@ -106,7 +106,7 @@ public:
             PARAM(oatpp::Object<BathroomDto>, bathroom))
 
       QUERY(deleteBathroom,
-            "DELETE FROM bathroom WHERE id=:id;",
+            "DELETE FROM Bathroom WHERE id=:id;",
             PARAM(oatpp::Int32, id))
 
       ////////////////////////////
@@ -150,30 +150,30 @@ public:
       /////////////////
 
       QUERY(createRating,
-            "INSERT INTO rating"
+            "INSERT INTO Rating"
             "(bathroomId, uploader, overallRating, cleanlinessRating, textReview) VALUES "
             "(:rating.bathroomId, :rating.uploader, :rating.overallRating, :rating.cleanlinessRating, :rating.textReview);",
             PARAM(oatpp::Object<RatingDto>, rating))
 
       QUERY(getAllRatings,
-            "SELECT * FROM rating LIMIT :limit OFFSET :offset;",
+            "SELECT * FROM Rating LIMIT :limit OFFSET :offset;",
             PARAM(oatpp::UInt32, offset),
             PARAM(oatpp::UInt32, limit))
 
       QUERY(getRatingById,
-            "SELECT * FROM rating WHERE id=:id;",
+            "SELECT * FROM Rating WHERE id=:id;",
             PARAM(oatpp::Int32, id))
 
       QUERY(getRatingByUser,
-            "SELECT * FROM rating WHERE uploader=:uploader;",
+            "SELECT * FROM Rating WHERE uploader=:uploader;",
             PARAM(oatpp::String, uploader))
 
       QUERY(getRatingByBathroom,
-            "SELECT * FROM rating WHERE bathroomId=:bathroomId;",
+            "SELECT * FROM Rating WHERE bathroomId=:bathroomId;",
             PARAM(oatpp::Int32, bathroomId))
       
       QUERY(updateRating,
-            "UPDATE rating"
+            "UPDATE Rating"
             "SET "
             " uploader=:rating.uploader, "
             " bathroomId=:rating.bathroomId, "
@@ -185,7 +185,7 @@ public:
             PARAM(oatpp::Object<RatingDto>, rating))
 
       QUERY(deleteRating,
-            "DELETE FROM rating WHERE id=:id;",
+            "DELETE FROM Rating WHERE id=:id;",
             PARAM(oatpp::Int32, id))
 };
 
