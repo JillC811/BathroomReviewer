@@ -54,10 +54,6 @@ oatpp::Object<PageDto<oatpp::Object<UserDto>>> UserService::getAllUsers(const oa
 
   oatpp::UInt32 countToFetch = limit;
 
-  if(limit > 10) {
-    countToFetch = 10;
-  }
-
   auto dbResult = m_database->getAllUsers(offset, countToFetch);
   OATPP_ASSERT_HTTP(dbResult->isSuccess(), Status::CODE_500, dbResult->getErrorMessage());
 
