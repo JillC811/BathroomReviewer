@@ -75,13 +75,14 @@ function NewRating() {
                         name="overallRating"
                         value={inputs.overallRating}
                         onChange={handleChange}
-                        required={true}
+                        required
                     />
                     <h4>Cleanliness Rating</h4>
                     <Rating
                         name="cleanlinessRating"
                         value={inputs.cleanlinessRating}
                         onChange={handleChange}
+                        required
                     />
                     <h4>Additional Details</h4>
                     <TextField
@@ -90,6 +91,7 @@ function NewRating() {
                         rows={4}
                         value={inputs.textReview} 
                         onChange={handleChange}
+                        required
                     />
                     <br />
                     <Button type='submit'>Submit</Button>
