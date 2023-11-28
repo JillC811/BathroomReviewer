@@ -1,3 +1,8 @@
+DROP TABLE IF EXISTS Building;
+DROP TABLE IF EXISTS Bathroom;
+DROP TABLE IF EXISTS AppUser;
+DROP TABLE IF EXISTS Rating;
+
 -- -----------------------
 -- Users Table
 -- -----------------------
@@ -14,7 +19,7 @@ INSERT INTO AppUser VALUES(1,'admin','admin@domain.com','admin','ROLE_ADMIN');
 -- -----------------------
 -- Bathroom Table
 -- -----------------------
-CREATE TABLE Bathroom (id INTEGER PRIMARY KEY, building VARCHAR, floor INTEGER, location VARCHAR, gender CHARACTER, stallCount INTEGER, urinalCount INTEGER, ratings VARCHAR);
+CREATE TABLE Bathroom (id INTEGER PRIMARY KEY, building VARCHAR, floor INTEGER, latitude VARCHAR, longitude VARCHAR, gender CHARACTER, stallCount INTEGER, urinalCount INTEGER, ratings VARCHAR);
 
 INSERT INTO Bathroom VALUES (1, "Ivey_Building", 1, "43.004461059421644, -81.2775063228374", 'm', 4, 3, '');
 INSERT INTO Bathroom VALUES (2, "Ivey_Building", 1, "43.0044210977688, -81.2774867068221", 'f', 4, 0, '');
@@ -44,7 +49,7 @@ INSERT INTO Bathroom VALUES (22, "Middlesex_College", 5, "43.00951990833393, -81
 -- -----------------------
 -- Building Table
 -- -----------------------
-CREATE TABLE Building (name VARCHAR PRIMARY KEY, location VARCHAR);
+CREATE TABLE Building (name VARCHAR PRIMARY KEY, latitude VARCHAR, longitude VARCHAR);
 
 INSERT INTO Building VALUES ("Ivey_Building", "43.004379707504405, -81.27719654522188");
 INSERT INTO Building VALUES ("University_College", "43.008427372331774, -81.27331583172878");
