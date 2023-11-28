@@ -34,8 +34,8 @@ INSERT INTO Bathroom VALUES (10, "Ivey_Building", 3, "43.004402045063216", "-81.
 INSERT INTO Bathroom VALUES (11, "Ivey_Building", 3, "43.00414892991265", "-81.27832009518386", 'b', 2, 0, '');
 INSERT INTO Bathroom VALUES (12, "Ivey_Building", 3, "43.004126594702534", "-81.27831217699067", 'b', 2, 0, '');
 
-INSERT INTO Bathroom VALUES (13, "University_College", 1, "43.004461059421644", "-81.2775063228374", 'm', 4, 3, '');
-INSERT INTO Bathroom VALUES (14, "University_College", 1, "43.0044210977688", "-81.2774867068221", 'f', 4, 0, '');
+INSERT INTO Bathroom VALUES (13, "University_College", 1, "43.00830861355451", "-81.27336586948384", 'm', 4, 3, '');
+INSERT INTO Bathroom VALUES (14, "University_College", 1, "43.00860431375905", "-81.27331829599039", 'f', 4, 0, '');
 
 INSERT INTO Bathroom VALUES (15, "Middlesex_College", 2, "43.00952121129927", "-81.27034139152056", 'm', 2, 4, '');
 INSERT INTO Bathroom VALUES (16, "Middlesex_College", 2, "43.009489053766245", "-81.2703155228848", 'f', 6, 0, '');
