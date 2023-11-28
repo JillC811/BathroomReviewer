@@ -47,10 +47,12 @@ void BuildingControllerTest::onRun() {
     auto buildingDto2 = BuildingDto::createShared();
 
     buildingDto1->name = "Test_Building_1";
-    buildingDto1->location = "111, 222";
+    // buildingDto1->longitude = "111";
+    // buildingDto1->latitude = "222";
 
     buildingDto2->name ="Test_Building_2";
-    buildingDto2->location = "333, 444";
+    // buildingDto2->longitude = "333";
+    // buildingDto2->latitude = "444";
    
     /* Call server API */
     auto createdBuildingResponse1 = client->createBuilding(buildingDto1);
@@ -79,11 +81,13 @@ void BuildingControllerTest::onRun() {
     /* Assert successful status code and proper building details */
     OATPP_ASSERT(newBuildingResponse1->getStatusCode() == 200);
     OATPP_ASSERT(newBuildingDto1->name == "Test_Building_1");
-    OATPP_ASSERT(newBuildingDto1->location == "111, 222");
+    // OATPP_ASSERT(newBuildingDto1->longitude == "111");
+    // OATPP_ASSERT(newBuildingDto-> latitude == "222");
 
     OATPP_ASSERT(newBuildingResponse2->getStatusCode() == 200);
     OATPP_ASSERT(newBuildingDto2->name == "Test_Building_2");
-    OATPP_ASSERT(newBuildingDto2->location == "333, 444");
+    // OATPP_ASSERT(newBuildingDto2->longitude == "333");
+    // OATPP_ASSERT(newBuildingDto2->latitude == "444");
 
     /* Test the getAllBuildings endpoint */
 

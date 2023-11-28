@@ -18,13 +18,12 @@
 class UserDto : public oatpp::DTO {
   
   DTO_INIT(UserDto, DTO)
+  
   DTO_FIELD(Int32, id);
   DTO_FIELD(String, userName, "username");
   DTO_FIELD(String, email, "email");
   DTO_FIELD(String, password, "password");
   DTO_FIELD(String, role, "role");
-  DTO_FIELD(String, firstName, "firstName");
-  DTO_FIELD(String, lastName, "lastName");
 };
 
 #include OATPP_CODEGEN_END(DTO)
