@@ -140,8 +140,8 @@ function RatingList(props) {
         }
         {ratings.map((rating) => {
             if(rating.bathroomId == bathroom.id){
-                
-            return (
+
+                return (
                 <>
                 <ListItem alignItems="flex-start">
                     <ListItemText
@@ -172,7 +172,7 @@ function RatingList(props) {
                     }
                     />
 
-                {/* {(user.username === rating.uploader || user.username === 'admin') ? ( */}
+                {(user.user !== null && (user.user.username === rating.uploader || user.user.username === 'admin')) ? (
                     <div>
                     {/* Edit Review */}
                         <Button onClick={handleEditModalOpen}>Edit</Button>
@@ -212,7 +212,6 @@ function RatingList(props) {
                                     value={inputs.textReview} 
                                     onChange={handleChange}
                                 />
-                                <p>{rating.textReview}</p>
                                 </DialogContent>
                                 <DialogActions>
                                 <Button onClick={handleEditModalClose}>Cancel</Button>
@@ -247,7 +246,7 @@ function RatingList(props) {
                             </DialogActions>
                         </Dialog>
                         </div>
-                {/* ) : (<></>)} */}
+                ) : (<></>)}
                 </ListItem>
                 <Divider variant="middle" component="li" />
                 </>
