@@ -26,11 +26,11 @@ class BathroomDto : public oatpp::DTO {
   * 
   * 
   **/
-
   DTO_FIELD(Int32, id);
   DTO_FIELD(String, building);
   DTO_FIELD(Int32, floor);
-  DTO_FIELD(String, location);
+  DTO_FIELD(String, longitude);
+  DTO_FIELD(String, latitude);
   DTO_FIELD(String, gender);
   DTO_FIELD(Int32, stallCount);
   DTO_FIELD(Int32, urinalCount);

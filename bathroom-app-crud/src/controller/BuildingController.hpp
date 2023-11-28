@@ -54,14 +54,14 @@ public:
   ////////////////////////////
   ///// Read
   /////////////////
-
   ENDPOINT_INFO(getAllBuildings)
   {
     info->summary = "Get all buildings";
 
     info->addResponse<oatpp::Object<BuildingsPageDto>>(Status::CODE_200, "application/json");
     info->addResponse<Object<StatusDto>>(Status::CODE_500, "application/json");
-  }
+  }  
+  ADD_CORS(getAllBuildings);
   ENDPOINT("GET", "buildings/offset/{offset}/limit/{limit}", getAllBuildings,
             PATH(UInt32, offset),
            PATH(UInt32, limit))

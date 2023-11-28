@@ -38,9 +38,6 @@ oatpp::Object<PageDto<oatpp::Object<BathroomDto>>> BathroomService::getAllBathro
 
   oatpp::UInt32 countToFetch = limit;
 
-  if(limit > 10) {
-    countToFetch = 10;
-  }
 
   auto dbResult = m_database->getAllBathrooms(offset, countToFetch);
   OATPP_ASSERT_HTTP(dbResult->isSuccess(), Status::CODE_500, dbResult->getErrorMessage());

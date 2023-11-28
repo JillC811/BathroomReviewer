@@ -24,7 +24,22 @@ oatpp::Object<UserDto> UserService::createUser(const oatpp::Object<UserDto>& dto
   auto userId = oatpp::sqlite::Utils::getLastInsertRowId(dbResult->getConnection());
 
   return getUserById((v_int32) userId);
+}
 
+/**
+ * signIn method
+ * 
+ * Runs SQLite query to sign in user
+ * 
+ * dto: User login credentials
+*/
+
+oatpp::Object<UserDto> UserService::signIn(const oatpp::Object<signInDto>& dto) {
+  auto dbResult = m_database->signIn(dto->userName, dto->password);
+  OATPP_ASSERT_HTTP(dbResult->isSuccess(), Status::CODE_500, dbResult->getErrorMessage());
+  auto result = dbResult->fetch<oatpp::Vector<oatpp::Object<UserDto>>>();
+  OATPP_ASSERT_HTTP(result->size() == 1, Status::CODE_500, "Unknown error");
+  return result[0];
 }
 
 /**
@@ -38,10 +53,6 @@ oatpp::Object<UserDto> UserService::createUser(const oatpp::Object<UserDto>& dto
 oatpp::Object<PageDto<oatpp::Object<UserDto>>> UserService::getAllUsers(const oatpp::UInt32& offset, const oatpp::UInt32& limit) {
 
   oatpp::UInt32 countToFetch = limit;
-
-  if(limit > 10) {
-    countToFetch = 10;
-  }
 
   auto dbResult = m_database->getAllUsers(offset, countToFetch);
   OATPP_ASSERT_HTTP(dbResult->isSuccess(), Status::CODE_500, dbResult->getErrorMessage());
