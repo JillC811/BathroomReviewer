@@ -50,9 +50,30 @@ function RatingList(props) {
         setShowDeleteModal(false);
     };
 
-    const handleDeleteReview = (e) => {
+    const handleDeleteReview = (e, id) => {
         e.preventDefault();
-        //delete backend call
+        console.log(id)
+        fetch(
+            `http://localhost:8000/ratings/delete/${id}`,
+            {
+            method: "post",
+            headers: {
+                "Content-type": "application/json",
+                Accept: "*/*",
+                "Accept-Encoding": "gzip, deflate, br",
+                Connection: "keep-alive",
+            },
+            }
+        ).then((res) => {
+            console.log(res);
+            alert("Rating deleted!");
+            navigate("/home");
+        }    
+        ).catch((err)=>{
+            console.log(err)
+            alert("Error deleting rating")
+            navigate("/home");
+        })
     }
 
     const handleEditModalOpen = (rating) => {
@@ -75,28 +96,31 @@ function RatingList(props) {
         }))
     }
 
-    const handleEditReview = (e) => {
+    const handleEditReview = (e, id) => {
         e.preventDefault();
-        // fetch("http://localhost:8000/ratings", {
-        //     method: "post",
-        //     headers: {
-        //         "Content-type": "application/json",
-        //         Accept: "*/*",
-        //         "Accept-Encoding": "gzip, deflate, br",
-        //         Connection: "keep-alive",
-        //     },
-        //     body: JSON.stringify({
-        //         bathroomId: Number(bathroom),
-        //         overallRating: Number(inputs.overallRating),
-        //         cleanlinessRating: Number(inputs.cleanlinessRating),
-        //         textReview: inputs.textReview,
-        //         uploader: user.user.username
-        //     })
-        // }).then((res) => {
-        //     console.log(res);
-        //     alert("Rating submitted!");
-        //     navigate("/home");
-        // })
+        fetch(`http://localhost:8000/ratings/upate/${id}`, {
+            method: "post",
+            headers: {
+                "Content-type": "application/json",
+                Accept: "*/*",
+                "Accept-Encoding": "gzip, deflate, br",
+                Connection: "keep-alive",
+            },
+            body: JSON.stringify({
+                bathroomId: Number(bathroom),
+                overallRating: Number(inputs.overallRating),
+                cleanlinessRating: Number(inputs.cleanlinessRating),
+                textReview: inputs.textReview,
+                uploader: user.user.username
+            })
+        }).then((res) => {
+            console.log(res);
+            alert("Rating submitted!");
+            navigate("/home");
+        }).catch((err)=>{
+            console.log(err)
+            alert("Error submitting rating")
+        })
     }
 
     useEffect(() => {
@@ -121,6 +145,9 @@ function RatingList(props) {
         Promise.all([fetchRatings()]).then(() => {
         console.log(ratings)
         setLoaded(true);
+        }).catch((err)=>{
+            console.log(err)
+            alert("Error fetching ratings")
         })
         return () => {};
     }, []);
@@ -215,7 +242,7 @@ function RatingList(props) {
                                 </DialogContent>
                                 <DialogActions>
                                 <Button onClick={handleEditModalClose}>Cancel</Button>
-                                <Button type='submit' onClick={handleEditReview} autoFocus>
+                                <Button type='submit' onClick={(e) => {handleEditReview(e, rating.id)}} autoFocus>
                                     Submit Edit
                                 </Button>
                                 </DialogActions>
@@ -240,7 +267,7 @@ function RatingList(props) {
                             </DialogContent>
                             <DialogActions>
                             <Button onClick={handleDeleteModalClose}>Cancel</Button>
-                            <Button onClick={handleDeleteReview} autoFocus>
+                            <Button onClick={(e)=>{handleDeleteReview(e, rating.id)}} autoFocus>
                                 Delete
                             </Button>
                             </DialogActions>

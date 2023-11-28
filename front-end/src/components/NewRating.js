@@ -65,6 +65,9 @@ function NewRating() {
             console.log(res);
             alert("Rating submitted!");
             navigate("/home");
+        }).catch((err)=>{
+            console.log(err)
+            alert("Error submitting rating")
         })
     }
     return(

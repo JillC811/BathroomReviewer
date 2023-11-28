@@ -41,7 +41,11 @@ function Map() {
             Connection: "keep-alive",
           },
         }
-      );
+      ).catch((err)=>{
+        console.log(err)
+        alert("Error fetching bathrooms")
+      })
+      ;
       const data = await res.json();
 
       setBathrooms(data);

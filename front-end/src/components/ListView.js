@@ -59,7 +59,12 @@ function ListView() {
             Connection: "keep-alive",
           },
         }
-      );
+      ).catch(
+        (err) =>{
+          console.log(err)
+          alert("Error fetching bathrooms")}
+      )
+      ;
       const data = await res.json();
       console.log(data);
       await setBathrooms(data.items);
@@ -77,7 +82,11 @@ function ListView() {
             Connection: "keep-alive",
           },
         }
-      );
+      ).catch((err)=>{
+        console.log(err)
+        alert("Error fetching ratings")
+      })
+      ;
       const data = await res.json();
       console.log(data);
       await setRatings(data.items);

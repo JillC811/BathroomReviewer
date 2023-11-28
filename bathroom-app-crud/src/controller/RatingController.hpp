@@ -137,7 +137,9 @@ public:
 
     info->pathParams["ratingId"].description = "Rating id";
   }
-  ENDPOINT("PUT", "ratings/{ratingId}", updateRating,
+
+  ADD_CORS(updateRating, "*", "PUT", "DNT, User-Agent, X-Requested-With, If-Modified-Since, Cache-Control, Content-Type, Range", "1728000");
+  ENDPOINT("POST", "ratings/update/{ratingId}", updateRating,
            PATH(Int32, ratingId),
            BODY_DTO(Object<RatingDto>, ratingDto))
   {
@@ -158,7 +160,8 @@ public:
 
     info->pathParams["ratingId"].description = "Rating id";
   }
-  ENDPOINT("DELETE", "ratings/{ratingId}", deleteRating,
+  ADD_CORS(deleteRating, "*", "DELETE", "DNT, User-Agent, X-Requested-With, If-Modified-Since, Cache-Control, Content-Type, Range", "1728000");
+  ENDPOINT("POST", "ratings/delete/{ratingId}", deleteRating,
            PATH(Int32, ratingId))
   {
     return createDtoResponse(Status::CODE_200, m_ratingService.deleteRating(ratingId));

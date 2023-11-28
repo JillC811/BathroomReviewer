@@ -67,7 +67,10 @@ export class Map extends React.Component {
           Connection: "keep-alive",
         },
       }
-    );
+    ).catch((err)=>{
+      console.log(err)
+      alert("error fetching data")
+    });
     const data = await res.json();
     const res2 = await fetch(
       "http://localhost:8000/buildings/offset/0/limit/50",
@@ -80,7 +83,10 @@ export class Map extends React.Component {
           Connection: "keep-alive",
         },
       }
-    );
+    ).catch((err)=>{
+      console.log(err)
+      alert("error fetching data")
+    });
     const data2 = await res2.json();
       const res3 = await fetch(
       "http://localhost:8000/ratings/offset/0/limit/50",
@@ -93,7 +99,10 @@ export class Map extends React.Component {
           Connection: "keep-alive",
         },
       }
-    );
+    ).catch((err)=>{
+      console.log(err)
+      alert("error fetching data")
+    });
     const data3 = await res3.json();
 
 
