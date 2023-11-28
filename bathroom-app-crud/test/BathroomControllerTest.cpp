@@ -87,7 +87,7 @@ void BathroomControllerTest::onRun() {
     auto allBathroomsDto = getBathroomsByBuildingResponse->readBodyToDto<oatpp::Object<PageDto<oatpp::Object<BathroomDto>>>>(objectMapper.get());
 
     /* Assert that getBathroomsByBuilding endpoint gets both added buildings */
-    OATPP_ASSERT(allBathroomsDto->count == 2);
+    OATPP_ASSERT(allBathroomsDto->count == 2); 
 
     auto extractedBathroomDto1 = allBathroomsDto->items[0];
     auto extractedBathroomDto2 = allBathroomsDto->items[1];
@@ -103,25 +103,19 @@ void BathroomControllerTest::onRun() {
     // std::cout << "Urinal count: " << extractedBathroomDto1->urinalCount << std::endl;
     // std::cout << "ratings: " << extractedBathroomDto1->ratings->c_str() << std::endl;
 
-    /* this test code is currently not working and is in progress */
+    OATPP_ASSERT(extractedBathroomDto1->building == "Test_Building");
+    OATPP_ASSERT(extractedBathroomDto1->floor == 1);
+    OATPP_ASSERT(extractedBathroomDto1->location == "99, -99");
+    OATPP_ASSERT(extractedBathroomDto1->gender == "m");
+    OATPP_ASSERT(extractedBathroomDto1->stallCount == 99);
+    OATPP_ASSERT(extractedBathroomDto1->urinalCount == 88);
 
-    // OATPP_ASSERT(extractedBathroomDto1->building == "Test_Building");
-    // //OATPP_ASSERT(extractedBathroomDto1->id == 1);
-    // OATPP_ASSERT(extractedBathroomDto1->floor == 1);
-    // OATPP_ASSERT(extractedBathroomDto1->location == "99, -99");
-    // OATPP_ASSERT(extractedBathroomDto1->gender == "m");
-    // OATPP_ASSERT(extractedBathroomDto1->stallCount == 99);
-    // OATPP_ASSERT(extractedBathroomDto1->urinalCount == 88);
-    // //OATPP_ASSERT(extractedBathroomDto1->ratings == "");
-
-    // OATPP_ASSERT(extractedBathroomDto2->building == "Test_Building");
-    // //OATPP_ASSERT(extractedBathroomDto2->id == 2);
-    // OATPP_ASSERT(extractedBathroomDto2->floor == 2);
-    // OATPP_ASSERT(extractedBathroomDto2->location == "100, -100");
-    // OATPP_ASSERT(extractedBathroomDto2->gender == "f");
-    // OATPP_ASSERT(extractedBathroomDto2->stallCount == 999);
-    // OATPP_ASSERT(extractedBathroomDto2->urinalCount == 0);
-    // //OATPP_ASSERT(extractedBathroomDto2->ratings == "");
+    OATPP_ASSERT(extractedBathroomDto2->building == "Test_Building");
+    OATPP_ASSERT(extractedBathroomDto2->floor == 2);
+    OATPP_ASSERT(extractedBathroomDto2->location == "100, -100");
+    OATPP_ASSERT(extractedBathroomDto2->gender == "f");
+    OATPP_ASSERT(extractedBathroomDto2->stallCount == 999);
+    OATPP_ASSERT(extractedBathroomDto2->urinalCount == 0);
 
 
     /* Test the updateBathrooms endpoint */
