@@ -15,9 +15,8 @@ class Bathroom;
 class Building{
     public:
         std::string name;
-        float longitude;
-        float latitude;
-        std::pair<float, float> location;
+        std::string longitude;
+        std::string latitude;
         std::vector<Bathroom> bathrooms;
 
 
@@ -28,11 +27,10 @@ class Building{
          * @param location longitude and latitude coordinates of building
          * @param bathrooms vector of bathrooms located inside building
         */
-        Building(std::string name, std::pair<float, float> location, std::vector<Bathroom> bathrooms){
+        Building(std::string name, std::string longitude, std::string latitude, std::vector<Bathroom> bathrooms){
             this->name = name;
-            this->location = location;
-            this->longitude = location.first;
-            this->latitude = location.second;
+            this->longitude = longitude;
+            this->latitude = latitude;
             this-> bathrooms = bathrooms;
         }
 
@@ -78,7 +76,7 @@ class Building{
         * @return string of longitude
         */
         std::string getLongitude() const { 
-            return latitude;
+            return longitude;
         }
 
         /**
@@ -105,8 +103,9 @@ class Building{
          * @return returns the vector of bathroom objects
         */
         const std::vector<Bathroom> & getBathrooms() const {
-            return this.bathrooms;
+            return this->bathrooms;
         }
+    
 };
 
 #endif /*Building_hpp*/

@@ -17,9 +17,8 @@ class Bathroom{
     public:
         Building * building;
         int floor;
-        float longitude;
-        float latitude;
-        std::pair<float, float> location;
+        std::string longitude;
+        std::string latitude;
         char gender;
         int stallCount;
         int urinalCount;
@@ -42,7 +41,6 @@ class Bathroom{
             this->id = id;
             this->building = building;
             this->floor = floor;
-            this->location = location;
             this->longitude = longitude;
             this->latitude = latitude;
             this->gender = gender;
@@ -125,7 +123,7 @@ class Bathroom{
         * @return string of longitude
         */
         std::string getLongitude() const { 
-            return latitude;
+            return longitude;
         }
 
         /**
