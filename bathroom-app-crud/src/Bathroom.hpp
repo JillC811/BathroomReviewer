@@ -76,6 +76,10 @@ class Bathroom{
         Building * getBuilding() const { 
             return building; 
         }
+        /**setter for building
+         * 
+         * @param building
+        */
         void setBuilding(Building * building) { 
             this->building = building; 
         }
@@ -87,6 +91,10 @@ class Bathroom{
         int getFloor() const { 
             return floor;
         }
+        /**setter for floor
+         * 
+         * @param int floor
+        */
         void setFloor(int floor) {
             this->floor = floor; 
         }
@@ -98,6 +106,11 @@ class Bathroom{
         std::pair<float, float> getLocation() const { 
             return location;
         }
+
+        /**setter for location
+         * 
+         * @param float pair location
+        */
         void setLocation(std::pair<float,float> location) {
             this->longitude = location.first;
             this->latitude = location.second;
@@ -110,39 +123,55 @@ class Bathroom{
         char getGender() const {
             return gender; 
         }
+        /**setter for gender
+         * 
+         * @param char gender
+        */
         void setGender(char gender) {
             this->gender = gender;
         }
         /*
-        * getter for id
+        * getter for stallcount
         *
-        * @return id of bathroom
+        * @return # of stalls of bathroom
         */
         int getStallCount() const {
             return stallCount;
         }
+        /**setter for stallcount
+         * 
+         * @param int # of stalls
+        */
         void setStallCount(int stallCount) {
             this->stallCount = stallCount;
         }
         /*
-        * getter for id
+        * getter for urinal count
         *
-        * @return id of bathroom
+        * @return # of urinals
         */
         int getUrinalCount() const {
             return urinalCount;
         }
+        /**setter for urinalcount
+         * 
+         * @param int # of urinals in bathroom
+        */
         void setUrinalCount(int urinalCount) {
             this->urinalCount = urinalCount;
         }
         /*
-        * getter for id
+        * getter for ratings
         *
-        * @return id of bathroom
+        * @return int vector of ratings in bathroom
         */
         std::vector<int> getRatings() const {
             return ratings;
         }
+        /**setter for ratings
+         * 
+         * @param vector of ratings to set
+        */
         void setRating(std::vector<int> ratings) {
             this->ratings = ratings;
         }
