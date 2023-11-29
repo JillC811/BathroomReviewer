@@ -15,9 +15,6 @@ import WcIcon from '@mui/icons-material/Wc';
 import SearchIcon from "@mui/icons-material/Search";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-
-import bathrooms from "../pages/Home/data/bathrooms.json"
-import ratings from "../pages/Home/data/ratings.json"
 import './ListView.css'
 
 import { useEffect } from 'react';
@@ -42,7 +39,7 @@ function ListView() {
     const query = e.target.value;
     setSearchQuery(query);
     
-    const filteredData = bathrooms.filter((bathroom) => bathroom.building.toLowerCase().includes(query.toLowerCase()));
+    const filteredData = bathrooms.filter((bathroom) => bathroom.building.replace('_', ' ').toLowerCase().includes(query.toLowerCase()));
     setFilteredBathrooms(filteredData);
   };
 
@@ -132,11 +129,10 @@ function ListView() {
                   {(bathroom.gender === 'm') ? <ManIcon fontSize="large"/> : (bathroom.gender === 'f') ? <WomanIcon fontSize="large"/> : <WcIcon fontSize="large"/>}
                 </ListItemAvatar>
                 <ListItemText
-                  primary={<h2>{bathroom.building}</h2>}
+                  primary={<h2>{bathroom.building.replace('_', ' ')}</h2>}
                   secondary={
                     <React.Fragment>
                       <p>{`Floor: ${bathroom.floor}`}</p>
-                      <p>{`Location: ${bathroom.latitude} , ${bathroom.longitude}`}</p>
                       <p>{`Gender: ${bathroom.gender === 'm' ? 'Male' : bathroom.gender === 'f' ? "Female" : 'All Gender'}`}</p>
                       {bathroom.gender === "Male" && `Urinals: ${bathroom.urinalCount}`}
                       <p>{`Stalls: ${bathroom.stallCount}`}</p>

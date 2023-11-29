@@ -1,14 +1,14 @@
 import React from "react";
-import { Map } from "../../components/Map/MapComponent.js";
 
 import Header from '../../components/Header.js'
+import { MapComponent } from "../../components/Map/MapComponent.js";
 
 function HomePage() {
   return (
   
     <div>
       <Header />
-      <Map />
+      <MapComponent />
     </div>
 
   )

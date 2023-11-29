@@ -1,29 +1,18 @@
 
 import React, {useState} from 'react'
-import { Link } from 'react-router-dom'
+import { Link as RouterLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react'
 
-import {List, ListItem, ListItemText, ListItemAvatar} from '@mui/material';
+import {List, ListItem, ListItemText} from '@mui/material';
 import {Button, Divider, TextField} from '@mui/material'
-
-//Ratings dropdown
 import Rating from '@mui/material/Rating';
-
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-
-import { useEffect } from 'react';
-
-import {
-  Link as RouterLink,
-  LinkProps as RouterLinkProps,
-  MemoryRouter,
-} from 'react-router-dom';
-import { StaticRouter } from 'react-router-dom/server';
-import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 
 import './NewRating.css';
 
@@ -160,11 +149,7 @@ function RatingList(props) {
         <>
         <Button component={LinkBehavior} to={{pathname: "/new-rating"}} state={{bathroom: Number(bathroom.id)}} variant="contained" color="primary"> Add Review </Button>
         <List>
-        {ratings.length === 0 &&
-            <ListItem>
-            This bathroom has no reviews yet.
-            </ListItem>
-        }
+
         {ratings.map((rating) => {
             if(rating.bathroomId == bathroom.id){
 
@@ -222,12 +207,14 @@ function RatingList(props) {
                                         name="overall rating"
                                         defaultValue={rating.overallRating}
                                         value={inputs.overallRating}
+                                        onChange={handleChange}
                                     />
                                     <h4>Cleanliness: </h4>
                                     <Rating
                                         name="cleanliness"
                                         defaultValue={rating.cleanlinessRating}
                                         value={inputs.cleanlinessRating}
+                                        onChange={handleChange}
                                     />
                                 </div>
                                 <h4>Review: </h4>

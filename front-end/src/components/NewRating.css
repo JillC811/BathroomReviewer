@@ -1,6 +1,4 @@
 .flex-box{
-    display: flex;
-    flex-direction: column;
     margin: auto;
     padding: 10px;
 }

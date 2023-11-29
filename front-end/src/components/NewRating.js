@@ -73,30 +73,31 @@ function NewRating() {
     return(
         <div class="flex-box">
             <form onSubmit={handleSubmit} class="rating-form">
-                <FormControl>
-                    <FormLabel>Overall Experience Rating</FormLabel>
+                    <h4>Overall Experience Rating</h4>
                     <Rating
                         name="overallRating"
                         value={inputs.overallRating}
                         onChange={handleChange}
-                        required={true}
+                        required
                     />
-                    <FormLabel>Cleanliness Rating</FormLabel>
+                    <h4>Cleanliness Rating</h4>
                     <Rating
                         name="cleanlinessRating"
                         value={inputs.cleanlinessRating}
                         onChange={handleChange}
+                        required
                     />
-                    <FormLabel>Additional Details</FormLabel>
+                    <h4>Additional Details</h4>
                     <TextField
                         name="textReview"
                         multiline
                         rows={4}
                         value={inputs.textReview} 
                         onChange={handleChange}
+                        required
                     />
+                    <br />
                     <Button type='submit'>Submit</Button>
-                </FormControl>
             </form>
         </div>
     )
