@@ -24,7 +24,7 @@ class Bathroom{
         int urinalCount;
         std::vector<int> ratings;
 
-        /**@brief Bathroom object constructor
+        /** @brief Bathroom object constructor
          *
          * @param id: randomly assigned integer for bathroom
          * @param building: name of building bathroom is in

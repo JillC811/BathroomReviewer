@@ -8,14 +8,14 @@
 
 /**
  * @brief Bathroom Rating DTO class
- * DTO object to transfer data about buildings from database
- * @author Jill
  * 
  * @param id: review id 
  * @param uploader: username of rating author
  * @param overallRating: Overall rating of bathroom from user
  * @param cleanlinessRating: Rating of how clean bathroom from user
  * @param textReview: Review of bathroom written by user, limited to number of characters
+ * 
+ * @authors Justin Tsang, Elizabeth Shiu, Joey Gendy, Colton Undseth, Jill Chong
 **/
 class RatingDto : public oatpp::DTO {
   

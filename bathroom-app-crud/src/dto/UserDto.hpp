@@ -13,16 +13,15 @@
 // )
 
 /**
- * @brief user dto class
- * DTO object to transfer data about user from database
- * @author Justin
+ * @brief User DTO class: Info for a user of the app
  * 
+ * @param id: user identifier
+ * @param userName: user's username
+ * @param email: user's email
+ * @param password: user's password
+ * @param role: user's role (Admin or general)
  * 
- * @param id id of user in database
- * @param username username of user in database
- * @param email email of user in database
- * @param password password of user in database
- * @param role whether user is an admin or regular user
+ * @authors Justin Tsang, Elizabeth Shiu, Joey Gendy, Colton Undseth, Jill Chong
 */
 class UserDto : public oatpp::DTO {
 
