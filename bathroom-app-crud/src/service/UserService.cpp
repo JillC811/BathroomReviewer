@@ -14,7 +14,9 @@
  * 
  * Runs SQLite query to create user in database
  * 
- * dto: User DTO to be added to database
+ * @param dto: UserDTO, User DTO to be added to database
+ * 
+ * @return user added to db
 */
 oatpp::Object<UserDto> UserService::createUser(const oatpp::Object<UserDto>& dto) {
 
@@ -31,7 +33,9 @@ oatpp::Object<UserDto> UserService::createUser(const oatpp::Object<UserDto>& dto
  * 
  * Runs SQLite query to sign in user
  * 
- * dto: User login credentials
+ * @param dto: User login credentials
+ * 
+ * @return statusDTO whether signin was sucessful
 */
 
 oatpp::Object<UserDto> UserService::signIn(const oatpp::Object<signInDto>& dto) {
@@ -47,8 +51,8 @@ oatpp::Object<UserDto> UserService::signIn(const oatpp::Object<signInDto>& dto) 
  * 
  * Runs SQLite query to fetch all users of the app
  * 
- * offset: query offset
- * limit: results limit
+ * @param offset: query offset
+ * @param limit: results limit
 */
 oatpp::Object<PageDto<oatpp::Object<UserDto>>> UserService::getAllUsers(const oatpp::UInt32& offset, const oatpp::UInt32& limit) {
 

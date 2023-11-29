@@ -36,6 +36,10 @@ public:
   /////////////////
 
   ENDPOINT_INFO(createBathroom)
+  /**
+ * Endpoint information for creating bathroom into database
+ * 
+ */
   {
     info->summary = "Create new bathroom";
 
@@ -45,6 +49,9 @@ public:
     info->addResponse<Object<BathroomDto>>(Status::CODE_404, "application/json");
     info->addResponse<Object<BathroomDto>>(Status::CODE_500, "application/json");
   }
+  /**
+ * Endpoint for creating bathroom into database
+ */
   ENDPOINT("POST", "bathrooms", createBathroom,
            BODY_DTO(Object<BathroomDto>, bathroomDto))
   {

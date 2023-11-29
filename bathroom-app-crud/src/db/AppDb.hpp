@@ -8,50 +8,87 @@
 #include "dto/RatingDto.hpp"
 #include "oatpp-sqlite/orm.hpp"
 
-#include OATPP_CODEGEN_BEGIN(DbClient) //<- Begin Codegen
-
+#include OATPP_CODEGEN_BEGIN(DbClient) 
+/*
+*Main app client for interfacing with data in database, contains all the queries for the database
+*/
+class AppDb : public oatpp::orm::DbClient
+{
 /**
  * AppDb client definitions.
  */
-class AppDb : public oatpp::orm::DbClient
-{
 public:
       AppDb(const std::shared_ptr<oatpp::orm::Executor> &executor)
           : oatpp::orm::DbClient(executor)
       {
-            // initialize db with schema
             oatpp::orm::SchemaMigration migration(executor);
             migration.addFile(1 /* start from version 1 */, DATABASE_MIGRATIONS "/001_init.sql");
-            // TODO - Add more migrations here.
-            migration.migrate(); // <-- run migrations. This guy will throw on error.
+
+            migration.migrate(); 
 
             auto version = executor->getSchemaVersion();
             OATPP_LOGD("AppDb", "Migration - OK. Version=%ld.", version);
       }
 
-      ////////////////////////////
-      ///// Users
-      /////////////////
 
+      /**
+      * createUser Query, inserts new user into database
+      * 
+      * @param username User's username
+      * @param email User's email
+      * @param password User's account password
+      * @param role Whether user is a admin or a regular user
+      */
       QUERY(createUser,
             "INSERT INTO AppUser"
             "(username, email, password, role) VALUES "
             "(:user.username, :user.email, :user.password, :user.role);",
-            PARAM(oatpp::Object<UserDto>, user))
+            PARAM(oatpp::Object<UserDto>, user)
+            )
+
+      /**
+      * signIn Query, checks for user's username and password
+      * 
+      * @param username User's username
+      * @param password User's account password
+      */
       QUERY(signIn,
             "SELECT * FROM AppUser WHERE username=:username AND password=:password;",
             PARAM(oatpp::String, username),
             PARAM(oatpp::String, password)
-      )
+            )
+
+      /**
+      * getAllUsers Query, gets all users in database within a range
+      * 
+      * @param offset how many users to skip
+      * @param limit how many users to return
+      */
       QUERY(getAllUsers,
             "SELECT * FROM AppUser LIMIT :limit OFFSET :offset;",
             PARAM(oatpp::UInt32, offset),
-            PARAM(oatpp::UInt32, limit))
-            
+            PARAM(oatpp::UInt32, limit)
+            )
+
+      /**
+      * getUserById query: gets user from id
+      * 
+      * @param id User's id
+      */
       QUERY(getUserById,
             "SELECT * FROM AppUser WHERE id=:id;",
-            PARAM(oatpp::Int32, id))
-
+            PARAM(oatpp::Int32, id)
+            )
+      //
+      /**
+      * updateUser query, updates user using their id
+      * 
+      * @param username User's username
+      * @param email User's email
+      * @param password User's account password
+      * @param role Whether user is a admin or a regular user
+      * @param id user's id
+      */
       QUERY(updateUser,
             "UPDATE AppUser "
             "SET "
@@ -61,37 +98,85 @@ public:
             " role=:user.role "
             "WHERE "
             " id=:user.id;",
-            PARAM(oatpp::Object<UserDto>, user))
-
+            PARAM(oatpp::Object<UserDto>, user)
+            )
+      
+      /**
+      * deleteUserById query: removes user from database
+      * 
+      * @param id id of User to be deleted
+      */    
       QUERY(deleteUserById,
             "DELETE FROM AppUser WHERE id=:id;",
-            PARAM(oatpp::Int32, id))
+            PARAM(oatpp::Int32, id)
+            )
 
+    
 
       ////////////////////////////
-      ///// Bathrooms
+      ///// Bathroom
       /////////////////
 
-      //this create bathroom method does not add a rating meaning trying to get a rating doesnt work after creating a bathroom :bathroom.ratings
+
+      /**
+      * createBathroom Query, inserts new user into database
+      * 
+      * @param building Building where bathroom is located
+      * @param flood Which floor of Building bathroom is on
+      * @param latitude exact latitude of bathroom
+      * @param longitude exact longitude of bathroom
+      * @param gender gender of bathroom
+      * @param stallCount # of stalls in bathroom
+      * @param urinalCount # of urinals in bathroom
+      */
       QUERY(createBathroom,
             "INSERT INTO Bathroom"
             "(building, floor, latitude, longitude, gender, stallCount, urinalCount) VALUES "
             "(:bathroom.building, :bathroom.floor, :bathroom.latitude, :bathroom.longitude, :bathroom.gender, :bathroom.stallCount, :bathroom.urinalCount);",
             PARAM(oatpp::Object<BathroomDto>, bathroom))
-
+      
+      /**
+      * getAllBathrooms Query, gets all bathrooms in database within a range
+      * 
+      * @param offset how many users to skip
+      * @param limit how many users to return
+      */
       QUERY(getAllBathrooms,
             "SELECT * FROM Bathroom LIMIT :limit OFFSET :offset;",
             PARAM(oatpp::UInt32, offset),
             PARAM(oatpp::UInt32, limit))
-
+      
+      /**
+      * getBathroomById Query, gets bathroom by id in database
+      * 
+      * @param building Building where bathroom is located
+      */
       QUERY(getBathroomById,
             "SELECT * FROM Bathroom WHERE id=:id;",
             PARAM(oatpp::Int32, id))
-
+      
+      /**
+      * getBathroomByBuilding query, gets list of bathrooms by building
+      * 
+      * @param building Building where bathroom is located
+      */
       QUERY(getBathroomByBuilding,
             "SELECT * FROM Bathroom WHERE building=:building;",
             PARAM(oatpp::String, building))
       
+      /**
+      * updateBathroom Query, updates bathroom info in databse
+      * 
+      * @param building Building where bathroom is located
+      * @param flood Which floor of Building bathroom is on
+      * @param latitude exact latitude of bathroom
+      * @param longitude exact longitude of bathroom
+      * @param gender gender of bathroom
+      * @param stallCount # of stalls in bathroom
+      * @param urinalCount # of urinals in bathroom
+      * 
+      * @param id id of bathroom in database
+      */
       QUERY(updateBathroom,
             "UPDATE Bathroom "
             "SET "
@@ -106,7 +191,12 @@ public:
             "WHERE "
             " id=:bathroom.id;",
             PARAM(oatpp::Object<BathroomDto>, bathroom))
-
+      
+      /**
+      * deleteBathroom Query, deletes bathroom from database
+      * 
+      * @param id id of bathroom to be deleted
+      */
       QUERY(deleteBathroom,
             "DELETE FROM Bathroom WHERE id=:id;",
             PARAM(oatpp::Int32, id))
@@ -130,8 +220,6 @@ public:
             "SELECT * FROM Building WHERE name=:name;",
             PARAM(oatpp::String, name))
 
-      // NOTE:
-      // Update Building currently updating by name, not by id. Consider if we want this or not.
       QUERY(updateBuilding,
             "UPDATE Building "
             "SET "
@@ -142,8 +230,6 @@ public:
             " name=:building.name;",
             PARAM(oatpp::Object<BuildingDto>, building))
 
-      // NOTE:
-      // Delete Building currently deleting by name, not by id. Consider if we want this or not.
       QUERY(deleteBuilding,
             "DELETE FROM Building WHERE name=:name;",
             PARAM(oatpp::String, name))
