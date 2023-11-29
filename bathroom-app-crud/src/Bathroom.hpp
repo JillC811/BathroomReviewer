@@ -7,7 +7,7 @@
 class Building;
 class Rating;
 /**
- * bathroom object class
+ * @brief bathroom object class
 */
 class Bathroom{
     private:
@@ -23,16 +23,16 @@ class Bathroom{
         int urinalCount;
         std::vector<int> ratings;
 
-        /**Bathroom object constructor
+        /**@brief Bathroom object constructor
          *
-         * @param Int id: randomly assigned integer for bathroom
-         * @param Building building: name of building bathroom is in
-         * @param Int floor: floor number bathroom is on
-         * @param pair<float,float> location: latitude and longitude coordinates of bathroom
-         * @param Char gender M for male, F for female, B for both
-         * @param Int # of stalls in bathroom
-         * @param Int urinalCount: # of urinals in bathroom
-         * @param vector<int> ratings: list of user ratings out of 5.
+         * @param id: randomly assigned integer for bathroom
+         * @param building: name of building bathroom is in
+         * @param floor: floor number bathroom is on
+         * @param <float,float> location: latitude and longitude coordinates of bathroom
+         * @param gender M for male, F for female, B for both
+         * @param # of stalls in bathroom
+         * @param urinalCount: # of urinals in bathroom
+         * @param ratings: list of user ratings out of 5.
          * 
          * 
          */
@@ -49,8 +49,14 @@ class Bathroom{
             this->urinalCount = urinalCount;
             this->ratings = ratings;
         }
-        /**
-         * various getters and setters for bathroom attributes
+        //////////////////
+        //various getters and setters for bathroom attributes
+        //////////////////
+
+        /*
+        * getter for id
+        *
+        * @return id of bathroom
         */
         int getID() const { 
             return id; 
@@ -62,50 +68,78 @@ class Bathroom{
         void setID(int id) { 
             this->id = id; 
         }
-
+        /*
+        * getter for building
+        *
+        * @return building object of bathroom
+        */
         Building * getBuilding() const { 
             return building; 
         }
         void setBuilding(Building * building) { 
             this->building = building; 
         }
-
+        /*
+        * getter for bathroom floor
+        *
+        * @return floor
+        */
         int getFloor() const { 
             return floor;
         }
         void setFloor(int floor) {
             this->floor = floor; 
         }
-
+        /*
+        * getter for bathroom location
+        *
+        * @return float pair of longitutde and latitude
+        */
         std::pair<float, float> getLocation() const { 
             return location;
         }
-        void setLocation(std::pair<float,float> loaction) {
-            this->longitude = loaction.first;
-            this->latitude = loaction.second;
+        void setLocation(std::pair<float,float> location) {
+            this->longitude = location.first;
+            this->latitude = location.second;
         }
-
+        /*
+        * getter for gender
+        *
+        * @return gender of bathroom
+        */
         char getGender() const {
             return gender; 
         }
         void setGender(char gender) {
             this->gender = gender;
         }
-
+        /*
+        * getter for id
+        *
+        * @return id of bathroom
+        */
         int getStallCount() const {
             return stallCount;
         }
         void setStallCount(int stallCount) {
             this->stallCount = stallCount;
         }
-
+        /*
+        * getter for id
+        *
+        * @return id of bathroom
+        */
         int getUrinalCount() const {
             return urinalCount;
         }
         void setUrinalCount(int urinalCount) {
             this->urinalCount = urinalCount;
         }
-
+        /*
+        * getter for id
+        *
+        * @return id of bathroom
+        */
         std::vector<int> getRatings() const {
             return ratings;
         }
