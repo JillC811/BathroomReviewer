@@ -23,7 +23,7 @@ public:
   }
 
 private:
-  RatingService m_ratingService; // Create user service.
+  RatingService m_ratingService; // Create rating service.
 public:
   static std::shared_ptr<RatingController> createShared(
       OATPP_COMPONENT(std::shared_ptr<ObjectMapper>, objectMapper) // Inject objectMapper component here as default parameter
