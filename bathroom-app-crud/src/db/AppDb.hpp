@@ -168,15 +168,18 @@ public:
             PARAM(oatpp::Int32, id))
 
       QUERY(getRatingByUser,
-            "SELECT * FROM Rating WHERE uploader=:uploader;",
-            PARAM(oatpp::String, uploader))
+            "SELECT * FROM rating WHERE uploader=:uploader LIMIT :limit OFFSET :offset;",
+            PARAM(oatpp::String, uploader),
+            PARAM(oatpp::UInt32, offset),
+            PARAM(oatpp::UInt32, limit)
+            )
 
       QUERY(getRatingByBathroom,
             "SELECT * FROM Rating WHERE bathroomId=:bathroomId;",
             PARAM(oatpp::Int32, bathroomId))
       
       QUERY(updateRating,
-            "UPDATE Rating"
+            "UPDATE rating "
             "SET "
             " uploader=:rating.uploader, "
             " bathroomId=:rating.bathroomId, "

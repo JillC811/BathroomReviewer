@@ -76,6 +76,9 @@ export default function LoginPage() {
             const u = await res.json()
             console.warn(u)
             dispatch(setUser(u));
+        }).catch((err)=>{
+            console.log(err)
+            alert("Invalid username or password")
         });
 
 

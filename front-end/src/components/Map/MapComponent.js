@@ -6,25 +6,22 @@ import bathrooms from "../../pages/Home/data/bathrooms.json";
 import bathroomIcon from "../../assets/restroom-sign-svgrepo-com-white.svg";
 import currentLocationIcon from "../../assets/current-location.svg";
 
+import unisexBathroomIcon from "../../assets/restroom-sign-svgrepo-com-white.svg";
+import menBathroomIcon from "../../assets/Pictograms-nps-accommodations-mens-restroom.svg";
+import womenBathroomIcon from "../../assets/Pictograms-nps-accommodations-womens_restroom.svg"
 // View Bathroom Drawer
 import Drawer from "@mui/material/Drawer";
 import { Button, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
 // Rating in bathroom drawer
-import ratings from "../../pages/Home/data/ratings.json";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import Divider from "@mui/material/Divider";
-import ListItemText from "@mui/material/ListItemText";
-import Rating from "@mui/material/Rating";
-import { useEffect } from "react";
 import {
   Link as RouterLink,
   LinkProps as RouterLinkProps,
   MemoryRouter,
 } from 'react-router-dom';
-export class Map extends React.Component {
+import RatingList from "../RatingList";
+export class MapComponent extends React.Component {
 
   constructor(props) {
     super(props);
@@ -80,7 +77,10 @@ export class Map extends React.Component {
           Connection: "keep-alive",
         },
       }
-    );
+    ).catch((err)=>{
+      console.log(err)
+      alert("error fetching data")
+    });
     const data = await res.json();
     const res2 = await fetch(
       "http://localhost:8000/buildings/offset/0/limit/50",
@@ -93,7 +93,10 @@ export class Map extends React.Component {
           Connection: "keep-alive",
         },
       }
-    );
+    ).catch((err)=>{
+      console.log(err)
+      alert("error fetching data")
+    });
     const data2 = await res2.json();
       const res3 = await fetch(
       "http://localhost:8000/ratings/offset/0/limit/50",
@@ -106,7 +109,10 @@ export class Map extends React.Component {
           Connection: "keep-alive",
         },
       }
-    );
+    ).catch((err)=>{
+      console.log(err)
+      alert("error fetching data")
+    });
     const data3 = await res3.json();
     
 
@@ -168,7 +174,11 @@ export class Map extends React.Component {
                   lat: lat,
                   lng: lng,
                 }}
-                icon={bathroomIcon}
+                icon={
+                  (bathroom.gender === 'm') ? menBathroomIcon 
+                    : (bathroom.gender === 'f') ? womenBathroomIcon 
+                    : unisexBathroomIcon
+                  }
                 onClick={() => {
                   this.setSelectedBathroom(bathroom);
                   if (!this.state.drawerOpen) {
@@ -229,7 +239,6 @@ export class Map extends React.Component {
               <br />
               <h2>Information</h2>
               <p>{`Floor: ${this.state.selectedBathroom.floor}`}</p>
-              <p>{`Location: ${this.state.selectedBathroom.longitude}, ${this.state.selectedBathroom.latitude}`}</p>
               <p>{`Gender: ${
                 this.state.selectedBathroom.gender === "m"
                   ? "Male"
@@ -237,60 +246,14 @@ export class Map extends React.Component {
                   ? "Female"
                   : "All Gender"
               }`}</p>
-              {this.state.selectedBathroom.gender === "Male" &&
+              {this.state.selectedBathroom.gender === "m" &&
                 `Urinals: ${this.state.selectedBathroom.urinalCount}`}
               <p>{`Stalls: ${this.state.selectedBathroom.stallCount}`}</p>
               <br />
               <br />
               <h2>Reviews</h2>
               <br />
-              <Button component={this.LinkBehavior} to={{pathname: "/new-rating"}} state={{bathroom: Number(this.state.selectedBathroom.id)}}>
-                {" "}
-                Add Review{" "}
-              </Button>
-              <List>
-                {this.state.ratings.length === 0 && (
-                  <ListItem>This bathroom has no reviews yet.</ListItem>
-                )}
-                {this.state.ratings.map((rating) => {
-                  if (this.state.selectedBathroom.id == rating.bathroomId) {
-                    return (
-                      <>
-                        <ListItem alignItems="flex-start">
-                          <ListItemText
-                            primary={
-                              <React.Fragment>
-                              <h4>{rating.uploader}</h4>
-                              <Rating
-                                name="overall rating"
-                                value={rating.overallRating}
-                                readOnly
-                              />
-                              </React.Fragment>
-                            }
-                            secondary={
-                              <React.Fragment>
-                                <div>
-                                  <h4>Cleanliness: </h4>
-                                  <Rating
-                                    name="cleanliness"
-                                    value={rating.cleanlinessRating}
-                                    readOnly
-                                    size="small"
-                                  />
-                                </div>
-                                <h4>Review: </h4>
-                                <p>{rating.textReview}</p>
-                              </React.Fragment>
-                            }
-                          />
-                        </ListItem>
-                        <Divider variant="middle" component="li" />
-                      </>
-                    );
-                  }
-                })}
-              </List>
+              <RatingList bathroom={this.state.selectedBathroom} />
             </div>
           </Drawer>
         )}

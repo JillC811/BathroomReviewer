@@ -129,3 +129,26 @@ oatpp::Object<StatusDto> RatingService::deleteRating(const oatpp::Int32& ratingI
   status->message = "Rating was successfully deleted";
   return status;
 }
+
+/**
+ * getRatingsByUser method
+ * 
+ * Runs SQLite query to fetch all ratings by a given user
+ * 
+ * userName: name of user to be searched
+ * offset: query offset
+ * limit: results limit
+*/
+  oatpp::Object<PageDto<oatpp::Object<RatingDto>>> RatingService::getRatingsByUser(const oatpp::String userName, const oatpp::UInt32& offset, const oatpp::UInt32& limit){
+    auto dbResult = m_database->getRatingByUser(userName, offset, limit);
+    OATPP_ASSERT_HTTP(dbResult->isSuccess(), Status::CODE_500, dbResult->getErrorMessage());
+    auto items = dbResult->fetch<oatpp::Vector<oatpp::Object<RatingDto>>>();
+
+    auto page = PageDto<oatpp::Object<RatingDto>>::createShared();
+    page->offset = 1;
+    page->limit = limit;
+    page->count = items->size();
+    page->items = items;
+
+    return page;
+  }
