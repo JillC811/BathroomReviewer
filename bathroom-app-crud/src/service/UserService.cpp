@@ -33,7 +33,7 @@ oatpp::Object<UserDto> UserService::createUser(const oatpp::Object<UserDto>& dto
  * 
  * Runs SQLite query to sign in user
  * 
- * @param dto: User login credentials
+ * @param dto signinDTO, user's credentials
  * 
  * @return statusDTO whether signin was sucessful
 */
@@ -51,8 +51,10 @@ oatpp::Object<UserDto> UserService::signIn(const oatpp::Object<signInDto>& dto) 
  * 
  * Runs SQLite query to fetch all users of the app
  * 
- * @param offset: query offset
- * @param limit: results limit
+ * @param offset Int, query offset
+ * @param limit Int,  results limit
+ * 
+ * @return users
 */
 oatpp::Object<PageDto<oatpp::Object<UserDto>>> UserService::getAllUsers(const oatpp::UInt32& offset, const oatpp::UInt32& limit) {
 
@@ -78,7 +80,9 @@ oatpp::Object<PageDto<oatpp::Object<UserDto>>> UserService::getAllUsers(const oa
  * 
  * Runs SQLite query to fetch a specific user by id.
  * 
- * id: ID of requested user
+ * @param id Int, ID of requested user
+ * 
+ * @return dto of requested user or status if not found
 */
 oatpp::Object<UserDto> UserService::getUserById(const oatpp::Int32& id, const oatpp::provider::ResourceHandle<oatpp::orm::Connection>& connection) {
 
@@ -98,7 +102,9 @@ oatpp::Object<UserDto> UserService::getUserById(const oatpp::Int32& id, const oa
  * 
  * Runs SQLite query to update a given user
  * 
- * dto: User DTO to be updated in database
+ * @param dto UserDTO to be updated in database
+ * 
+ * @return updated user in db
 */
 oatpp::Object<UserDto> UserService::updateUser(const oatpp::Object<UserDto>& dto) {
 
@@ -113,7 +119,9 @@ oatpp::Object<UserDto> UserService::updateUser(const oatpp::Object<UserDto>& dto
  * 
  * Runs SQLite query to delete a given user
  * 
- * userId: ID of user to be deleted from database
+ * @param userId ID of user to be deleted from database
+ * 
+ * @param 
 */
 oatpp::Object<StatusDto> UserService::deleteUserById(const oatpp::Int32& userId) {
   auto dbResult = m_database->deleteUserById(userId);
