@@ -3,13 +3,13 @@
 
 
 /**
- * @brief Building Service
+ * @brief Building Service. 
  * 
  * Contains Building CRUD logic.
 */
 
 /**
- * @brief createBuilding method
+ * @brief createBuilding method. 
  * 
  * Runs SQLite query to create building in database
  * 

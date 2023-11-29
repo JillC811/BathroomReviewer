@@ -11,7 +11,9 @@
 
 
 /**
- * Bathroom Service class, contains bathroom CRUD database operations
+ * @brief Bathroom Service class
+ * 
+ * contains bathroom CRUD database operations
 */
 
 class BathroomService {

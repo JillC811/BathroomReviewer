@@ -1,3 +1,10 @@
+/**
+ * @brief header file for user tests
+ * 
+ * @authors Justin Tsang, Elizabeth Shiu, Joey Gendy, Colton Undseth, Jill Chong
+ * 
+*/
+
 #ifndef TestUserClient_hpp
 #define TestUserClient_hpp
 

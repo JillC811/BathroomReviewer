@@ -11,7 +11,9 @@
 
 
 /**
- * Building Service class, contains building CRUD database operations
+ * @brief Building Service class
+ * 
+ * contains building CRUD database operations
 */
 
 class BuildingService {

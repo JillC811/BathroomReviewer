@@ -8,6 +8,8 @@ class Building;
 class Rating;
 /**
  * @brief bathroom object class
+ * 
+ * @authors Justin Tsang, Elizabeth Shiu, Joey Gendy, Colton Undseth, Jill Chong
 */
 class Bathroom{
     private:
@@ -23,27 +25,26 @@ class Bathroom{
         int urinalCount;
         std::vector<int> ratings;
 
-        /**@brief Bathroom object constructor
-         *
+        /** 
+         * @brief Bathroom object constructor
          * @param id: randomly assigned integer for bathroom
          * @param building: name of building bathroom is in
          * @param floor: floor number bathroom is on
-         * @param <float,float> location: latitude and longitude coordinates of bathroom
+         * @param longitude y coordinates of the bathroom
+         * @param latitude x coordinates of bathroom
          * @param gender M for male, F for female, B for both
-         * @param # of stalls in bathroom
-         * @param urinalCount: # of urinals in bathroom
+         * @param stallCount of stalls in bathroom
+         * @param urinalCount # of urinals in bathroom
          * @param ratings: list of user ratings out of 5.
-         * 
-         * 
          */
-        Bathroom(int id, Building* building, int floor, std::pair<float, float> location, char gender, int stallCount, int urinalCount, std::vector<int> ratings)
+        Bathroom(int id, Building* building, int floor, std::string latitude, std::string longitude , char gender, int stallCount, int urinalCount, std::vector<int> ratings)
         {
             this->id = id;
             this->building = building;
             this->floor = floor;
             this->location = location;
-            this->longitude = location.first;
-            this->latitude = location.second;
+            this->longitude = longitude;
+            this->latitude = latitude;
             this->gender = gender;
             this->stallCount = stallCount;
             this->urinalCount = urinalCount;
@@ -53,30 +54,32 @@ class Bathroom{
         //various getters and setters for bathroom attributes
         //////////////////
 
-        /*
-        * getter for id
+        /**
+        * @brief getter for id
         *
         * @return id of bathroom
         */
         int getID() const { 
             return id; 
         }
-        /**setter for id
+        /**
+         * @brief setter for id
          * 
          * @param id
         */
         void setID(int id) { 
             this->id = id; 
         }
-        /*
-        * getter for building
+        /**
+        * @brief getter for building
         *
         * @return building object of bathroom
         */
         Building * getBuilding() const { 
             return building; 
         }
-        /**setter for building
+        /**
+         * @brief setter for building
          * 
          * @param building
         */
@@ -98,77 +101,100 @@ class Bathroom{
         void setFloor(int floor) {
             this->floor = floor; 
         }
-        /*
-        * getter for bathroom location
+        /**
+        * @brief getter for bathroom latitude
         *
-        * @return float pair of longitutde and latitude
+        * @return string of latitude
         */
-        std::pair<float, float> getLocation() const { 
-            return location;
+        std::string getLatitude() const { 
+            return latitude;
         }
 
-        /**setter for location
+        /**
+         * @brief setter for bathroom latitude
          * 
-         * @param float pair location
+         * @param latitude x coordinate
         */
-        void setLocation(std::pair<float,float> location) {
-            this->longitude = location.first;
-            this->latitude = location.second;
+        void setLatitude(std::string latitude) {
+            this->latitude = latitude;
         }
-        /*
-        * getter for gender
+
+        /**
+        * @brief getter for bathroom longitude
+        *
+        * @return string of longitude
+        */
+        std::string getLongitude() const { 
+            return latitude;
+        }
+
+        /**
+         * @brief setter for bathroom longitude
+         * 
+         * @param longitude y coordinate
+        */
+        void setLongitude(std::string longitude) {
+            this->longitude = longitude;
+        }
+
+        /**
+        * @brief getter for gender
         *
         * @return gender of bathroom
         */
         char getGender() const {
             return gender; 
         }
-        /**setter for gender
+        /**
+         * @brief setter for gender
          * 
          * @param char gender
         */
         void setGender(char gender) {
             this->gender = gender;
         }
-        /*
-        * getter for stallcount
+        /**
+        * @brief getter for stallcount
         *
         * @return # of stalls of bathroom
         */
         int getStallCount() const {
             return stallCount;
         }
-        /**setter for stallcount
+        /**
+         * @brief setter for stallcount
          * 
          * @param int # of stalls
         */
         void setStallCount(int stallCount) {
             this->stallCount = stallCount;
         }
-        /*
-        * getter for urinal count
+        /**
+        * @brief getter for urinal count
         *
         * @return # of urinals
         */
         int getUrinalCount() const {
             return urinalCount;
         }
-        /**setter for urinalcount
+        /**
+         * @brief setter for urinalcount
          * 
          * @param int # of urinals in bathroom
         */
         void setUrinalCount(int urinalCount) {
             this->urinalCount = urinalCount;
         }
-        /*
-        * getter for ratings
+        /**
+        * @brief getter for ratings
         *
         * @return int vector of ratings in bathroom
         */
         std::vector<int> getRatings() const {
             return ratings;
         }
-        /**setter for ratings
+        /**
+         * @brief setter for ratings
          * 
          * @param vector of ratings to set
         */

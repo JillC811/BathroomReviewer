@@ -1,3 +1,10 @@
+/**
+ * @brief defines tests for bathroom endpoints
+ * 
+ * @authors Justin Tsang, Elizabeth Shiu, Joey Gendy, Colton Undseth, Jill Chong
+ * 
+*/
+
 #include "BathroomControllerTest.hpp"
 
 #include "oatpp/web/client/HttpRequestExecutor.hpp"

@@ -9,7 +9,9 @@
 #include "oatpp/core/macro/component.hpp"
 
 /**
- * Bathroom Service class, contains bathroom CRUD database operations
+ * @brief Rating Service class
+ * 
+ * Contains bathroom CRUD database operations
 */
 
 class RatingService {

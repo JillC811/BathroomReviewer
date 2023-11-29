@@ -13,7 +13,8 @@ class BathroomDto : public oatpp::DTO {
   
   DTO_INIT(BathroomDto, DTO)
 
-  /**DTO fields
+  /**
+  * DTO fields
   *
   * id: randomly assigned integer for bathroom
   * building: name of building bathroom is in
@@ -34,7 +35,7 @@ class BathroomDto : public oatpp::DTO {
   DTO_FIELD(String, gender);
   DTO_FIELD(Int32, stallCount);
   DTO_FIELD(Int32, urinalCount);
-  DTO_FIELD(String, ratings);   //need to convert from string to vector of ints, look into oatpp enabled interpretations
+  DTO_FIELD(String, ratings);
 
 };
 

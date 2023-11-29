@@ -1,3 +1,9 @@
+/**
+ * @brief runs each of the tests defined
+ * 
+ * @authors Justin Tsang, Elizabeth Shiu, Joey Gendy, Colton Undseth, Jill Chong
+ * 
+*/
 
 #include "oatpp-test/UnitTest.hpp"
 #include "oatpp/core/base/Environment.hpp"

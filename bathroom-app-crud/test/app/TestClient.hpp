@@ -1,3 +1,10 @@
+/**
+ * @brief header file for demo tests
+ * 
+ * @authors Justin Tsang, Elizabeth Shiu, Joey Gendy, Colton Undseth, Jill Chong
+ * 
+*/
+
 #ifndef DatabaseTestClient_hpp
 #define DatabaseTestClient_hpp
 

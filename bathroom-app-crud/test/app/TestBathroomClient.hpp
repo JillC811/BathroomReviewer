@@ -1,3 +1,10 @@
+/**
+ * @brief header file for bathroom tests
+ * 
+ * @authors Justin Tsang, Elizabeth Shiu, Joey Gendy, Colton Undseth, Jill Chong
+ * 
+*/
+
 #ifndef TestBathroomClient_hpp
 #define TestBathroomClient_hpp
 

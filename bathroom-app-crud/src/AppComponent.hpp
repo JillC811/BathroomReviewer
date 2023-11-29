@@ -1,4 +1,3 @@
-
 #ifndef AppComponent_hpp
 #define AppComponent_hpp
 
@@ -17,10 +16,15 @@
 
 #include "oatpp/web/server/interceptor/AllowCorsGlobal.hpp"
 
+
 /**
- *  Class which creates and holds Application components and registers components in oatpp::base::Environment
- *  Order of components initialization is from top to bottom
- */
+ * @brief Class which creates and holds Application components and registers components in oatpp::base::Environment 
+ * 
+ * Order of components initialization is from top to bottom 
+ * 
+ * @authors Justin Tsang, Elizabeth Shiu, Joey Gendy, Colton Undseth, Jill Chong
+ * 
+*/
 class AppComponent {
 public:
   

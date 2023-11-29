@@ -1,3 +1,10 @@
+/**
+ * @brief header file for building tests
+ * 
+ * @authors Justin Tsang, Elizabeth Shiu, Joey Gendy, Colton Undseth, Jill Chong
+ * 
+*/
+
 #ifndef TestBuildingClient_hpp
 #define TestBuildingClient_hpp
 

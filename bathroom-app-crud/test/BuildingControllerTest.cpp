@@ -1,3 +1,10 @@
+/**
+ * @brief defines tests for building endpoints
+ * 
+ * @authors Justin Tsang, Elizabeth Shiu, Joey Gendy, Colton Undseth, Jill Chong
+ * 
+*/
+
 #include "BuildingControllerTest.hpp"
 
 #include "oatpp/web/client/HttpRequestExecutor.hpp"

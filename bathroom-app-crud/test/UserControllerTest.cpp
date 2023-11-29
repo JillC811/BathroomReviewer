@@ -1,3 +1,10 @@
+/**
+ * @brief defines tests for user endpoints
+ * 
+ * @authors Justin Tsang, Elizabeth Shiu, Joey Gendy, Colton Undseth, Jill Chong
+ * 
+*/
+
 #include "UserControllerTest.hpp"
 
 #include "oatpp/web/client/HttpRequestExecutor.hpp"

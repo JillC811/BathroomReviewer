@@ -1,3 +1,11 @@
+/**
+ * @brief The main method and the run configurations are set in this section 
+ * 
+ * This is where the app is run from and where the environment gets created
+ * 
+ * @authors Justin Tsang, Elizabeth Shiu, Joey Gendy, Colton Undseth, Jill Chong
+ * 
+*/
 
 #include "AppComponent.hpp"
 #include "Bathroom.hpp"
@@ -16,6 +24,11 @@
 
 #include <iostream>
 
+
+/**
+ * @brief Gets endpoints and sets run configurations
+ * 
+*/
 void run() {
   
   AppComponent components; // Create scope Environment components
@@ -55,7 +68,7 @@ void run() {
 }
 
 /**
- *  main
+ * @brief main method that runs app and distroys app when terminated
  */
 int main(int argc, const char * argv[]) {
 

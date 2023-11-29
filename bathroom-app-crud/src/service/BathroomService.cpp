@@ -2,7 +2,9 @@
 #include "BathroomService.hpp"
 
 /**
- * @brief Bathroom Service. Contains bathroom CRUD logic.
+ * @brief Bathroom Service
+ * 
+ * Contains bathroom CRUD logic.
 */
 
 

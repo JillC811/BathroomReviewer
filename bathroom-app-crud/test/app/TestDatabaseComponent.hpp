@@ -1,4 +1,9 @@
-
+/**
+ * @brief configurations for test database components
+ * 
+ * @authors Justin Tsang, Elizabeth Shiu, Joey Gendy, Colton Undseth, Jill Chong
+ * 
+*/
 #ifndef TEST_DATABASECOMPONENT_HPP
 #define TEST_DATABASECOMPONENT_HPP
 

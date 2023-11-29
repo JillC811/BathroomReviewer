@@ -12,7 +12,9 @@
 
 
 /**
- * User Service class, contains user CRUD database operations
+ * @brief User Service class
+ * 
+ * Contains user CRUD database operations
 */
 
 class UserService {

@@ -1,9 +1,15 @@
-
 #ifndef CRUD_DATABASECOMPONENT_HPP
 #define CRUD_DATABASECOMPONENT_HPP
 
 #include "db/AppDb.hpp"
 
+
+/**
+ * @brief creates connections for database to operate properly
+ * 
+ * @authors Justin Tsang, Elizabeth Shiu, Joey Gendy, Colton Undseth, Jill Chong
+ * 
+*/
 class DatabaseComponent {
 public:
     

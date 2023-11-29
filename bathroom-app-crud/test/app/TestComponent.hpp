@@ -1,3 +1,10 @@
+/**
+ * @brief configurations for test components
+ * 
+ * @authors Justin Tsang, Elizabeth Shiu, Joey Gendy, Colton Undseth, Jill Chong
+ * 
+*/
+
 #ifndef TestComponent_hpp
 #define TestComponent_hpp
 
