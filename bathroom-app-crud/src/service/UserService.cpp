@@ -119,9 +119,9 @@ oatpp::Object<UserDto> UserService::updateUser(const oatpp::Object<UserDto>& dto
  * 
  * Runs SQLite query to delete a given user
  * 
- * @param userId ID of user to be deleted from database
+ * @param userId Int,ID of user to be deleted from database
  * 
- * @param 
+ * @return status of deletion 
 */
 oatpp::Object<StatusDto> UserService::deleteUserById(const oatpp::Int32& userId) {
   auto dbResult = m_database->deleteUserById(userId);
