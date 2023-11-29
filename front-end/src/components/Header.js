@@ -19,10 +19,10 @@ function Header() {
   }
 
   return (
-      <div style={{display: 'block'}}>
-        <h1>Flushable</h1>
+      <div style={{display: 'block', paddingLeft: "30px", paddingTop: "10px"}}>
+        <h1><strong>Flushable</strong></h1>
         <div style={{display: 'flex', flexWrap: 'wrap'}}>
-          <Button component={Link} to="/home"> Map View </Button>
+          <Button component={Link} to="/home" variant="text"> Map View </Button>
           <Button component={Link} to="/list">List View</Button>
           {
             user.user=== null ?
