@@ -13,7 +13,9 @@
  * 
  * Runs SQLite query to create building in database
  * 
- * dto: Building DTO to be added to database
+ * @param dto BuildingDTO to be added to database
+ * 
+ * @return dto of requested building
 */
 oatpp::Object<BuildingDto> BuildingService::createBuilding(const oatpp::Object<BuildingDto>& dto) {
 
@@ -29,8 +31,10 @@ oatpp::Object<BuildingDto> BuildingService::createBuilding(const oatpp::Object<B
  * 
  * Runs SQLite fetch all buildings logged in app
  * 
- * offset: query offset
- * limit: results limit
+ * @param offset Int, query offset
+ * @param limit Int, results limit
+ * 
+ * @return PageDTO containing buildingDTO
 */
 oatpp::Object<PageDto<oatpp::Object<BuildingDto>>> BuildingService::getAllBuildings(const oatpp::UInt32& offset, const oatpp::UInt32& limit) {
 
@@ -56,7 +60,9 @@ oatpp::Object<PageDto<oatpp::Object<BuildingDto>>> BuildingService::getAllBuildi
  * 
  * Runs SQLite query to fetch a specific building by name.
  * 
- * buildingName: name of requested building
+ * @param buildingName String, name of requested building
+ * 
+ * @return requested buildingDTO
 */
 oatpp::Object<BuildingDto> BuildingService::getBuildingByName(const oatpp::String& buildingName, const oatpp::provider::ResourceHandle<oatpp::orm::Connection>& connection) {
 
@@ -76,7 +82,9 @@ oatpp::Object<BuildingDto> BuildingService::getBuildingByName(const oatpp::Strin
  * 
  * Runs SQLite query to update a given building
  * 
- * dto: Building DTO to be updated in building
+ * @param dto: Building DTO to be updated in database
+ * 
+ * @return dto of updated building in database
 */
 oatpp::Object<BuildingDto> BuildingService::updateBuilding(const oatpp::Object<BuildingDto>& dto) {
 
@@ -91,7 +99,9 @@ oatpp::Object<BuildingDto> BuildingService::updateBuilding(const oatpp::Object<B
  * 
  * Runs SQLite query to delete a given building
  * 
- * buildingName: Name of building to be deleted from database
+ * @param buildingName: Name of building to be deleted from database
+ * 
+ * @return status of deletion
 */
 oatpp::Object<StatusDto> BuildingService::deleteBuilding(const oatpp::String& buildingName) {
   auto dbResult = m_database->deleteBuilding(buildingName);

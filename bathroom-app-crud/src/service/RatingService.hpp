@@ -8,11 +8,18 @@
 #include "oatpp/web/protocol/http/Http.hpp"
 #include "oatpp/core/macro/component.hpp"
 
+/**
+ * Bathroom Service class, contains bathroom CRUD database operations
+*/
+
 class RatingService {
 private:
   typedef oatpp::web::protocol::http::Status Status;
 private:
-  OATPP_COMPONENT(std::shared_ptr<AppDb>, m_database); // Inject database component
+/**
+ * Injects database component
+ */ 
+  OATPP_COMPONENT(std::shared_ptr<AppDb>, m_database); 
 public:
 
   oatpp::Object<RatingDto> createRating(const oatpp::Object<RatingDto>& dto);

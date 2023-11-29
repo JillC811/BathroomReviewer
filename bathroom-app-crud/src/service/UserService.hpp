@@ -19,7 +19,10 @@ class UserService {
 private:
   typedef oatpp::web::protocol::http::Status Status;
 private:
-  OATPP_COMPONENT(std::shared_ptr<AppDb>, m_database); // Inject database component
+/**
+ * Injects database component
+ */ 
+  OATPP_COMPONENT(std::shared_ptr<AppDb>, m_database);
 public:
 
   oatpp::Object<UserDto> createUser(const oatpp::Object<UserDto>& dto);

@@ -9,8 +9,9 @@
 /**
  * Building DTO class: contains information on buildings
  * 
- * name: name of building
- * location: longitude and latitude coordinates of building
+ * @param name: name of building
+ * @param longitude: longitude of building
+ * @param latitude: latitude of building
 */
 class BuildingDto : public oatpp::DTO {
   

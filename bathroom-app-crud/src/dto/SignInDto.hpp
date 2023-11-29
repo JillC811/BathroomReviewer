@@ -7,16 +7,17 @@
 #include OATPP_CODEGEN_BEGIN(DTO)
 /**
  * DTO for sign in procedure
- * 
- * username: username entered by user
- * password: password entered by user
 **/
 
 class signInDto : public oatpp::DTO {
   
+  /**initialize sign in dto*/
   DTO_INIT(signInDto, DTO);
 
+  /** Add Username field*/
   DTO_FIELD(String, userName, "username");
+  
+  /** Add password field*/
   DTO_FIELD(String, password, "password");
 
 };

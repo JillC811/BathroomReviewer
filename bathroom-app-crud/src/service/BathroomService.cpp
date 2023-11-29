@@ -13,7 +13,9 @@
  * 
  * Runs SQLite query to create bathroom in database
  * 
- * dto: Bathroom DTO to be added to database
+ * @param dto BathroomDTO to be added to database
+ * 
+ * @return bathroom inserted into db
 */
 oatpp::Object<BathroomDto> BathroomService::createBathroom(const oatpp::Object<BathroomDto>& dto) {
 
@@ -31,8 +33,10 @@ oatpp::Object<BathroomDto> BathroomService::createBathroom(const oatpp::Object<B
  * 
  * Runs SQLite query to fetch all bathrooms logged in app
  * 
- * offset: query offset
- * limit: results limit
+ * @param offset: Int, query offset
+ * @param limit: Int, results limit
+ * 
+ * @return page dto of bathrooms in building
 */
 oatpp::Object<PageDto<oatpp::Object<BathroomDto>>> BathroomService::getAllBathrooms(const oatpp::UInt32& offset, const oatpp::UInt32& limit) {
 
@@ -59,7 +63,9 @@ oatpp::Object<PageDto<oatpp::Object<BathroomDto>>> BathroomService::getAllBathro
  * 
  * Runs SQLite query to fetch a specific bathroom by id.
  * 
- * id: ID of requested bathroom
+ * @param id: Int, ID of requested bathroom
+ * 
+ * @return bathroomDTO of requested bathroom 
 */
 oatpp::Object<BathroomDto> BathroomService::getBathroomById(const oatpp::Int32& id, const oatpp::provider::ResourceHandle<oatpp::orm::Connection>& connection) {
 
@@ -79,7 +85,7 @@ oatpp::Object<BathroomDto> BathroomService::getBathroomById(const oatpp::Int32& 
  * 
  * Runs SQLite query to fetch all bathrooms in a given building
  * 
- * buildingName: name of building to be searched
+ * @param buildingName: String,name of building to be searched
 */
 oatpp::Object<PageDto<oatpp::Object<BathroomDto>>> BathroomService::getBathroomByBuilding(const oatpp::String& buildingName) {
 
@@ -104,7 +110,9 @@ oatpp::Object<PageDto<oatpp::Object<BathroomDto>>> BathroomService::getBathroomB
  * 
  * Runs SQLite query to update a given bathroom
  * 
- * dto: Bathroom DTO to be updated in database
+ * @param dto: BathroomDTO to be updated in database
+ * 
+ * @return dto of updated bathroom
 */
 oatpp::Object<BathroomDto> BathroomService::updateBathroom(const oatpp::Object<BathroomDto>& dto) {
 
@@ -119,7 +127,9 @@ oatpp::Object<BathroomDto> BathroomService::updateBathroom(const oatpp::Object<B
  * 
  * Runs SQLite query to delete a given bathroom
  * 
- * bathroomId: ID of bathroom to be deleted from database
+ * @param bathroomId Int, ID of bathroom to be deleted from database
+ * 
+ * @return status of operation
 */
 oatpp::Object<StatusDto> BathroomService::deleteBathroom(const oatpp::Int32& bathroomId) {
   auto dbResult = m_database->deleteBathroom(bathroomId);

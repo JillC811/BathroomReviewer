@@ -3,6 +3,9 @@
 
 #include <utility>
 class Bathroom;
+/**
+ * Rating object class, contains getters and setters for rating object
+*/
 
 class Rating{
     private:
@@ -12,6 +15,16 @@ class Rating{
         int cleanlinessRating;
         String username;
         String textReview;
+/**
+ * rating object constructor
+ * 
+ * id: review id 
+ * uploader: username of rating author
+ * overallRating: Overall rating of bathroom from user
+ * cleanlinessRating: Rating of how clean bathroom from user
+ * textReview: Review of bathroom written by user, limited to number of characters
+*/
+
     Rating(int id, String username, int overallRating, int cleanlinessRating, String textReview){
         this->id = id;
         this->username = username;

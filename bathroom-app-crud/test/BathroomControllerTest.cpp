@@ -46,21 +46,19 @@ void BathroomControllerTest::onRun() {
 
     bathroomDto1->building = "Test_Building";
     bathroomDto1->floor = 1;
-    // bathroomDto1->latitude = "99";
-    // bathroomDto1->longitude = "-99";
+    bathroomDto1->latitude = "99";
+    bathroomDto1->longitude = "-99";
     bathroomDto1->gender = "m";
     bathroomDto1->stallCount = 99;
     bathroomDto1->urinalCount = 88;
-    bathroomDto1->ratings = "5, 4, 3, 2, 1";
 
     bathroomDto2->building = "Test_Building";
     bathroomDto2->floor = 2;
-    // bathroomDto2->latitude = "100";
-    // bathroomDto2->longitude = "-100";
+    bathroomDto2->latitude = "100";
+    bathroomDto2->longitude = "-100";
     bathroomDto2->gender = "f";
     bathroomDto2->stallCount = 999;
     bathroomDto2->urinalCount = 0;
-    bathroomDto2->ratings = "5, 5, 5, 5, 5";
    
 
     /* Call server API */
@@ -87,7 +85,7 @@ void BathroomControllerTest::onRun() {
     auto allBathroomsDto = getBathroomsByBuildingResponse->readBodyToDto<oatpp::Object<PageDto<oatpp::Object<BathroomDto>>>>(objectMapper.get());
 
     /* Assert that getBathroomsByBuilding endpoint gets both added buildings */
-    OATPP_ASSERT(allBathroomsDto->count == 2);
+    OATPP_ASSERT(allBathroomsDto->count == 2); 
 
     auto extractedBathroomDto1 = allBathroomsDto->items[0];
     auto extractedBathroomDto2 = allBathroomsDto->items[1];
@@ -100,7 +98,6 @@ void BathroomControllerTest::onRun() {
     OATPP_ASSERT(extractedBathroomDto1->gender == "m");
     OATPP_ASSERT(extractedBathroomDto1->stallCount == 99);
     OATPP_ASSERT(extractedBathroomDto1->urinalCount == 88);
-    OATPP_ASSERT(extractedBathroomDto1->ratings == "5, 4, 3, 2, 1");
 
     OATPP_ASSERT(extractedBathroomDto2->building == "Test_Building");
     OATPP_ASSERT(extractedBathroomDto2->floor == 2);
@@ -109,24 +106,6 @@ void BathroomControllerTest::onRun() {
     OATPP_ASSERT(extractedBathroomDto2->gender == "f");
     OATPP_ASSERT(extractedBathroomDto2->stallCount == 999);
     OATPP_ASSERT(extractedBathroomDto2->urinalCount == 0);
-    OATPP_ASSERT(extractedBathroomDto2->ratings == "5, 5, 5, 5, 5");
-
-    /* Test the updateBathrooms endpoint */
-    // bathroomDto1->gender = "b";
-    // auto updateBathroomResponse = client->updateBathroom(1, bathroomDto1);
-    
-    // OATPP_ASSERT(updateBathroomResponse->getStatusCode() == 200);
-
-    //auto updatedBathroomDto = updateBathroomResponse->readBodyToDto<oatpp::Object<BathroomDto>>(objectMapper.get());
-
-    /* Assert that the Bathroom DTO reflects new values after being updated */
-    // OATPP_ASSERT(updatedBathroomDto->building == "Test_Building");
-    // OATPP_ASSERT(updatedBathroomDto->floor == 1);
-    // OATPP_ASSERT(extractedBathroomDto1->latitude == "99");
-    // OATPP_ASSERT(extractedBathroomDto1->longitude == "-99");
-    // OATPP_ASSERT(updatedBathroomDto->gender == "b");
-    // OATPP_ASSERT(updatedBathroomDto->stallCount == 99);
-    // OATPP_ASSERT(updatedBathroomDto->urinalCount == 88);
 
     auto deletedBathroomResponse1 = client->deleteBathroom(extractedBathroomDto1->id);
     auto deletedBathroomResponse2 = client->deleteBathroom(extractedBathroomDto2->id);

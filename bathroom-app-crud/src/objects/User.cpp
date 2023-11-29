@@ -7,10 +7,10 @@
 /**
  * Default user constructor
  * 
- * id: id assigned to user
- * username: username chosen by user
- * email: user's email
- * role: whether user is an admin or not
+ * @param id: id assigned to user
+ * @param username: username chosen by user
+ * @param email: user's email
+ * @param role: whether user is an admin or not
  * 
 **/
 
@@ -37,6 +37,7 @@ User::User(oatpp::Object<UserDto> dto) {
  * 
  * converts a user object into a dto object
  * 
+ * @return userdto
 **/
 oatpp::Object<UserDto> User::convertToDto() {
     auto dto = UserDto::createShared();
