@@ -37,11 +37,11 @@ public:
   ///// Create
   /////////////////
 
-  ENDPOINT_INFO(createBathroom)
   /**
    * Endpoint information for creating bathroom into database
    * 
    */
+  ENDPOINT_INFO(createBathroom)
   {
     info->summary = "Create new bathroom";
 
