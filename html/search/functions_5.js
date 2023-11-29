@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['getallbathrooms_0',['getAllBathrooms',['../class_bathroom_service.html#ae9a7f8cb1ad9cf5ae0e52ce99ec2c21b',1,'BathroomService']]],
+  ['getallbuildings_1',['getAllBuildings',['../class_building_service.html#a697ffc95a6889a7ba5ff2eee6df12473',1,'BuildingService']]],
+  ['getallratings_2',['getAllRatings',['../class_rating_service.html#a37a092e4e54cc1dc2d0947e64d00d991',1,'RatingService']]],
+  ['getallusers_3',['getAllUsers',['../class_user_service.html#a7519d404eecb955cf02d6151d8bfe821',1,'UserService']]],
+  ['getbathroombybuilding_4',['getBathroomByBuilding',['../class_bathroom_service.html#acea07c2b81483a26d695e00e0a2866e5',1,'BathroomService']]],
+  ['getbathroombyid_5',['getBathroomById',['../class_bathroom_service.html#a9673a71aed9feae0b30106a75f486a22',1,'BathroomService']]],
+  ['getbathrooms_6',['getBathrooms',['../class_building.html#a18d7d0a67292e560b00ef5927fd47660',1,'Building']]],
+  ['getbuilding_7',['getBuilding',['../class_bathroom.html#a8b754da45e619d9cab6eb147db2c2736',1,'Bathroom']]],
+  ['getbuildingbyname_8',['getBuildingByName',['../class_building_service.html#a0d2645815a12244144037bf48fd8955b',1,'BuildingService']]],
+  ['getcleanlinessrating_9',['getCleanlinessRating',['../class_rating.html#af803ca04f8b5c7d48114f619d7238576',1,'Rating']]],
+  ['getgender_10',['getGender',['../class_bathroom.html#ab4f473cb65256ffcfeecd52f7fa9bacd',1,'Bathroom']]],
+  ['getid_11',['getid',['../class_bathroom.html#a5bdbaae8e5f98016768cb326666bf2ca',1,'Bathroom::getID()'],['../class_rating.html#a7d85d6cef46fad48d57e318219b971e4',1,'Rating::getID()']]],
+  ['getlatitude_12',['getlatitude',['../class_bathroom.html#a8112573eadad32e75c2735e7219f0b36',1,'Bathroom::getLatitude()'],['../class_building.html#ac36bd3d0b403354883d973045e918105',1,'Building::getLatitude()']]],
+  ['getlongitude_13',['getlongitude',['../class_bathroom.html#ac33c2f132b76f5b00ccf579df63cd38c',1,'Bathroom::getLongitude()'],['../class_building.html#a4f59b05d1c37448cd8f7e7431e2099bc',1,'Building::getLongitude() const']]],
+  ['getname_14',['getName',['../class_building.html#a1f59afb408a51e644bf7e7de99d50541',1,'Building']]],
+  ['getoverallrating_15',['getOverallRating',['../class_rating.html#a3049e9670f56ff5ab09c7a9b52963e6a',1,'Rating']]],
+  ['getratingbybathroom_16',['getRatingByBathroom',['../class_rating_service.html#a1abd6c0dbd280f10c82d8f3ffcc08143',1,'RatingService']]],
+  ['getratingbyid_17',['getRatingById',['../class_rating_service.html#a60342740cb42723336fbed02f8cb2a2b',1,'RatingService']]],
+  ['getratings_18',['getRatings',['../class_bathroom.html#ae26ef28e96ed8e8a26187081547fe04f',1,'Bathroom']]],
+  ['getratingsbyuser_19',['getRatingsByUser',['../class_rating_service.html#a17879116fad7f3bb089b87884dfeb923',1,'RatingService']]],
+  ['getstallcount_20',['getStallCount',['../class_bathroom.html#af6bc5cf0de93a6643768e30214333663',1,'Bathroom']]],
+  ['gettextreview_21',['getTextReview',['../class_rating.html#a1a02f4460c152057de9db0f618dd6c45',1,'Rating']]],
+  ['geturinalcount_22',['getUrinalCount',['../class_bathroom.html#ae71ce64c9a527d6ff5b19faa4138dd86',1,'Bathroom']]],
+  ['getuserbyid_23',['getUserById',['../class_user_service.html#a0be6e2d230f6505e179ca1a492fc4db4',1,'UserService']]]
+];
