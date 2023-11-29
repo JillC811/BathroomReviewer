@@ -138,7 +138,6 @@ public:
     info->pathParams["ratingId"].description = "Rating id";
   }
 
-  ADD_CORS(updateRating, "*", "PUT", "DNT, User-Agent, X-Requested-With, If-Modified-Since, Cache-Control, Content-Type, Range", "1728000");
   ENDPOINT("POST", "ratings/update/{ratingId}", updateRating,
            PATH(Int32, ratingId),
            BODY_DTO(Object<RatingDto>, ratingDto))
