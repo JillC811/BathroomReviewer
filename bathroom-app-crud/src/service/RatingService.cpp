@@ -9,7 +9,7 @@
 
 
 /**
- * createRating method
+ * @brief createRating method
  * 
  * Runs SQLite query to create rating in database
  * 
@@ -29,7 +29,7 @@ oatpp::Object<RatingDto> RatingService::createRating(const oatpp::Object<RatingD
 }
 
 /**
- * getAllRatings method
+ * @brief getAllRatings method
  * 
  * Runs SQLite query to fetch all ratings logged in app
  * 
@@ -58,7 +58,7 @@ oatpp::Object<PageDto<oatpp::Object<RatingDto>>> RatingService::getAllRatings(co
 }
 
 /**
- * getRatingById method
+ * @brief getRatingById method
  * 
  * Runs SQLite query to fetch a specific rating by id.
  * 
@@ -80,7 +80,7 @@ oatpp::Object<RatingDto> RatingService::getRatingById(const oatpp::Int32& id, co
 }
 
 /**
- * getRatingByBathroom method
+ * @brief getRatingByBathroom method
  * 
  * Runs SQLite query to fetch all ratings in a given building
  * 
@@ -107,7 +107,7 @@ oatpp::Object<PageDto<oatpp::Object<RatingDto>>> RatingService::getRatingByBathr
 }
 
 /**
- * updateRating method
+ * @brief updateRating method
  * 
  * Runs SQLite query to update a given rating
  * 
@@ -124,7 +124,7 @@ oatpp::Object<RatingDto> RatingService::updateRating(const oatpp::Object<RatingD
 }
 
 /**
- * deleteRating method
+ * @brief deleteRating method
  * 
  * Runs SQLite query to delete a given bathroom
  * 

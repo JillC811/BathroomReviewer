@@ -3,13 +3,13 @@
 
 
 /**
- * Building Service
+ * @brief Building Service
  * 
  * Contains Building CRUD logic.
 */
 
 /**
- * createBuilding method
+ * @brief createBuilding method
  * 
  * Runs SQLite query to create building in database
  * 
@@ -27,7 +27,7 @@ oatpp::Object<BuildingDto> BuildingService::createBuilding(const oatpp::Object<B
 }
 
 /**
- * getAllBuildings method
+ * @brief getAllBuildings method
  * 
  * Runs SQLite fetch all buildings logged in app
  * 
@@ -56,7 +56,7 @@ oatpp::Object<PageDto<oatpp::Object<BuildingDto>>> BuildingService::getAllBuildi
 }
 
 /**
- * getBuildingByName method
+ * @brief getBuildingByName method
  * 
  * Runs SQLite query to fetch a specific building by name.
  * 
@@ -78,7 +78,7 @@ oatpp::Object<BuildingDto> BuildingService::getBuildingByName(const oatpp::Strin
 }
 
 /**
- * updateBuilding method
+ * @brief updateBuilding method
  * 
  * Runs SQLite query to update a given building
  * 
@@ -95,7 +95,7 @@ oatpp::Object<BuildingDto> BuildingService::updateBuilding(const oatpp::Object<B
 }
 
 /**
- * deleteBuilding method
+ * @brief deleteBuilding method
  * 
  * Runs SQLite query to delete a given building
  * 

@@ -2,14 +2,14 @@
 #include "BathroomService.hpp"
 
 /**
- * Bathroom Service
+ * @brief Bathroom Service
  * 
- * Contains bathroom CRUD logic.
+ * Contains bathroom CRUD logic. functions to interact with and update database
 */
 
 
 /**
- * createBathroom method
+ * @brief createBathroom method
  * 
  * Runs SQLite query to create bathroom in database
  * 
@@ -29,7 +29,7 @@ oatpp::Object<BathroomDto> BathroomService::createBathroom(const oatpp::Object<B
 }
 
 /**
- * getAllBathrooms method
+ * @brief getAllBathrooms method
  * 
  * Runs SQLite query to fetch all bathrooms logged in app
  * 
@@ -59,7 +59,7 @@ oatpp::Object<PageDto<oatpp::Object<BathroomDto>>> BathroomService::getAllBathro
 }
 
 /**
- * getBathroomById method
+ * @brief getBathroomById method
  * 
  * Runs SQLite query to fetch a specific bathroom by id.
  * 
@@ -81,7 +81,7 @@ oatpp::Object<BathroomDto> BathroomService::getBathroomById(const oatpp::Int32& 
 }
 
 /**
- * getBathroomByBuilding method
+ * @brief getBathroomByBuilding method
  * 
  * Runs SQLite query to fetch all bathrooms in a given building
  * 
@@ -106,7 +106,7 @@ oatpp::Object<PageDto<oatpp::Object<BathroomDto>>> BathroomService::getBathroomB
 }
 
 /**
- * updateBathroom method
+ * @brief updateBathroom method
  * 
  * Runs SQLite query to update a given bathroom
  * 
@@ -123,7 +123,7 @@ oatpp::Object<BathroomDto> BathroomService::updateBathroom(const oatpp::Object<B
 }
 
 /**
- * deleteBathroom method
+ * @brief deleteBathroom method
  * 
  * Runs SQLite query to delete a given bathroom
  * 

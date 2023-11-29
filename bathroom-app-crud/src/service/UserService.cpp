@@ -3,14 +3,14 @@
 
 
 /**
- * User Service
+ * @brief User Service
  * 
  * Contains user CRUD logic.
 */
 
 
 /**
- * createUser method
+ * @brief createUser method
  * 
  * Runs SQLite query to create user in database
  * 
@@ -29,7 +29,7 @@ oatpp::Object<UserDto> UserService::createUser(const oatpp::Object<UserDto>& dto
 }
 
 /**
- * signIn method
+ * @brief signIn method
  * 
  * Runs SQLite query to sign in user
  * 
@@ -47,7 +47,7 @@ oatpp::Object<UserDto> UserService::signIn(const oatpp::Object<signInDto>& dto) 
 }
 
 /**
- * getAllUsers method
+ * @brief getAllUsers method
  * 
  * Runs SQLite query to fetch all users of the app
  * 
@@ -76,7 +76,7 @@ oatpp::Object<PageDto<oatpp::Object<UserDto>>> UserService::getAllUsers(const oa
 }
 
 /**
- * getUserById method
+ * @brief getUserById method
  * 
  * Runs SQLite query to fetch a specific user by id.
  * 
@@ -98,7 +98,7 @@ oatpp::Object<UserDto> UserService::getUserById(const oatpp::Int32& id, const oa
 }
 
 /**
- * updateUser method
+ * @brief updateUser method
  * 
  * Runs SQLite query to update a given user
  * 
@@ -115,7 +115,7 @@ oatpp::Object<UserDto> UserService::updateUser(const oatpp::Object<UserDto>& dto
 }
 
 /**
- * deleteUserById method
+ * @brief deleteUserById method
  * 
  * Runs SQLite query to delete a given user
  * 
