@@ -87,7 +87,7 @@ void BathroomControllerTest::onRun() {
     auto allBathroomsDto = getBathroomsByBuildingResponse->readBodyToDto<oatpp::Object<PageDto<oatpp::Object<BathroomDto>>>>(objectMapper.get());
 
     /* Assert that getBathroomsByBuilding endpoint gets both added buildings */
-    OATPP_ASSERT(allBathroomsDto->count == 2);
+    OATPP_ASSERT(allBathroomsDto->count == 2); 
 
     auto extractedBathroomDto1 = allBathroomsDto->items[0];
     auto extractedBathroomDto2 = allBathroomsDto->items[1];

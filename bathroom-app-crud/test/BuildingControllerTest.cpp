@@ -123,7 +123,7 @@ void BuildingControllerTest::onRun() {
 
     //OATPP_ASSERT(updateBuildingResponse->getStatusCode() == 200);
 
-    // auto updatedBuildingDto = updateBuildingResponse->readBodyToDto<oatpp::Object<BuildingDto>>(objectMapper.get());
+    auto updatedBuildingDto = updateBuildingResponse->readBodyToDto<oatpp::Object<BuildingDto>>(objectMapper.get());
 
     /* Assert that the Bathroom DTO reflects new values after being updated */
     // OATPP_ASSERT(updatedBuildingDto->name == "Test_Building_3");
