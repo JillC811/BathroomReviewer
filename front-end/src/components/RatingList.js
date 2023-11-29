@@ -87,7 +87,8 @@ function RatingList(props) {
 
     const handleEditReview = (e, id) => {
         e.preventDefault();
-        fetch(`http://localhost:8000/ratings/upate/${id}`, {
+        fetch(
+            `http://localhost:8000/ratings/update/${id}`, {
             method: "post",
             headers: {
                 "Content-type": "application/json",
@@ -96,7 +97,6 @@ function RatingList(props) {
                 Connection: "keep-alive",
             },
             body: JSON.stringify({
-                bathroomId: Number(bathroom),
                 overallRating: Number(inputs.overallRating),
                 cleanlinessRating: Number(inputs.cleanlinessRating),
                 textReview: inputs.textReview,
@@ -104,6 +104,9 @@ function RatingList(props) {
             })
         }).then((res) => {
             console.log(res);
+            res.json().then((data) => {
+                console.log(data)
+            })
             alert("Rating submitted!");
             navigate("/home");
         }).catch((err)=>{
