@@ -6,9 +6,10 @@
 
 class Building;
 class Rating;
-
+/**
+ * bathroom object class
+*/
 class Bathroom{
-    //should these private variables be protected instead?
     private:
         int id;
     public:

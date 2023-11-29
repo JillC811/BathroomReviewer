@@ -10,21 +10,19 @@
 /**
  * Status Dto to return status of API call
  * 
- * Status:
- * Code: 
- * Message:
 **/
 class StatusDto : public oatpp::DTO {
-  /**
-   * 
-  */
+  /**initialize statusDTO */
   DTO_INIT(StatusDto, DTO)
 
+  /**status field info */
   DTO_FIELD_INFO(status) {
     info->description = "Short status text";
   }
+  /**add status field*/
   DTO_FIELD(String, status);
 
+  /**add code field*/
   DTO_FIELD_INFO(code) {
     info->description = "Status code";
   }
