@@ -11,7 +11,7 @@
 #include OATPP_CODEGEN_BEGIN(ApiController) //<- Begin Codegen
 
 /**
- * Rating REST controller.
+ * @brief Rating REST controller.
  */
 class RatingController : public oatpp::web::server::api::ApiController
 {

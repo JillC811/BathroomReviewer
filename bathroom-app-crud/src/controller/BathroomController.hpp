@@ -1,4 +1,3 @@
-
 #ifndef BathroomController_hpp
 #define BathroomController_hpp
 
@@ -11,8 +10,11 @@
 #include OATPP_CODEGEN_BEGIN(ApiController) //<- Begin Codegen
 
 /**
- * Bathroom REST controller.
- */
+ * @brief Bathroom REST controller 
+ * 
+ * @authors Justin Tsang, Elizabeth Shiu, Joey Gendy, Colton Undseth, Jill Chong
+ * 
+*/
 class BathroomController : public oatpp::web::server::api::ApiController
 {
 public:
@@ -37,9 +39,9 @@ public:
 
   ENDPOINT_INFO(createBathroom)
   /**
- * Endpoint information for creating bathroom into database
- * 
- */
+   * Endpoint information for creating bathroom into database
+   * 
+   */
   {
     info->summary = "Create new bathroom";
 
