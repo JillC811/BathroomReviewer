@@ -268,7 +268,6 @@ public:
             "UPDATE rating "
             "SET "
             " uploader=:rating.uploader, "
-            " bathroomId=:rating.bathroomId, "
             " overallRating=:rating.overallRating, "
             " cleanlinessRating=:rating.cleanlinessRating, "
             " textReview=:rating.textReview "
