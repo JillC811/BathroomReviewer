@@ -17,6 +17,7 @@
 **/
 class RatingDto : public oatpp::DTO {
   
+  /**initialize rating */
   DTO_INIT(RatingDto, DTO)
 
   DTO_FIELD(Int32, id); 
