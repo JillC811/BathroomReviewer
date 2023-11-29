@@ -6,6 +6,7 @@
  * @author colton
  * 
  * Contains bathroom CRUD logic. functions to interact with and update database
+ * @brief Bathroom Service. Contains bathroom CRUD logic.
 */
 
 
