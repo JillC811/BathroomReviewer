@@ -11,8 +11,11 @@
 #include OATPP_CODEGEN_BEGIN(ApiController) //<- Begin Codegen
 
 /**
- * Building REST controller.
- */
+ * @brief Building REST controller 
+ * 
+ * @authors Justin Tsang, Elizabeth Shiu, Joey Gendy, Colton Undseth, Jill Chong
+ * 
+*/
 class BuildingController : public oatpp::web::server::api::ApiController
 {
 public:
@@ -34,7 +37,10 @@ public:
   ////////////////////////////
   ///// Create
   /////////////////
-
+  /**
+   * @brief Endpoint information for adding a building into database
+   * 
+   */
   ENDPOINT_INFO(createBuilding)
   {
     info->summary = "Create a new building";
@@ -54,6 +60,10 @@ public:
   ////////////////////////////
   ///// Read
   /////////////////
+    /**
+   * @brief Endpoint information for getting all buildings from database
+   * 
+   */
   ENDPOINT_INFO(getAllBuildings)
   {
     info->summary = "Get all buildings";
@@ -69,6 +79,10 @@ public:
     return createDtoResponse(Status::CODE_200, m_buildingService.getAllBuildings(offset, limit));
   }
 
+  /**
+   * @brief Endpoint information for getting a building by name from database
+   * 
+   */
   ENDPOINT_INFO(getBuildingByName)
   {
     info->summary = "Get a building by name";
@@ -89,6 +103,10 @@ public:
   ///// Update
   /////////////////
 
+  /**
+   * @brief Endpoint information for updating building info in database
+   * 
+   */
   ENDPOINT_INFO(updateBuilding)
   {
     info->summary = "Update Building by name";
@@ -112,7 +130,10 @@ public:
   ////////////////////////////
   ///// Delete
   /////////////////
-
+  /**
+   * @brief Endpoint information for deleting a building from database
+   * 
+   */
   ENDPOINT_INFO(deleteBuilding)
   {
     info->summary = "Delete building by name";

@@ -51,7 +51,7 @@ class Building{
          * @param newName new name to be set
         */
         void setName(const std::string &newName) {
-            name = newName;
+            this->name = newName;
         }
 
         /**
@@ -105,7 +105,7 @@ class Building{
          * @return returns the vector of bathroom objects
         */
         const std::vector<Bathroom> & getBathrooms() const {
-            return bathrooms;
+            return this.bathrooms;
         }
 };
 

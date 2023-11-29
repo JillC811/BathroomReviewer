@@ -8,10 +8,14 @@
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 /**
- * Status Dto to return status of API call
+ * @brief Status DTO class: return status of API call
  * 
+ * @param status: status text
+ * @param code: status code
+ * @param message: status message
  * 
-**/
+ * @authors Justin Tsang, Elizabeth Shiu, Joey Gendy, Colton Undseth, Jill Chong
+*/
 class StatusDto : public oatpp::DTO {
   /**initialize statusDTO */
   DTO_INIT(StatusDto, DTO)
@@ -20,21 +24,21 @@ class StatusDto : public oatpp::DTO {
   DTO_FIELD_INFO(status) {
     info->description = "Short status text";
   }
-  /**add status field*/
+  /**declare status field*/
   DTO_FIELD(String, status);
 
   /**code field info */
   DTO_FIELD_INFO(code) {
     info->description = "Status code";
   }
-  /** add code field*/
+  /** declare code field*/
   DTO_FIELD(Int32, code);
 
   /** message field info*/
   DTO_FIELD_INFO(message) {
     info->description = "Verbose message";
   }
-  /** add message field*/
+  /** declare message field*/
   DTO_FIELD(String, message);
 
 };

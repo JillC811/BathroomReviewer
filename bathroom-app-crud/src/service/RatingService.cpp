@@ -5,6 +5,7 @@
  * Rating Service
  * 
  * Contains rating CRUD logic.
+ * @author Jill
 */
 
 

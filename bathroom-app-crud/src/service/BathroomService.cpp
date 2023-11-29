@@ -2,9 +2,10 @@
 #include "BathroomService.hpp"
 
 /**
- * @brief Bathroom Service
+ * Contains bathroom CRUD logic. functions to interact with and update database
+ * @brief Bathroom Service. Contains bathroom CRUD logic.
  * 
- * Contains bathroom CRUD logic.
+ * @authors Justin Tsang, Elizabeth Shiu, Joey Gendy, Colton Undseth, Jill Chong
 */
 
 

@@ -11,8 +11,11 @@
 #include OATPP_CODEGEN_BEGIN(ApiController) //<- Begin Codegen
 
 /**
- * User REST controller.
- */
+ * @brief User REST controller 
+ * 
+ * @authors Justin Tsang, Elizabeth Shiu, Joey Gendy, Colton Undseth, Jill Chong
+ * 
+*/
 class UserController : public oatpp::web::server::api::ApiController
 {
 public:
@@ -35,6 +38,10 @@ public:
   ///// Create
   /////////////////
 
+  /**
+   * @brief Endpoint information for creating a new user into database
+   * 
+   */
   ENDPOINT_INFO(createUser)
   {
     info->summary = "Create new User";
@@ -52,6 +59,11 @@ public:
     {
       return createDtoResponse(Status::CODE_200, m_userService.createUser(userDto));
     }
+
+  /**
+   * @brief Endpoint information for authenticating a signing in user exists in the database
+   * 
+   */
   ENDPOINT_INFO(signIn) {
     info->summary = "Sign in with user name and password";
     info->addResponse<Object<StatusDto>>(Status::CODE_200, "application/json");
@@ -70,6 +82,10 @@ public:
   ///// Read
   /////////////////
 
+  /**
+   * @brief Endpoint information for getting all stored users in database
+   * 
+   */
   ENDPOINT_INFO(getAllUsers)
   {
     info->summary = "get all stored users";
@@ -84,6 +100,10 @@ public:
     return createDtoResponse(Status::CODE_200, m_userService.getAllUsers(offset, limit));
   }
 
+  /**
+   * @brief Endpoint information for getting a specified user by id
+   * 
+   */
   ENDPOINT_INFO(getUserById)
   {
     info->summary = "Get one User by userId";
@@ -104,6 +124,10 @@ public:
   ///// Update
   /////////////////
 
+  /**
+   * @brief Endpoint information for updating a users information in database
+   * 
+   */
   ENDPOINT_INFO(putUser)
   {
     info->summary = "Update User by userId";
@@ -128,6 +152,10 @@ public:
   ///// Delete
   /////////////////
 
+  /**
+   * @brief Endpoint information for deleting user from database by id
+   * 
+   */
   ENDPOINT_INFO(deleteUser)
   {
     info->summary = "Delete User by userId";

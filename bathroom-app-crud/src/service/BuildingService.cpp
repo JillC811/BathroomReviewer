@@ -5,6 +5,8 @@
 /**
  * @brief Building Service. 
  * 
+ * @brief Building Service
+ * @author Joey
  * Contains Building CRUD logic.
 */
 
