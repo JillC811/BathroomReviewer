@@ -16,10 +16,11 @@ class Building{
         std::vector<Bathroom> bathrooms;
 /**
  * Building object constructor
+ * @author colton
  * 
- * name: name of building
- * location: longitude and latitude coordinates of building
- * bathrooms: vector of bathrooms located inside building
+ * @param name: name of building
+ * @param location float pair of latitude and longitude
+ * @param bathrooms: vector of bathrooms located inside building
 */
         Building(std::string name, std::pair<float, float> location, std::vector<Bathroom> bathrooms){
             this->name = name;
@@ -28,29 +29,53 @@ class Building{
             this->latitude = location.second;
             this-> bathrooms = bathrooms;
         }
-
+        /*
+        * getter for building name
+        *
+        * @return name of building
+        */
         std::string getName() const {
             return name;
         }
-
+        /*
+        * setter for building name
+        *
+        * @param name of building
+        */
         void setName(const std::string &newName) {
-            name = newName;
+            this.name = newName;
         }
-
+        /*
+        * getter for location
+        *
+        * @return location of building
+        */
         std::pair<float, float> getLocation() const {
             return location;
         }
-
+        /*
+        * setter for location
+        *
+        * @param float pair with latitude and longitude
+        */
         void setLocation(const std::pair<float, float> &newLocation) {
-            location = newLocation;
+            this.location = newLocation;
         }
-
+        /*
+        * addbathroom method
+        *
+        * @return adds bathroom to list of bathrooms
+        */
         void addBathroom(const Bathroom & bathroom){
             bathrooms.push_back(bathroom);
         }
-
+        /*
+        * getter for bathrooms
+        *
+        * @return all bathrooms in vuilding
+        */
         const std::vector<Bathroom> & getBathrooms() const {
-            return bathrooms;
+            return this.bathrooms;
         }
 };
 

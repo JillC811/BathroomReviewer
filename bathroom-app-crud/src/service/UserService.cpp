@@ -4,7 +4,7 @@
 
 /**
  * @brief User Service
- * 
+ * @author justin 
  * Contains user CRUD logic.
 */
 

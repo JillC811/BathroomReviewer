@@ -10,6 +10,7 @@
 
 /**
  * Bathroom Service class, contains bathroom CRUD database operations
+ * @author Jill
 */
 
 class RatingService {

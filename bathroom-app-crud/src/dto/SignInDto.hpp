@@ -7,6 +7,10 @@
 #include OATPP_CODEGEN_BEGIN(DTO)
 /**
  * DTO for sign in procedure
+ * @author justin
+ * 
+ * @param username username to be used for sign in
+ * @param password password to be used for sign in
 **/
 
 class signInDto : public oatpp::DTO {
@@ -14,10 +18,10 @@ class signInDto : public oatpp::DTO {
   /**initialize sign in dto*/
   DTO_INIT(signInDto, DTO);
 
-  /** Add Username field*/
+  /** declare Username field*/
   DTO_FIELD(String, userName, "username");
-  
-  /** Add password field*/
+
+  /** declare password field*/
   DTO_FIELD(String, password, "password");
 
 };

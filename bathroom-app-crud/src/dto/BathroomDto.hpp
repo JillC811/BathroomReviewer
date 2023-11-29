@@ -7,34 +7,44 @@
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 /**
- * Bathroom DTO class, contains information about specific bathrooms
+ * @brief Bathroom DTO class, contains information about specific bathrooms
+ * DTO object to transfer data about bathroom from database
+ * @author Joey
+ * 
+ * 
+ * @param id: randomly assigned integer for bathroom
+ * @param building: name of building bathroom is in
+ * @param floor: floor number bathroom is on
+ * @param longitude longitude of bathroom
+ * @param latitude latitude of bathroom
+ * @param gender M for male, F for female, B for both
+ * @param stallCount# of stalls in bathroom
+ * @param urinalCount: # of urinals in bathroom
+ * @param ratings: list of user ratings 
 */
 class BathroomDto : public oatpp::DTO {
   
+  /** intialize bathroomdto*/
   DTO_INIT(BathroomDto, DTO)
 
-  /**DTO fields
-  *
-  * id: randomly assigned integer for bathroom
-  * building: name of building bathroom is in
-  * floor: floor number bathroom is on
-  * location: latitude and longitude coordinates of bathroom
-  * gender: Char, M for male, F for female, B for both
-  * stallCount: # of stalls in bathroom
-  * urinalCount: # of urinals in bathroom
-  * ratings: rating out of 5, averaged between users ratings
-  * 
-  * 
-  **/
+   /**declare id field */
   DTO_FIELD(Int32, id);
+  /**declare building field */
   DTO_FIELD(String, building);
+  /**declare flood field */
   DTO_FIELD(Int32, floor);
+  /**declare longitude field */
   DTO_FIELD(String, longitude);
+  /**declare latitude field */
   DTO_FIELD(String, latitude);
+  /**declare gender field */
   DTO_FIELD(String, gender);
+  /**declare stallCount field */
   DTO_FIELD(Int32, stallCount);
+  /**declare urinalCount field */
   DTO_FIELD(Int32, urinalCount);
-  DTO_FIELD(String, ratings);   //need to convert from string to vector of ints, look into oatpp enabled interpretations
+  /**declare ratings field */
+  DTO_FIELD(String, ratings);   
 
 };
 

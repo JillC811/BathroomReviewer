@@ -9,7 +9,7 @@
 
 /**
  * Status Dto to return status of API call
- * 
+ * @author elizabeth
  * 
 **/
 class StatusDto : public oatpp::DTO {
@@ -20,21 +20,21 @@ class StatusDto : public oatpp::DTO {
   DTO_FIELD_INFO(status) {
     info->description = "Short status text";
   }
-  /**add status field*/
+  /**declare status field*/
   DTO_FIELD(String, status);
 
   /**code field info */
   DTO_FIELD_INFO(code) {
     info->description = "Status code";
   }
-  /** add code field*/
+  /** declare code field*/
   DTO_FIELD(Int32, code);
 
   /** message field info*/
   DTO_FIELD_INFO(message) {
     info->description = "Verbose message";
   }
-  /** add message field*/
+  /** declare message field*/
   DTO_FIELD(String, message);
 
 };

@@ -7,19 +7,24 @@
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 /**
- * Building DTO class: contains information on buildings
+ * @brief Building DTO class
+ * DTO object to transfer data about buildings from database
+ * @author Joey
  * 
- * @param name: name of building
- * @param longitude: longitude of building
- * @param latitude: latitude of building
+ * 
+ * @param name randomly assigned integer for bathroom
+ * @param latitude name of building bathroom is in
+ * @param longitude floor number bathroom is on
 */
 class BuildingDto : public oatpp::DTO {
-  
+  /**iinitialize buildingdto */
   DTO_INIT(BuildingDto, DTO)
 
-
+  /**declare name field */
   DTO_FIELD(String, name);
+  /**declare longitude field */
   DTO_FIELD(String, longitude);
+  /**declare latitude field */
   DTO_FIELD(String, latitude);
 
 };

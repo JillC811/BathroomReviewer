@@ -8,6 +8,7 @@ class Building;
 class Rating;
 /**
  * @brief bathroom object class
+ * @author colton
 */
 class Bathroom{
     private:

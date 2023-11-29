@@ -7,7 +7,9 @@
 #include OATPP_CODEGEN_BEGIN(DTO)
 
 /**
- * Bathroom Rating DTO class
+ * @brief Bathroom Rating DTO class
+ * DTO object to transfer data about buildings from database
+ * @author Jill
  * 
  * @param id: review id 
  * @param uploader: username of rating author
@@ -20,17 +22,17 @@ class RatingDto : public oatpp::DTO {
   /**initialize rating */
   DTO_INIT(RatingDto, DTO)
 
-  /**add id field */
+  /**declare id field */
   DTO_FIELD(Int32, id); 
-   /**add uploader field */
+   /**declare uploader field */
   DTO_FIELD(String, uploader); 
-   /**add bathroomid field */
+   /**declare bathroomid field */
   DTO_FIELD(Int32, bathroomId);
-   /**add overallRating field */
+   /**declare overallRating field */
   DTO_FIELD(Int32, overallRating);
-   /**add cleanlinessRating field */
+   /**declare cleanlinessRating field */
   DTO_FIELD(Int32, cleanlinessRating);
-   /**add textReview field */
+   /**declare textReview field */
   DTO_FIELD(String, textReview);
 
 }; 

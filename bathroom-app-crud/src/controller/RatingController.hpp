@@ -12,6 +12,7 @@
 
 /**
  * Rating REST controller.
+ * @author Jill
  */
 class RatingController : public oatpp::web::server::api::ApiController
 {

@@ -4,7 +4,7 @@
 
 /**
  * @brief Building Service
- * 
+ * @author Joey
  * Contains Building CRUD logic.
 */
 
