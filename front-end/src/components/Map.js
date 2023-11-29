@@ -51,9 +51,34 @@ function Map() {
 
       setBathrooms(data);
     };
+    console.log("FETCHING BATHROOMS")
     fetchBathrooms();
-    return () => {};
+
+    console.log("GETTING USER COORDINATES")
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(gotLocation, error);
+    } else {
+      console.log("Geolocation not supported");
+    }
+    
+    // return () => {};
   }, []);
+  
+  const [userLocation, setUserLocation] = React.useState(null)
+
+
+  const gotLocation = (position) => {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    console.log("USER COORDINATES")
+    console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+    setUserLocation([latitude, longitude])
+  }
+
+  
+  function error() {
+    console.log("Unable to user location");
+  }
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
@@ -98,6 +123,15 @@ function Map() {
             />
           );
         })}
+        {userLocation && 
+          <Marker
+            position={{
+              lat: userLocation[0],
+              lng: userLocation[1]
+            }}
+            // icon={bathroomIcon}
+          />
+          }
       </GoogleMap>
 
       {/* View Bathroom Window */}

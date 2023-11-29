@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import bathrooms from "../../pages/Home/data/bathrooms.json";
 import bathroomIcon from "../../assets/restroom-sign-svgrepo-com-white.svg";
+import currentLocationIcon from "../../assets/current-location.svg";
+
 // View Bathroom Drawer
 import Drawer from "@mui/material/Drawer";
 import { Button, IconButton } from "@mui/material";
@@ -24,7 +26,6 @@ import {
 } from 'react-router-dom';
 export class Map extends React.Component {
 
-
   constructor(props) {
     super(props);
     this.state = {
@@ -34,7 +35,8 @@ export class Map extends React.Component {
       drawerOpen: false,
       mapWidth: "100vw",
       loaded: false,
-      rathings: null
+      rathings: null,
+      userLocation: null
     };
     this.containerStyle = {
       width: this.state.mapWidth,
@@ -50,9 +52,20 @@ export class Map extends React.Component {
     this.LinkBehavior = React.forwardRef((props, ref) => (
       <RouterLink ref={ref} to="/material-ui/getting-started/installation/" {...props} />
     ));
+
+    
   }
+
   componentDidMount() {
     this.fetchData();
+    // get user coordinates
+    console.log("GETTING USER COORDINATES")
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(this.gotLocation, this.error);
+    } else {
+      console.log("Geolocation not supported");
+    }
+
   }
 
   async fetchData() {
@@ -95,14 +108,14 @@ export class Map extends React.Component {
       }
     );
     const data3 = await res3.json();
-
+    
 
     this.setState({
       Washrooms: data.items,
       Buildings: data2.items,
       ratings: data3.items
     });
-    console.log(this.state);
+    // console.log(this.state);
     this.setState({ loaded: true });
   }
 
@@ -117,8 +130,19 @@ export class Map extends React.Component {
   setMapWidth = (width) => {
     this.setState({ mapWidth: width });
   };
-
   
+
+  gotLocation = (position) => {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    console.log("USER COORDINATES")
+    console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+    this.setState({userLocation: [latitude, longitude]})
+  }
+
+  error() {
+    console.log("Unable to user location");
+  }
 
   render() {
     return this.state.loaded ? (
@@ -133,10 +157,10 @@ export class Map extends React.Component {
           options={{ mapId: "261e3d8414cdf367", disableDefaultUI: true }}
         >
           {this.state.Washrooms.map((bathroom) => {
-            console.log(bathroom);
+            // console.log(bathroom);
             const lng = Number(bathroom.longitude);
             const lat = Number(bathroom.latitude);
-            console.log(lng, lat);
+            // console.log(lng, lat);
             return (
               <Marker
                 id={bathroom.building}
@@ -155,6 +179,15 @@ export class Map extends React.Component {
               />
             );
           })}
+          {this.state.userLocation && 
+          <Marker
+            position={{
+              lat: this.state.userLocation[0],
+              lng: this.state.userLocation[1]
+            }}
+            icon={currentLocationIcon}
+          />
+          }
         </GoogleMap>
 
         {/* View Bathroom Window */}
