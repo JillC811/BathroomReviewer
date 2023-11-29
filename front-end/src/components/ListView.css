@@ -1,0 +1,9 @@
+
+
+.flex-box{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 75%;
+    padding: 10px;
+}
