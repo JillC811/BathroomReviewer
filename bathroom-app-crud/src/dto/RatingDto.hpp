@@ -19,7 +19,7 @@ class RatingDto : public oatpp::DTO {
   
   /**initialize rating */
   DTO_INIT(RatingDto, DTO)
-
+  
   DTO_FIELD(Int32, id); 
   DTO_FIELD(String, uploader); 
   DTO_FIELD(Int32, bathroomId);
