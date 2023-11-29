@@ -5,6 +5,7 @@
 #include "oatpp/core/macro/codegen.hpp"
 
 #include "dto/BathroomDto.hpp"
+#include "dto/RatingDto.hpp"
 
 /* Begin Api Client code generation */
 #include OATPP_CODEGEN_BEGIN(ApiClient)
@@ -32,9 +33,6 @@ class TestBathroomClient : public oatpp::web::client::ApiClient {
   API_CALL("DELETE", "/bathrooms/{bathroomId}", deleteBathroom, PATH(Int32, bathroomId))
 
   /*****************************************************************/
-
-  // TODO - add more client API calls here
-
 };
 
 /* End Api Client code generation */
