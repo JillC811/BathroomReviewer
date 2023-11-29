@@ -22,19 +22,20 @@ class Bathroom{
         int stallCount;
         int urinalCount;
         std::vector<int> ratings;
+
         /**Bathroom object constructor
          *
-         * @param id: randomly assigned integer for bathroom
-         * @param building: name of building bathroom is in
-         * @param floor: floor number bathroom is on
-         * location: latitude and longitude coordinates of bathroom
-         * gender: Char, M for male, F for female, B for both
-         * stallCount: # of stalls in bathroom
-         * urinalCount: # of urinals in bathroom
-         * ratings: list of user ratings out of 5.
+         * @param Int id: randomly assigned integer for bathroom
+         * @param Building building: name of building bathroom is in
+         * @param Int floor: floor number bathroom is on
+         * @param pair<float,float> location: latitude and longitude coordinates of bathroom
+         * @param Char gender M for male, F for female, B for both
+         * @param Int # of stalls in bathroom
+         * @param Int urinalCount: # of urinals in bathroom
+         * @param vector<int> ratings: list of user ratings out of 5.
          * 
          * 
-         **/
+         */
         Bathroom(int id, Building* building, int floor, std::pair<float, float> location, char gender, int stallCount, int urinalCount, std::vector<int> ratings)
         {
             this->id = id;
@@ -54,6 +55,10 @@ class Bathroom{
         int getID() const { 
             return id; 
         }
+        /**setter for id
+         * 
+         * @param id
+        */
         void setID(int id) { 
             this->id = id; 
         }
