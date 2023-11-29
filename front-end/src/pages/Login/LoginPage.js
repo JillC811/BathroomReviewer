@@ -35,13 +35,18 @@ export default function LoginPage() {
         ).then(async (res) => {
             const u = await res.json()
             console.warn(u)
+            if(u.status === 'ERROR'){
+                alert("Invalid username or password")
+                return
+            }
             dispatch(setUser(u));
             navigate("/home")
         })
-        .catch(err => {
+        .catch((err) => {
             console.log(err)
             alert("Invalid username or password")
         })
+        
         
         
     }
@@ -75,7 +80,14 @@ export default function LoginPage() {
         ).then(async (res) => {
             const u = await res.json()
             console.warn(u)
+            if(u.status === 'ERROR'){
+                alert(`Error creating user: ${u.message}`)
+                return
+            }
             dispatch(setUser(u));
+        }).catch((err)=>{
+            console.log(err)
+            alert("Invalid username or password")
         });
 
 

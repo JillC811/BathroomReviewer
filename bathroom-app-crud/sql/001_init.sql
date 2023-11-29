@@ -61,7 +61,8 @@ INSERT INTO Building VALUES ("Middlesex_College", "43.00965542351857", "-81.2702
 CREATE TABLE Rating (id INTEGER PRIMARY KEY, uploader VARCHAR, bathroomId INT, overallRating INT, cleanlinessRating INT, textReview VARCHAR);
 
 INSERT INTO Rating VALUES (1,"Apple Bottom", 1, 3, 2, "could use cleaning");
-INSERT INTO Rating VALUES (2,"John Johnson", 2, 4, 4, "hidden gem");
+INSERT INTO Rating VALUES (2,"John Johnson", 2, 4, 4, "one of the best!");
 INSERT INTO Rating VALUES (3,"Apple Bottom", 4, 2, 3, "always out of toilet paper");
 INSERT INTO Rating VALUES (4,"John Doe", 15, 4, 5, "very clean, private bathroom highly reccommend");
 INSERT INTO Rating VALUES (5,"Apple Bottom", 15, 3, 3, "standard bathroom, B+");
+INSERT INTO Rating VALUES (6,"John Johnson", 13, 5, 5, "hidden gem");

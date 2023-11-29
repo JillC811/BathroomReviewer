@@ -1,12 +1,11 @@
 .flex-box{
-    display: flex;
-    flex-direction: column;
     margin: auto;
     padding: 10px;
 }
 
 .rating-form{
     text-align: center;
-    width: 50%;
     margin: auto;
+    background-color: transparent;
+    border-color: transparent;
 }

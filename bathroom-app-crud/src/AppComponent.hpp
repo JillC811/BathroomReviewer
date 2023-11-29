@@ -15,6 +15,8 @@
 
 #include "oatpp/core/macro/component.hpp"
 
+#include "oatpp/web/server/interceptor/AllowCorsGlobal.hpp"
+
 /**
  *  Class which creates and holds Application components and registers components in oatpp::base::Environment
  *  Order of components initialization is from top to bottom
@@ -65,6 +67,9 @@ public:
 
     auto connectionHandler = oatpp::web::server::HttpConnectionHandler::createShared(router);
     connectionHandler->setErrorHandler(std::make_shared<ErrorHandler>(objectMapper));
+     /* Add CORS-enabling interceptors */
+    connectionHandler->addRequestInterceptor(std::make_shared<oatpp::web::server::interceptor::AllowOptionsGlobal>());
+    connectionHandler->addResponseInterceptor(std::make_shared<oatpp::web::server::interceptor::AllowCorsGlobal>());
     return connectionHandler;
 
   }());

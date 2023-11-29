@@ -76,4 +76,5 @@ jsconfig.json
 settings.json
 jsconfig.json
 .vscode/
-```
+
+*.sqlite

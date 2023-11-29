@@ -28,6 +28,7 @@ public:
   oatpp::Object<PageDto<oatpp::Object<RatingDto>>> getRatingByBathroom(const int bathroomId);
   oatpp::Object<RatingDto> updateRating(const oatpp::Object<RatingDto>& dto);
   oatpp::Object<StatusDto> deleteRating(const oatpp::Int32& id);
+  oatpp::Object<PageDto<oatpp::Object<RatingDto>>> getRatingsByUser(const oatpp::String userName, const oatpp::UInt32& offset, const oatpp::UInt32& limit);
 
 };
 

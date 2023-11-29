@@ -8,7 +8,6 @@ import InputAdornment from '@mui/material/InputAdornment';
 
 //Ratings dropdown
 import {Accordion, AccordionSummary, AccordionDetails} from '@mui/material';
-import Rating from '@mui/material/Rating';
 
 import ManIcon from '@mui/icons-material/Man';
 import WomanIcon from '@mui/icons-material/Woman';
@@ -16,9 +15,6 @@ import WcIcon from '@mui/icons-material/Wc';
 import SearchIcon from "@mui/icons-material/Search";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-
-import bathrooms from "../pages/Home/data/bathrooms.json"
-import ratings from "../pages/Home/data/ratings.json"
 import './ListView.css'
 
 import { useEffect } from 'react';
@@ -29,6 +25,7 @@ import {
   MemoryRouter,
 } from 'react-router-dom';
 import { StaticRouter } from 'react-router-dom/server';
+import RatingList from './RatingList';
 
 
 function ListView() {
@@ -42,7 +39,7 @@ function ListView() {
     const query = e.target.value;
     setSearchQuery(query);
     
-    const filteredData = bathrooms.filter((bathroom) => bathroom.building.toLowerCase().includes(query.toLowerCase()));
+    const filteredData = bathrooms.filter((bathroom) => bathroom.building.replace('_', ' ').toLowerCase().includes(query.toLowerCase()));
     setFilteredBathrooms(filteredData);
   };
 
@@ -59,7 +56,12 @@ function ListView() {
             Connection: "keep-alive",
           },
         }
-      );
+      ).catch(
+        (err) =>{
+          console.log(err)
+          alert("Error fetching bathrooms")}
+      )
+      ;
       const data = await res.json();
       console.log(data);
       await setBathrooms(data.items);
@@ -77,7 +79,11 @@ function ListView() {
             Connection: "keep-alive",
           },
         }
-      );
+      ).catch((err)=>{
+        console.log(err)
+        alert("Error fetching ratings")
+      })
+      ;
       const data = await res.json();
       console.log(data);
       await setRatings(data.items);
@@ -123,11 +129,10 @@ function ListView() {
                   {(bathroom.gender === 'm') ? <ManIcon fontSize="large"/> : (bathroom.gender === 'f') ? <WomanIcon fontSize="large"/> : <WcIcon fontSize="large"/>}
                 </ListItemAvatar>
                 <ListItemText
-                  primary={<h2>{bathroom.building}</h2>}
+                  primary={<h2>{bathroom.building.replace('_', ' ')}</h2>}
                   secondary={
                     <React.Fragment>
                       <p>{`Floor: ${bathroom.floor}`}</p>
-                      <p>{`Location: ${bathroom.latitude} , ${bathroom.longitude}`}</p>
                       <p>{`Gender: ${bathroom.gender === 'm' ? 'Male' : bathroom.gender === 'f' ? "Female" : 'All Gender'}`}</p>
                       {bathroom.gender === "Male" && `Urinals: ${bathroom.urinalCount}`}
                       <p>{`Stalls: ${bathroom.stallCount}`}</p>
@@ -142,53 +147,7 @@ function ListView() {
                           <h4>Reviews</h4>
                         </AccordionSummary>
                         <AccordionDetails>
-                          <Button component={LinkBehavior} to={{pathname: "/new-rating"}} state={{bathroom: Number(bathroom.id)}} variant="contained" color="primary"
-                          > Add Review </Button>
-                          <List>
-                            {bathroom.ratings.length === 0 &&
-                              <ListItem>
-                                This bathroom has no reviews yet.
-                              </ListItem>
-                            }
-                            {ratings.map((rating) => {
-                              if(rating.bathroomId == bathroom.id){
-                                return (
-                                  <>
-                                    <ListItem alignItems="flex-start">
-                                      <ListItemText
-                                        primary={
-                                          <React.Fragment>
-                                            <h4>{rating.uploader}</h4>
-                                            <Rating
-                                              name="overall rating"
-                                              value={rating.overallRating}
-                                              readOnly
-                                            />
-                                          </React.Fragment>
-                                        }
-                                        secondary={
-                                          <React.Fragment>
-                                            <div>
-                                              <h4>Cleanliness: </h4>
-                                              <Rating
-                                                name="cleanliness"
-                                                value={rating.cleanlinessRating}
-                                                readOnly
-                                                size="small"
-                                              />
-                                            </div>
-                                            <h4>Review: </h4>
-                                            <p>{rating.textReview}</p>
-                                          </React.Fragment>
-                                        }
-                                      />
-                                      </ListItem>
-                                      <Divider variant="middle" component="li" />
-                                  </>
-                                )
-                              }
-                            })}
-                          </List>
+                          <RatingList bathroom={bathroom}/>
                         </AccordionDetails>
                       </Accordion>
                     </React.Fragment>
