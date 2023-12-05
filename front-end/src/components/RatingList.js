@@ -79,6 +79,7 @@ function RatingList(props) {
     };
 
     const handleChange = (e) => {
+        console.log(e.target.name, e.target.value);
         setInputs((prevState) => ({
             ...prevState,       //prev state is other fields already filled out in form
             [e.target.name] : e.target.value
@@ -207,14 +208,14 @@ function RatingList(props) {
                                 <div>
                                     <h4>Overall Experience: </h4>
                                     <Rating
-                                        name="overall rating"
+                                        name="overallRating"
                                         defaultValue={rating.overallRating}
                                         value={inputs.overallRating}
                                         onChange={handleChange}
                                     />
                                     <h4>Cleanliness: </h4>
                                     <Rating
-                                        name="cleanliness"
+                                        name="cleanlinessRating"
                                         defaultValue={rating.cleanlinessRating}
                                         value={inputs.cleanlinessRating}
                                         onChange={handleChange}
